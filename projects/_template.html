@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT NAME — IRO Creative Studio</title>
+  <meta name="description" content="BRIEF DESCRIPTION. By IRO Creative Studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       TEMPLATE — HOW TO USE
+       ─────────────────────
+       1. Save a copy of this file as  projects/your-project.html
+       2. Replace every  <!-- EDIT: ... -->  comment with your content
+       3. Define your brand colours in :root below
+       4. Update js/projects.js to link to this page
+       5. Add a thumbnail CSS block in css/style.css
+       ============================================================ */
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── EDIT: Replace these with your project's brand colours ── */
+    :root {
+      --p-dark:    #141414;   /* background dark */
+      --p-mid:     #1C1C1C;   /* background mid  */
+      --p-accent:  #E8663C;   /* brand accent    */
+      --p-light:   #F5F0EB;   /* light / cream   */
+      --p-muted:   #888;      /* muted text      */
+      --font-display: 'Sora', sans-serif;
+      --font-body:    'Space Grotesk', sans-serif;
+      --font-jp:      'Noto Serif JP', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--p-dark); color: var(--p-light); -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    .cs-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(20,20,20,0.88);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .cs-nav-back {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(245,240,235,0.4); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .cs-nav-back:hover { color: var(--p-light); }
+    .cs-nav-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(245,240,235,0.3); }
+    .cs-nav-label span { color: var(--p-accent); }
+
+    /* ── HERO ── */
+    .cs-hero {
+      min-height: 100vh;
+      /* EDIT: Set your hero background */
+      background: linear-gradient(160deg, var(--p-mid) 0%, var(--p-dark) 100%);
+      display: flex; align-items: flex-end;
+      padding: 0 48px 80px; position: relative; overflow: hidden;
+    }
+    .cs-hero-number {
+      position: absolute; top: 120px; right: 48px;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 120px; color: rgba(255,255,255,0.04); line-height: 1;
+      letter-spacing: -6px; user-select: none;
+    }
+    .cs-hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .cs-hero-eyebrow {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--p-accent); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .cs-hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--p-accent); }
+    .cs-hero-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(52px, 8vw, 96px);
+      color: var(--p-light); line-height: 0.95;
+      letter-spacing: -3px; margin-bottom: 16px;
+    }
+    .cs-hero-title .accent { color: var(--p-accent); }
+    .cs-hero-tagline {
+      font-weight: 300; font-size: 15px;
+      color: rgba(245,240,235,0.45); font-style: italic;
+    }
+    .cs-hero-chips { display: flex; gap: 8px; margin-top: 36px; flex-wrap: wrap; }
+    .cs-chip {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      padding: 6px 14px; border-radius: 3px; border: 1px solid;
+    }
+    .cs-chip-accent { color: var(--p-accent); border-color: rgba(232,102,60,0.35); }
+    .cs-chip-ghost  { color: rgba(245,240,235,0.35); border-color: rgba(255,255,255,0.1); }
+
+    /* ── OVERVIEW ── */
+    .cs-overview { background: var(--p-light); padding: 100px 48px; }
+    .cs-overview-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
+    .cs-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: var(--p-accent); margin-bottom: 20px; }
+    .cs-brief-heading {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(24px, 3vw, 32px); color: #222;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 24px;
+    }
+    .cs-brief-text { font-weight: 300; font-size: 15px; color: #555; line-height: 1.85; margin-bottom: 16px; }
+    .cs-meta-block { border-top: 1px solid #D8D2CA; padding-top: 28px; }
+    .cs-meta-item { margin-bottom: 20px; }
+    .cs-meta-label { font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px; color: #AAA; margin-bottom: 5px; }
+    .cs-meta-value { font-weight: 500; font-size: 14px; color: #222; line-height: 1.5; }
+    .cs-deliverables { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .cs-deliverable {
+      font-size: 13px; font-weight: 300; color: #666;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cs-deliverable::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--p-accent); flex-shrink: 0; }
+
+    /* ── GENERIC SECTION ── */
+    .cs-section { background: var(--p-dark); padding: 100px 48px; }
+    .cs-section.light { background: var(--p-light); }
+    .cs-section-heading {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -1.5px; margin-top: 10px; margin-bottom: 48px;
+    }
+    .cs-section .cs-section-heading { color: var(--p-light); }
+    .cs-section.light .cs-section-heading { color: #222; }
+
+    /* ── COLOR PALETTE ── */
+    .cs-color-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; align-items: end; }
+    .cs-color-swatch { border-radius: 8px; margin-bottom: 16px; height: 120px; }
+    .cs-color-name { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: #222; margin-bottom: 3px; }
+    .cs-color-hex  { font-size: 12px; color: #AAA; margin-bottom: 6px; }
+    .cs-color-use  { font-size: 11px; color: #888; line-height: 1.5; }
+
+    /* ── PROJECT FOOTER ── */
+    .cs-footer { background: var(--p-dark); padding: 80px 48px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .cs-footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .cs-footer-credit { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: rgba(245,240,235,0.25); margin-bottom: 16px; }
+    .cs-footer-studio { font-family: var(--font-display); font-weight: 800; font-size: 32px; color: var(--p-accent); letter-spacing: -1.5px; margin-bottom: 8px; }
+    .cs-footer-studio span { color: rgba(245,240,235,0.4); }
+    .cs-footer-desc { font-size: 13px; color: rgba(245,240,235,0.3); line-height: 1.7; max-width: 320px; }
+    .cs-footer-nav { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; }
+    .cs-footer-next {
+      font-family: var(--font-display); font-weight: 800; font-size: 13px;
+      color: var(--p-light); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: gap 0.3s ease;
+    }
+    .cs-footer-next:hover { gap: 16px; }
+    .cs-footer-back { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(245,240,235,0.3); text-decoration: none; transition: color 0.3s ease; }
+    .cs-footer-back:hover { color: var(--p-light); }
+
+    @media (max-width: 900px) {
+      .cs-nav { padding: 16px 24px; }
+      .cs-hero { padding: 0 24px 60px; }
+      .cs-hero-number { display: none; }
+      .cs-overview { padding: 60px 24px; }
+      .cs-overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cs-section { padding: 60px 24px; }
+      .cs-color-strip { grid-template-columns: repeat(3, 1fr); }
+      .cs-footer { padding: 60px 24px; }
+      .cs-footer-grid { grid-template-columns: 1fr; }
+      .cs-footer-nav { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="cs-nav">
+    <a href="../index.html" class="cs-nav-back">← IRO Creative Studio</a>
+    <!-- EDIT: Update project name and category -->
+    <span class="cs-nav-label"><span>Project Name</span> / Category</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <!-- EDIT: Change the number to match project order -->
+    <div class="cs-hero-number">03</div>
+    <div class="cs-hero-content">
+      <!-- EDIT: Fill in your project details below -->
+      <p class="cs-hero-eyebrow">Brand Identity & [Other Services]</p>
+      <h1 class="cs-hero-title">Project<br><span class="accent">Name</span></h1>
+      <p class="cs-hero-tagline">"Your brand tagline here."</p>
+      <div class="cs-hero-chips">
+        <span class="cs-chip cs-chip-accent">Tag 1</span>
+        <span class="cs-chip cs-chip-ghost">Tag 2</span>
+        <span class="cs-chip cs-chip-ghost">Tag 3</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW / BRIEF -->
+  <section class="cs-overview">
+    <div class="cs-overview-grid">
+      <div>
+        <p class="cs-section-label">The Brief</p>
+        <!-- EDIT: Write 2 paragraphs about the challenge/brief -->
+        <h2 class="cs-brief-heading">What was the design challenge?</h2>
+        <p class="cs-brief-text">Paragraph 1: Set the scene. Who is the client, what did they need, and why did it matter? Keep it real and specific.</p>
+        <p class="cs-brief-text">Paragraph 2: What was the strategic or creative challenge? What constraints or goals shaped the work?</p>
+      </div>
+      <div>
+        <div class="cs-meta-block">
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Services</div>
+            <!-- EDIT -->
+            <div class="cs-meta-value">Brand Identity & Strategy</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Industry</div>
+            <div class="cs-meta-value"><!-- EDIT --></div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Location</div>
+            <div class="cs-meta-value">Bangalore, India</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Year</div>
+            <div class="cs-meta-value">2025</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Deliverables</div>
+            <div class="cs-deliverables">
+              <!-- EDIT: List what was delivered -->
+              <span class="cs-deliverable">Logo mark & wordmark</span>
+              <span class="cs-deliverable">Brand guidelines</span>
+              <span class="cs-deliverable">Social media templates</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO / IDENTITY SECTION -->
+  <!-- EDIT: Customise this section for your project's visual system -->
+  <section class="cs-section" id="identity">
+    <p class="cs-section-label" style="color:var(--p-accent)">The Mark</p>
+    <h2 class="cs-section-heading">Logo & Identity System</h2>
+    <!-- Add your logo grid, mockups, etc. here -->
+    <p style="color:rgba(245,240,235,0.4);font-size:14px">
+      [Add logo system, colour palette, typography specimens, and mockups here.<br>
+      Copy the structure from projects/koji-cafe.html or projects/verdant-labs.html.]
+    </p>
+  </section>
+
+  <!-- COLOUR PALETTE SECTION -->
+  <section class="cs-section light" id="colours">
+    <p class="cs-section-label">Colour System</p>
+    <h2 class="cs-section-heading">Brand Palette</h2>
+    <div class="cs-color-strip">
+      <!-- EDIT: Replace hex values and names -->
+      <div>
+        <div class="cs-color-swatch" style="background:#111"></div>
+        <div class="cs-color-name">Colour Name</div>
+        <div class="cs-color-hex">#111111</div>
+        <div class="cs-color-use">Primary dark background.</div>
+      </div>
+      <div>
+        <div class="cs-color-swatch" style="background:#E8663C"></div>
+        <div class="cs-color-name">Accent</div>
+        <div class="cs-color-hex">#E8663C</div>
+        <div class="cs-color-use">Brand accent colour.</div>
+      </div>
+      <!-- Add more colour swatches as needed -->
+    </div>
+  </section>
+
+  <!-- PROJECT FOOTER -->
+  <section class="cs-footer">
+    <div class="cs-footer-grid">
+      <div>
+        <div class="cs-footer-credit">A project by</div>
+        <div class="cs-footer-studio">IRO <span>Creative Studio</span></div>
+        <p class="cs-footer-desc">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
+      </div>
+      <div class="cs-footer-nav">
+        <!-- EDIT: Link to next/previous project -->
+        <a href="./koji-cafe.html" class="cs-footer-next">Next Project →</a>
+        <a href="../index.html"    class="cs-footer-back">← Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

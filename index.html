@@ -5,814 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IRO Creative Studio — Your brand needs its color</title>
   <meta name="description" content="IRO (色) Creative Studio — Bangalore-based design practice specializing in brand identities, web experiences, and motion content.">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --charcoal: #141414;
-      --dark: #1C1C1C;
-      --deepblack: #0F0F0F;
-      --coral: #E8663C;
-      --cyan: #2CB5BF;
-      --cream: #F5F0EB;
-      --cream-border: #E0DBD4;
-      --text-muted: #777;
-      --text-dim: #555;
-      --text-faint: #888;
-      --text-ghost: #999;
-      --font-display: 'Sora', sans-serif;
-      --font-body: 'Space Grotesk', sans-serif;
-      --font-jp: 'Noto Serif JP', serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--cream);
-      background: var(--charcoal);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ===== UTILITY ===== */
-    .label {
-      font-family: var(--font-body);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      font-weight: 500;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
-    .reveal-d4 { transition-delay: 0.4s; }
-
-    /* ===== NAV ===== */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      background: rgba(20, 20, 20, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: padding 0.3s ease;
-    }
-    nav.scrolled { padding: 14px 48px; }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .nav-logo-text {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 20px;
-      color: var(--cream);
-      letter-spacing: -0.5px;
-    }
-    .nav-logo-kanji {
-      font-family: var(--font-jp);
-      font-size: 12px;
-      color: var(--coral);
-      opacity: 0.6;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-body);
-      font-size: 11px;
-      color: var(--text-faint);
-      text-decoration: none;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
-    }
-    .nav-links a:hover { color: var(--cream); }
-    .nav-links a.accent { color: var(--cyan); }
-    .nav-links a.accent:hover { color: #5DD6DE; }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav-hamburger span {
-      width: 24px;
-      height: 2px;
-      background: var(--cream);
-      border-radius: 1px;
-      transition: all 0.3s ease;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: var(--charcoal);
-      padding: 120px 48px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-kanji-bg {
-      position: absolute;
-      top: 50%;
-      right: 5%;
-      transform: translateY(-50%);
-      font-family: var(--font-jp);
-      font-size: clamp(200px, 30vw, 400px);
-      color: var(--dark);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-      opacity: 0.5;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-    }
-
-    .hero-location {
-      color: var(--cyan);
-      margin-bottom: 28px;
-    }
-
-    /* Kinetic IRO morph */
-    .hero-morph {
-      display: inline-block;
-      position: relative;
-      width: 180px;
-      height: 70px;
-      vertical-align: bottom;
-    }
-    .hero-morph-iro,
-    .hero-morph-kanji {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .hero-morph-iro {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: inherit;
-      color: var(--coral);
-      letter-spacing: -2.5px;
-    }
-    .hero-morph-kanji {
-      font-family: var(--font-jp);
-      font-size: 0.85em;
-      color: var(--coral);
-      opacity: 0;
-      transform: scale(0.9) translateY(4px);
-    }
-    .hero-morph.show-kanji .hero-morph-iro {
-      opacity: 0;
-      transform: scale(0.9) translateY(-4px);
-    }
-    .hero-morph.show-kanji .hero-morph-kanji {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(40px, 6vw, 64px);
-      color: var(--cream);
-      line-height: 0.95;
-      letter-spacing: -2.5px;
-      margin-bottom: 8px;
-    }
-
-    .hero-divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 16px 0 28px;
-    }
-    .hero-divider-line {
-      width: 32px;
-      height: 2px;
-      background: var(--coral);
-    }
-    .hero-divider-text {
-      font-size: 10px;
-      color: var(--text-dim);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero-desc {
-      font-weight: 300;
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 460px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 36px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 14px 32px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-primary {
-      background: var(--cyan);
-      color: var(--charcoal);
-    }
-    .btn-primary:hover {
-      background: #5DD6DE;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid #333;
-    }
-    .btn-outline:hover {
-      border-color: var(--text-muted);
-      color: var(--cream);
-    }
-    .btn-coral {
-      background: var(--coral);
-      color: var(--charcoal);
-    }
-    .btn-coral:hover {
-      background: #F07A55;
-      transform: translateY(-2px);
-    }
-
-    /* ===== SERVICES ===== */
-    .services {
-      background: var(--cream);
-      padding: 100px 48px;
-    }
-
-    .services-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 48px;
-    }
-
-    .services-header .label { color: var(--coral); }
-
-    .services-header h2 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(28px, 4vw, 38px);
-      color: var(--charcoal);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-top: 10px;
-    }
-
-    .services-kanji {
-      font-family: var(--font-jp);
-      font-size: 64px;
-      color: var(--cream-border);
-      line-height: 1;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 32px 24px;
-      border: 1px solid var(--cream-border);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .service-card:nth-child(1) { margin-top: 0; }
-    .service-card:nth-child(2) { margin-top: 32px; }
-    .service-card:nth-child(3) { margin-top: 64px; }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
-    }
-
-    .service-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      opacity: 0.15;
-    }
-
-    .service-card h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--charcoal);
-      margin-bottom: 10px;
-      line-height: 1.25;
-    }
-
-    .service-card p {
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    /* ===== WORK ===== */
-    .work {
-      background: var(--charcoal);
-      padding: 100px 48px;
-    }
-
-    .work .label { color: var(--coral); }
-
-    .work h2 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(28px, 4vw, 38px);
-      color: var(--cream);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-top: 10px;
-      margin-bottom: 40px;
-    }
-
-    .work-grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .work-item {
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      background: var(--dark);
-      cursor: pointer;
-      transition: transform 0.4s ease;
-    }
-    .work-item:hover { transform: scale(1.015); }
-
-    .work-item-full { height: 320px; }
-    .work-half-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 20px;
-    }
-    .work-item-half { height: 240px; }
-
-    .work-item-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--dark) 0%, #222 100%);
-    }
-    .work-item-placeholder-inner {
-      width: 140px;
-      height: 90px;
-      border: 2px dashed #333;
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .work-item-placeholder-inner span {
-      font-size: 10px;
-      color: var(--text-dim);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .placeholder-icon {
-      width: 24px;
-      height: 24px;
-      border: 1.5px solid #444;
-      border-radius: 4px;
-    }
-
-    .work-item-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 24px;
-      background: linear-gradient(transparent, rgba(20,20,20,0.95));
-      z-index: 1;
-    }
-    .work-item-overlay h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--cream);
-      margin-bottom: 4px;
-    }
-    .work-item-overlay p {
-      font-weight: 300;
-      font-size: 12px;
-      color: var(--text-faint);
-    }
-
-    .work-tag {
-      display: inline-block;
-      font-size: 10px;
-      letter-spacing: 0.5px;
-      color: var(--cyan);
-      background: rgba(44,181,191,0.1);
-      padding: 4px 10px;
-      border-radius: 3px;
-      margin-top: 8px;
-      margin-right: 6px;
-    }
-
-    /* ===== ABOUT ===== */
-    .about {
-      background: var(--cream);
-      padding: 100px 48px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .about .label { color: var(--coral); }
-
-    .about h2 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(26px, 3.5vw, 34px);
-      color: var(--charcoal);
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-top: 10px;
-    }
-
-    .about-avatar {
-      margin-top: 28px;
-      width: 100%;
-      height: 180px;
-      background: var(--cream-border);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: var(--text-ghost);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .about-text {
-      padding-top: 20px;
-    }
-    .about-text p {
-      font-weight: 400;
-      font-size: 16px;
-      color: var(--text-dim);
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    .about-quote {
-      font-weight: 300;
-      font-size: 14px;
-      color: var(--text-ghost);
-      font-style: italic;
-      line-height: 1.6;
-      padding-left: 16px;
-      border-left: 2px solid var(--coral);
-    }
-
-    .about-stats {
-      display: flex;
-      gap: 36px;
-      margin-top: 32px;
-    }
-    .about-stat-number {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 32px;
-      color: var(--charcoal);
-      letter-spacing: -1px;
-    }
-    .about-stat-number span { color: var(--coral); }
-    .about-stat-label {
-      font-size: 11px;
-      color: var(--text-ghost);
-      margin-top: 2px;
-    }
-
-    /* ===== CONTACT ===== */
-    .contact {
-      background: var(--charcoal);
-      padding: 100px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-kanji-bg {
-      position: absolute;
-      bottom: -30px;
-      right: 5%;
-      font-family: var(--font-jp);
-      font-size: clamp(120px, 20vw, 200px);
-      color: var(--dark);
-      line-height: 1;
-      opacity: 0.4;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .contact .label { color: var(--cyan); }
-
-    .contact h2 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(32px, 5vw, 48px);
-      color: var(--cream);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-top: 16px;
-    }
-    .contact h2 .coral { color: var(--coral); }
-
-    .contact-desc {
-      font-weight: 300;
-      font-size: 15px;
-      color: var(--text-muted);
-      margin: 20px auto 0;
-      max-width: 380px;
-      line-height: 1.65;
-    }
-
-    /* Contact Form */
-    .contact-form {
-      max-width: 480px;
-      margin: 36px auto 0;
-      position: relative;
-      z-index: 1;
-      text-align: left;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .form-group { margin-bottom: 12px; }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--cream);
-      background: var(--dark);
-      border: 1px solid #2a2a2a;
-      border-radius: 6px;
-      padding: 14px 16px;
-      outline: none;
-      transition: border-color 0.3s ease;
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: var(--text-dim);
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--coral);
-    }
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .form-submit {
-      width: 100%;
-      margin-top: 4px;
-    }
-    .form-status {
-      text-align: center;
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--cyan);
-      min-height: 20px;
-    }
-
-    .contact-email {
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-    .contact-email a {
-      font-size: 13px;
-      color: var(--text-dim);
-      text-decoration: none;
-      border-bottom: 1px solid #333;
-      padding-bottom: 2px;
-      transition: color 0.3s ease, border-color 0.3s ease;
-    }
-    .contact-email a:hover {
-      color: var(--cream);
-      border-color: var(--cream);
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--deepblack);
-      padding: 28px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .footer-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 15px;
-      color: var(--cream);
-    }
-    .footer-kanji {
-      font-family: var(--font-jp);
-      font-size: 14px;
-      color: var(--coral);
-      opacity: 0.5;
-    }
-    .footer-text {
-      font-size: 11px;
-      color: var(--text-dim);
-      margin-left: 4px;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 20px;
-    }
-    .footer-socials a {
-      font-size: 11px;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .footer-socials a:hover { color: var(--cream); }
-
-    /* ===== MOBILE NAV OVERLAY ===== */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99;
-      background: rgba(15,15,15,0.97);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 28px;
-      color: var(--cream);
-      text-decoration: none;
-      letter-spacing: -1px;
-      transition: color 0.3s ease;
-    }
-    .mobile-nav a:hover { color: var(--coral); }
-    .mobile-nav-close {
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      font-size: 28px;
-      color: var(--cream);
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: var(--font-body);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      nav.scrolled { padding: 12px 24px; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-
-      .hero { padding: 100px 24px 60px; }
-      .hero-kanji-bg { font-size: 180px; right: -20px; opacity: 0.3; }
-      .hero-morph { width: 120px; height: 50px; }
-
-      .services { padding: 60px 24px; }
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .service-card:nth-child(1),
-      .service-card:nth-child(2),
-      .service-card:nth-child(3) { margin-top: 0; }
-      .services-kanji { font-size: 44px; }
-
-      .work { padding: 60px 24px; }
-      .work-item-full { height: 220px; }
-      .work-half-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .work-item-half { height: 200px; }
-
-      .about { padding: 60px 24px; }
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .about-avatar { height: 140px; }
-      .about-stats { gap: 24px; }
-
-      .contact { padding: 60px 24px; }
-      .form-row { grid-template-columns: 1fr; }
-
-      footer {
-        padding: 20px 24px;
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 34px; letter-spacing: -1.5px; }
-      .hero-morph { width: 95px; height: 42px; }
-      .hero-desc { font-size: 15px; }
-      .hero-buttons { flex-direction: column; }
-      .btn { width: 100%; justify-content: center; }
-      .about-stats { flex-wrap: wrap; gap: 20px; }
-    }
-  </style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ═══════════ NAV ═══════════ -->
   <nav id="nav">
     <div class="nav-logo">
       <span class="nav-logo-text">IRO</span>
@@ -829,16 +33,16 @@
     </div>
   </nav>
 
-  <!-- MOBILE NAV -->
+  <!-- ═══════════ MOBILE NAV ═══════════ -->
   <div class="mobile-nav" id="mobileNav">
     <button class="mobile-nav-close" onclick="toggleMobileNav()">&times;</button>
-    <a href="#work" onclick="toggleMobileNav()">Work</a>
+    <a href="#work"     onclick="toggleMobileNav()">Work</a>
     <a href="#services" onclick="toggleMobileNav()">Services</a>
-    <a href="#about" onclick="toggleMobileNav()">About</a>
-    <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+    <a href="#about"    onclick="toggleMobileNav()">About</a>
+    <a href="#contact"  onclick="toggleMobileNav()">Contact</a>
   </div>
 
-  <!-- HERO -->
+  <!-- ═══════════ HERO ═══════════ -->
   <section class="hero" id="hero">
     <div class="hero-kanji-bg">色</div>
     <div class="hero-content">
@@ -856,12 +60,12 @@
       <p class="hero-desc reveal reveal-d2">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
       <div class="hero-buttons reveal reveal-d3">
         <a href="#contact" class="btn btn-primary">Start a project</a>
-        <a href="#work" class="btn btn-outline">See our work ↓</a>
+        <a href="#work"    class="btn btn-outline">See our work ↓</a>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ═══════════ SERVICES ═══════════ -->
   <section class="services" id="services">
     <div class="services-header">
       <div>
@@ -872,77 +76,37 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-icon" style="background: var(--coral);"></div>
+        <div class="service-icon" style="background:var(--coral)"></div>
         <h3>Branding &<br>identity</h3>
         <p>Logos, brand systems, and visual guidelines that make you unmistakable. From strategy to final assets — a complete identity built to last.</p>
       </div>
       <div class="service-card reveal reveal-d1">
-        <div class="service-icon" style="background: var(--cyan);"></div>
+        <div class="service-icon" style="background:var(--cyan)"></div>
         <h3>Web design &<br>development</h3>
         <p>Responsive sites and landing pages that look sharp and convert visitors into clients. Clean code, fast loads, built for real results.</p>
       </div>
       <div class="service-card reveal reveal-d2">
-        <div class="service-icon" style="background: var(--charcoal);"></div>
+        <div class="service-icon" style="background:var(--charcoal)"></div>
         <h3>Social media &<br>motion</h3>
         <p>Reels, carousels, and animated graphics that stop the scroll. Content designed to perform — not just look good in a portfolio.</p>
       </div>
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- ═══════════ WORK ═══════════ -->
+  <!--
+    Projects are managed in js/projects.js — not here.
+    To add/remove projects, edit that file only.
+  -->
   <section class="work" id="work">
     <p class="label reveal">Selected work</p>
     <h2 class="reveal reveal-d1">Recent projects.</h2>
-    <div class="work-grid">
-      <div class="work-item work-item-full reveal">
-        <div class="work-item-placeholder">
-          <div class="work-item-placeholder-inner">
-            <div class="placeholder-icon"></div>
-            <span>Project image</span>
-          </div>
-        </div>
-        <div class="work-item-overlay">
-          <h3>Brand Identity — Coming Soon</h3>
-          <p>Full visual identity system for an upcoming client project.</p>
-          <span class="work-tag">Branding</span>
-          <span class="work-tag">Identity</span>
-          <span class="work-tag">Guidelines</span>
-        </div>
-      </div>
-      <div class="work-half-grid">
-        <div class="work-item work-item-half reveal reveal-d1">
-          <div class="work-item-placeholder">
-            <div class="work-item-placeholder-inner">
-              <div class="placeholder-icon"></div>
-              <span>Project image</span>
-            </div>
-          </div>
-          <div class="work-item-overlay">
-            <h3>Website Redesign</h3>
-            <p>Modern responsive site with optimized conversion flow.</p>
-            <span class="work-tag">Web</span>
-            <span class="work-tag">Development</span>
-          </div>
-        </div>
-        <div class="work-item work-item-half reveal reveal-d2">
-          <div class="work-item-placeholder">
-            <div class="work-item-placeholder-inner">
-              <div class="placeholder-icon"></div>
-              <span>Project image</span>
-            </div>
-          </div>
-          <div class="work-item-overlay">
-            <h3>Social Campaign</h3>
-            <p>Motion-first content series for social media launch.</p>
-            <span class="work-tag">Motion</span>
-            <span class="work-tag">Social</span>
-          </div>
-        </div>
-      </div>
+    <div class="work-grid" id="workGrid">
+      <!-- Auto-populated by js/projects.js → renderWorkGrid() -->
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ═══════════ ABOUT ═══════════ -->
   <section class="about" id="about">
     <div class="about-grid">
       <div>
@@ -971,7 +135,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ═══════════ CONTACT ═══════════ -->
   <section class="contact" id="contact">
     <div class="contact-kanji-bg">色</div>
     <p class="label reveal">Ready?</p>
@@ -980,26 +144,26 @@
 
     <form class="contact-form reveal reveal-d3" id="contactForm">
       <div class="form-row">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Email address" required>
+        <input type="text"  name="name"    placeholder="Your name"    required>
+        <input type="email" name="email"   placeholder="Email address" required>
       </div>
       <div class="form-group">
         <input type="text" name="subject" placeholder="Project type (e.g. Branding, Website, Social)">
       </div>
       <div class="form-group">
-        <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+        <textarea name="message" placeholder="Tell us about your project…" required></textarea>
       </div>
       <button type="submit" class="btn btn-coral form-submit">Send message</button>
       <div class="form-status" id="formStatus"></div>
     </form>
 
     <div class="contact-email reveal reveal-d4">
-      <span style="font-size: 12px; color: var(--text-dim);">Or reach out directly — </span>
-      <a href="/cdn-cgi/l/email-protection#4e262b2222210e273c212d3c2b2f3a27382b3d3a3b2a2721602d2123"><span class="__cf_email__" data-cfemail="7119141d1d1e3118031e120314100518071402050415181e5f121e1c">[email&#160;protected]</span></a>
+      <span style="font-size:12px;color:var(--text-dim)">Or reach out directly — </span>
+      <a href="mailto:hello@irocreativestudio.com">hello@irocreativestudio.com</a>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ═══════════ FOOTER ═══════════ -->
   <footer>
     <div class="footer-left">
       <span class="footer-logo">IRO</span>
@@ -1013,83 +177,9 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ===== NAV SCROLL EFFECT =====
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // ===== MOBILE NAV =====
-    function toggleMobileNav() {
-      document.getElementById('mobileNav').classList.toggle('open');
-    }
-
-    // ===== IRO ↔ 色 MORPH ANIMATION =====
-    const morph = document.getElementById('heroMorph');
-    let showKanji = false;
-    setInterval(() => {
-      showKanji = !showKanji;
-      morph.classList.toggle('show-kanji', showKanji);
-    }, 3000);
-
-    // ===== SCROLL REVEAL =====
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-
-    // ===== CONTACT FORM (Google Apps Script) =====
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Show sending status
-      status.textContent = 'Sending...';
-      status.style.color = 'var(--cyan)';
-      status.style.opacity = '1';
-
-      // Get form data
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-
-      try {
-        // Replace YOUR_GOOGLE_APPS_SCRIPT_URL_HERE with your actual Apps Script Web App URL
-        // Get this URL from: Apps Script → Deploy → New deployment → Web app
-        const response = await fetch('https://script.google.com/macros/s/AKfycbxkppCDv_ANycIuw7uy2ji_lt570G8KOT4sX9oJbXgfgypsRrHfZCURTvgTj1i0gaTOCA/exec', {
-          method: 'POST',
-          mode: 'no-cors', // Important: Apps Script requires no-cors mode
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-
-        // With no-cors mode, we can't read the response, so we assume success
-        status.textContent = 'Message sent — we\'ll be in touch!';
-        status.style.color = 'var(--cyan)';
-        form.reset();
-        
-        // Hide status after 5 seconds
-        setTimeout(() => {
-          status.style.opacity = '0';
-        }, 5000);
-
-      } catch (error) {
-        status.textContent = 'Something went wrong. Try again or email us directly.';
-        status.style.color = 'var(--coral)';
-        console.error('Form submission error:', error);
-      }
-    });
-  </script>
+  <!-- Scripts — order matters: projects.js first, then app.js -->
+  <script src="js/projects.js"></script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>

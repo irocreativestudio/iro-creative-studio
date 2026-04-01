@@ -1,0 +1,39 @@
+# ============================================================
+#  IRO Creative Studio — netlify.toml
+#  Netlify deployment configuration
+# ============================================================
+
+[build]
+  publish = "."          # Root of repo is the publish directory (no build step needed)
+
+# ── Cache control: tell browsers how long to cache assets ──
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── Security headers ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+
+# ── Pretty URLs: /projects/koji-cafe  → koji-cafe.html ──
+[[redirects]]
+  from   = "/projects/:slug"
+  to     = "/projects/:slug.html"
+  status = 200
+  conditions = {Path = ["/projects/:slug"]}
+
+# ── 404 fallback ──
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 404
