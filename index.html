@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRO Creative Studio — Your brand needs its color</title>
+  <meta name="description" content="IRO (色) Creative Studio — Bangalore-based design practice specializing in brand identities, web experiences, and motion content.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav id="nav">
+    <div class="nav-logo">
+      <span class="nav-logo-text">IRO</span>
+      <span class="nav-logo-kanji">色</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="accent">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ═══════════ MOBILE NAV ═══════════ -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" onclick="toggleMobileNav()">&times;</button>
+    <a href="#work"     onclick="toggleMobileNav()">Work</a>
+    <a href="#services" onclick="toggleMobileNav()">Services</a>
+    <a href="#about"    onclick="toggleMobileNav()">About</a>
+    <a href="#contact"  onclick="toggleMobileNav()">Contact</a>
+  </div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-kanji-bg">色</div>
+    <div class="hero-content">
+      <p class="label hero-location reveal">Creative studio · Bangalore</p>
+      <h1 class="reveal reveal-d1">Your brand<br>needs its
+        <span class="hero-morph" id="heroMorph">
+          <span class="hero-morph-iro">IRO</span>
+          <span class="hero-morph-kanji">色</span>
+        </span>
+      </h1>
+      <div class="hero-divider reveal reveal-d2">
+        <div class="hero-divider-line"></div>
+        <span class="hero-divider-text">color that speaks</span>
+      </div>
+      <p class="hero-desc reveal reveal-d2">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
+      <div class="hero-buttons reveal reveal-d3">
+        <a href="#contact" class="btn btn-primary">Start a project</a>
+        <a href="#work"    class="btn btn-outline">See our work ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SERVICES ═══════════ -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div>
+        <p class="label reveal">What we do</p>
+        <h2 class="reveal reveal-d1">Three ways we<br>bring color.</h2>
+      </div>
+      <span class="services-kanji reveal">色</span>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon" style="background:var(--coral)"></div>
+        <h3>Branding &<br>identity</h3>
+        <p>Logos, brand systems, and visual guidelines that make you unmistakable. From strategy to final assets — a complete identity built to last.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <div class="service-icon" style="background:var(--cyan)"></div>
+        <h3>Web design &<br>development</h3>
+        <p>Responsive sites and landing pages that look sharp and convert visitors into clients. Clean code, fast loads, built for real results.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <div class="service-icon" style="background:var(--charcoal)"></div>
+        <h3>Social media &<br>motion</h3>
+        <p>Reels, carousels, and animated graphics that stop the scroll. Content designed to perform — not just look good in a portfolio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ WORK ═══════════ -->
+  <!--
+    Projects are managed in js/projects.js — not here.
+    To add/remove projects, edit that file only.
+  -->
+  <section class="work" id="work">
+    <p class="label reveal">Selected work</p>
+    <h2 class="reveal reveal-d1">Recent projects.</h2>
+    <div class="work-grid" id="workGrid">
+      <!-- Auto-populated by js/projects.js → renderWorkGrid() -->
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div>
+        <p class="label reveal">About</p>
+        <h2 class="reveal reveal-d1">One studio.<br>Full spectrum.</h2>
+        <div class="about-avatar reveal reveal-d2">Photo / Avatar</div>
+      </div>
+      <div class="about-text">
+        <p class="reveal">IRO Creative Studio is a Bangalore-based design practice specializing in brand identities, web experiences, and motion content. We work with startups, local businesses, personal brands, and established companies — anyone who believes their visual presence should be as strong as their product.</p>
+        <p class="about-quote reveal reveal-d1">"IRO (色) — the Japanese word for color. Every brand has one. We help you find yours."</p>
+        <div class="about-stats reveal reveal-d2">
+          <div>
+            <div class="about-stat-number">50<span>+</span></div>
+            <div class="about-stat-label">Projects</div>
+          </div>
+          <div>
+            <div class="about-stat-number">3<span>+</span></div>
+            <div class="about-stat-label">Years</div>
+          </div>
+          <div>
+            <div class="about-stat-number">∞</div>
+            <div class="about-stat-label">Colors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="contact" id="contact">
+    <div class="contact-kanji-bg">色</div>
+    <p class="label reveal">Ready?</p>
+    <h2 class="reveal reveal-d1">Let's find your <span class="coral">color</span>.</h2>
+    <p class="contact-desc reveal reveal-d2">Tell us about your project. We'll get back to you within 24 hours.</p>
+
+    <form class="contact-form reveal reveal-d3" id="contactForm">
+      <div class="form-row">
+        <input type="text"  name="name"    placeholder="Your name"    required>
+        <input type="email" name="email"   placeholder="Email address" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="subject" placeholder="Project type (e.g. Branding, Website, Social)">
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Tell us about your project…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-coral form-submit">Send message</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+
+    <div class="contact-email reveal reveal-d4">
+      <span style="font-size:12px;color:var(--text-dim)">Or reach out directly — </span>
+      <a href="mailto:hello@irocreativestudio.com">hello@irocreativestudio.com</a>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="footer-left">
+      <span class="footer-logo">IRO</span>
+      <span class="footer-kanji">色</span>
+      <span class="footer-text">Creative Studio · Bangalore</span>
+    </div>
+    <div class="footer-socials">
+      <a href="#" target="_blank">Instagram</a>
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">Behance</a>
+    </div>
+  </footer>
+
+  <!-- Scripts — order matters: projects.js first, then app.js -->
+  <script src="js/projects.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
