@@ -57,7 +57,47 @@ const PROJECTS = [
       </div>`
   },
 
-  /* ── 03  PORTO & PIMENTA ─────────────────────────────────── */
+  /* ── 03  AXION AI ────────────────────────────────────────── */
+  {
+    name:        'Axion AI',
+    description: 'Full brand package for an AI/ML decision intelligence startup.',
+    tags:        ['Branding', 'Web', 'Social & Motion'],
+    link:        'projects/axion-ai.html',
+    size:        'half',
+    thumb: `
+      <div class="proj-axion">
+        <div class="proj-axion-grid"></div>
+        <div class="proj-axion-nodes">
+          <svg width="100%" height="100%" viewBox="0 0 300 260" fill="none">
+            <line x1="220" y1="60" x2="260" y2="140" stroke="#6366F1" stroke-width="0.5" opacity="0.15"/>
+            <line x1="260" y1="140" x2="200" y2="180" stroke="#6366F1" stroke-width="0.5" opacity="0.1"/>
+            <line x1="220" y1="60" x2="200" y2="180" stroke="#6366F1" stroke-width="0.5" opacity="0.08"/>
+            <circle cx="220" cy="60"  r="2" fill="#6366F1" opacity="0.3"/>
+            <circle cx="260" cy="140" r="2" fill="#6366F1" opacity="0.25"/>
+            <circle cx="200" cy="180" r="2" fill="#6366F1" opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="proj-axion-inner">
+          <div class="proj-axion-mark-wrap">
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="18" stroke="#6366F1" stroke-width="1.2" opacity="0.7"/>
+              <circle cx="24" cy="14" r="2.5" fill="#6366F1" opacity="0.8"/>
+              <circle cx="33" cy="29" r="2.5" fill="#6366F1" opacity="0.8"/>
+              <circle cx="15" cy="29" r="2.5" fill="#6366F1" opacity="0.8"/>
+              <circle cx="24" cy="24" r="1.5" fill="#6366F1"/>
+              <line x1="24" y1="16" x2="24" y2="22.5" stroke="#6366F1" stroke-width="0.6" opacity="0.4"/>
+              <line x1="25.5" y1="25" x2="31" y2="28" stroke="#6366F1" stroke-width="0.6" opacity="0.4"/>
+              <line x1="22.5" y1="25" x2="17" y2="28" stroke="#6366F1" stroke-width="0.6" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="proj-axion-logo">AXION</div>
+          <div class="proj-axion-sub">AI</div>
+          <div class="proj-axion-tagline">Decisions at the<br>speed of data.</div>
+        </div>
+      </div>`
+  },
+
+  /* ── 04  PORTO & PIMENTA ─────────────────────────────────── */
   {
     name:        'Porto & Pimenta',
     description: 'Full brand package for a Portuguese-inspired brasserie in Mumbai.',
@@ -81,13 +121,33 @@ const PROJECTS = [
         </div>
         <div class="proj-porto-deco">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="36" stroke="#C6A858" stroke-width="1"/>
-            <circle cx="40" cy="40" r="24" stroke="#C6A858" stroke-width="0.5"/>
-            <path d="M40,10 C44,22 44,30 40,40 C36,30 36,22 40,10Z" fill="#C6A858"/>
-            <path d="M70,40 C58,44 50,44 40,40 C50,36 58,36 70,40Z" fill="#C6A858"/>
-            <path d="M40,70 C36,58 36,50 40,40 C44,50 44,58 40,70Z" fill="#C6A858"/>
-            <path d="M10,40 C22,36 30,36 40,40 C30,44 22,44 10,40Z" fill="#C6A858"/>
+            <!-- Azulejo diamond tile — distinct from Koji's petal mark -->
+            <rect x="14" y="14" width="52" height="52" rx="4" stroke="#C6A858" stroke-width="0.75" transform="rotate(45 40 40)"/>
+            <rect x="22" y="22" width="36" height="36" rx="2" stroke="#C6A858" stroke-width="0.5" opacity="0.5" transform="rotate(45 40 40)"/>
+            <line x1="40" y1="4" x2="40" y2="76" stroke="#C6A858" stroke-width="0.5" opacity="0.3"/>
+            <line x1="4" y1="40" x2="76" y2="40" stroke="#C6A858" stroke-width="0.5" opacity="0.3"/>
+            <circle cx="40" cy="40" r="4" fill="#C6A858" opacity="0.6"/>
+            <circle cx="40" cy="18" r="2" fill="#C6A858" opacity="0.35"/>
+            <circle cx="40" cy="62" r="2" fill="#C6A858" opacity="0.35"/>
+            <circle cx="18" cy="40" r="2" fill="#C6A858" opacity="0.35"/>
+            <circle cx="62" cy="40" r="2" fill="#C6A858" opacity="0.35"/>
           </svg>
+        </div>
+      </div>`
+  },
+
+  /* ── COMING SOON TEASER ──────────────────────────────────── */
+  {
+    name:        'More Coming Soon',
+    description: 'New projects currently in development.',
+    tags:        ['Stay Tuned'],
+    link:        null,
+    size:        'half',
+    thumb: `
+      <div class="proj-coming">
+        <div class="proj-coming-inner">
+          <div class="proj-coming-dot"></div>
+          <div class="proj-coming-text">Next project dropping soon</div>
         </div>
       </div>`
   },

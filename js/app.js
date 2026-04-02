@@ -1,7 +1,6 @@
 /* ================================================================
    IRO Creative Studio — js/app.js
    All site behaviour: nav, animations, form, scroll reveal.
-   You don't normally need to edit this file.
    ================================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -71,4 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ── MOBILE NAV (called inline from HTML) ── */
 function toggleMobileNav() {
   document.getElementById('mobileNav').classList.toggle('open');
+}
+
+/* ── COPY EMAIL (called inline from HTML) ── */
+function copyEmail() {
+  navigator.clipboard.writeText('irocreativestudio@gmail.com').then(() => {
+    const tooltip = document.getElementById('copyTooltip');
+    if (tooltip) {
+      tooltip.classList.add('show');
+      setTimeout(() => { tooltip.classList.remove('show'); }, 1500);
+    }
+  });
 }

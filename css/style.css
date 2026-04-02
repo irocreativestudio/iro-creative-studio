@@ -124,7 +124,6 @@ nav.scrolled { padding: 14px 48px; }
 .hero-content { position: relative; z-index: 1; max-width: 720px; }
 .hero-location { color: var(--cyan); margin-bottom: 28px; }
 
-/* IRO ↔ 色 morph */
 .hero-morph {
   display: inline-block; position: relative;
   width: 180px; height: 70px; vertical-align: bottom;
@@ -217,8 +216,6 @@ nav.scrolled { padding: 14px 48px; }
 }
 .service-card:hover .service-icon-wrap { transform: rotate(3deg) scale(1.05); }
 .service-icon-svg { display: block; }
-
-/* Keep old .service-icon for backward compat but hide if icon-wrap present */
 .service-icon { display: none; }
 
 .service-card h3 {
@@ -227,7 +224,7 @@ nav.scrolled { padding: 14px 48px; }
 }
 .service-card p { font-weight: 300; font-size: 14px; color: var(--text-muted); line-height: 1.65; }
 
-/* ===== WORK GRID ===== */
+/* ===== WORK GRID (scalable for 4+ projects) ===== */
 .work { background: var(--charcoal); padding: 100px 48px; }
 .work .label { color: var(--coral); }
 .work h2 {
@@ -246,11 +243,11 @@ nav.scrolled { padding: 14px 48px; }
 }
 .work-item:hover { transform: scale(1.015); }
 .work-item-full  { height: 320px; }
-.work-item-half  { height: 240px; }
+.work-item-half  { height: 260px; }
 
 .work-half-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
@@ -283,20 +280,9 @@ nav.scrolled { padding: 14px 48px; }
   color: var(--charcoal); line-height: 1.1;
   letter-spacing: -1px; margin-top: 10px;
 }
-
-/* Compact about layout (no photo) */
 .about-grid-compact {
   grid-template-columns: 0.8fr 1.5fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.about-avatar {
-  margin-top: 28px; width: 100%; height: 180px;
-  background: var(--cream-border); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: var(--text-ghost);
-  letter-spacing: 1px; text-transform: uppercase;
+  gap: 40px; align-items: start;
 }
 .about-text { padding-top: 20px; }
 .about-text p { font-weight: 400; font-size: 16px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; }
@@ -348,13 +334,37 @@ nav.scrolled { padding: 14px 48px; }
 .form-submit { width: 100%; margin-top: 4px; }
 .form-status { text-align: center; margin-top: 12px; font-size: 13px; color: var(--cyan); min-height: 20px; }
 
+/* Email with copy button */
 .contact-email { margin-top: 24px; position: relative; z-index: 1; }
-.contact-email a {
+.email-copy-wrap {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.email-link {
   font-size: 13px; color: var(--text-dim); text-decoration: none;
   border-bottom: 1px solid #333; padding-bottom: 2px;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
-.contact-email a:hover { color: var(--cream); border-color: var(--cream); }
+.email-link:hover { color: var(--cream); border-color: var(--cream); }
+.email-copy-btn {
+  background: none; border: 1px solid #333; border-radius: 4px;
+  color: var(--text-dim); cursor: pointer;
+  width: 28px; height: 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.email-copy-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+.email-copy-tooltip {
+  position: absolute; bottom: 110%; left: 50%;
+  transform: translateX(-50%);
+  background: var(--cyan); color: var(--charcoal);
+  font-size: 10px; font-weight: 500;
+  padding: 4px 10px; border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.email-copy-tooltip.show { opacity: 1; }
 
 /* ===== FOOTER ===== */
 footer {
@@ -469,6 +479,42 @@ footer {
   border: 1px solid rgba(122,179,138,0.12); border-radius: 50%;
 }
 
+/* --- Axion AI --- */
+.proj-axion {
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, #14151F 0%, #0C0C14 100%);
+  overflow: hidden;
+}
+.proj-axion-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.proj-axion-nodes {
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.proj-axion-inner {
+  position: absolute; left: 32px; top: 50%;
+  transform: translateY(-50%);
+}
+.proj-axion-mark-wrap { margin-bottom: 14px; }
+.proj-axion-logo {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 30px; color: #EDEEF2; letter-spacing: -1.5px; line-height: 1;
+}
+.proj-axion-sub {
+  font-family: var(--font-body); font-size: 10px;
+  letter-spacing: 5px; color: #6366F1; text-transform: uppercase; margin-top: 5px;
+}
+.proj-axion-tagline {
+  font-family: var(--font-body); font-size: 10px;
+  color: rgba(237,238,242,0.22); margin-top: 18px;
+  letter-spacing: 0.2px; line-height: 1.6;
+}
+
 /* --- Porto & Pimenta --- */
 .proj-porto {
   position: absolute; inset: 0;
@@ -493,11 +539,11 @@ footer {
 }
 .proj-porto-logo {
   font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
-  font-size: 32px; color: #F0E6D6; letter-spacing: -0.5px; line-height: 1;
+  font-size: 28px; color: #F0E6D6; letter-spacing: -0.5px; line-height: 1.1;
 }
 .proj-porto-sub {
   font-family: var(--font-body); font-size: 9px;
-  letter-spacing: 5px; color: rgba(198,132,72,0.6);
+  letter-spacing: 5px; color: rgba(198,168,88,0.55);
   text-transform: uppercase; margin-top: 6px;
 }
 .proj-porto-tagline {
@@ -512,9 +558,9 @@ footer {
   width: 14px; height: 14px; border-radius: 50%;
 }
 .proj-porto-deco {
-  position: absolute; right: 28px; top: 50%;
+  position: absolute; right: 24px; top: 50%;
   transform: translateY(-50%);
-  opacity: 0.12;
+  opacity: 0.1;
 }
 
 /* --- Coming Soon / In-progress teaser --- */
@@ -569,7 +615,6 @@ footer {
   .about { padding: 60px 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-grid-compact { grid-template-columns: 1fr; }
-  .about-avatar { height: 140px; }
   .about-stats { gap: 24px; }
 
   .contact { padding: 60px 24px; }
