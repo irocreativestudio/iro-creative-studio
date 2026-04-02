@@ -406,7 +406,7 @@ footer {
 /* --- Kōji Café --- */
 .proj-koji {
   position: absolute; inset: 0;
-  background: linear-gradient(145deg, #2E2018 0%, #1A110C 100%);
+  background: linear-gradient(145deg, #2E2018 40%, #1A110C 100%);
   overflow: hidden;
 }
 .proj-koji-kanji {
@@ -441,7 +441,7 @@ footer {
 /* --- Verdant Labs --- */
 .proj-verdant {
   position: absolute; inset: 0;
-  background: linear-gradient(145deg, #1A3D2B 0%, #0D2018 100%);
+  background: linear-gradient(145deg, #1A3D2B 40%, #0D2018 100%);
   overflow: hidden;
 }
 .proj-verdant-grid {
@@ -482,7 +482,7 @@ footer {
 /* --- Axion AI --- */
 .proj-axion {
   position: absolute; inset: 0;
-  background: linear-gradient(145deg, #14151F 0%, #0C0C14 100%);
+  background: linear-gradient(145deg, #14151F 40%, #0C0C14 100%);
   overflow: hidden;
 }
 .proj-axion-grid {
@@ -518,7 +518,7 @@ footer {
 /* --- Porto & Pimenta --- */
 .proj-porto {
   position: absolute; inset: 0;
-  background: linear-gradient(145deg, #3D2E1A 0%, #1F170D 100%);
+  background: linear-gradient(145deg, #3D2E1A 40%, #1F170D 100%);
   overflow: hidden;
 }
 .proj-porto-tile {
