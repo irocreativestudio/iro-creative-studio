@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porto & Pimenta — Brand Identity | IRO Creative Studio</title>
+  <meta name="description" content="Full brand package for Porto & Pimenta, a Portuguese-inspired continental brasserie in Bandra, Mumbai. By IRO Creative Studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@200;300;400;700;800&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Porto & Pimenta palette */
+      --pp-olive:      #5C6B3A;
+      --pp-olive-deep: #3A4425;
+      --pp-burnt:      #C8734A;
+      --pp-gold:       #C6A858;
+      --pp-cream:      #F0E6D6;
+      --pp-dark:       #1A150E;
+      --pp-espresso:   #2C2418;
+      --pp-warm:       #D4B896;
+      /* Fonts */
+      --font-brand:    'Cormorant Garamond', Georgia, serif;
+      --font-hand:     'Caveat', cursive;
+      --font-body:     'Space Grotesk', sans-serif;
+      --font-display:  'Sora', sans-serif;
+      --font-jp:       'Noto Serif JP', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--pp-dark);
+      color: var(--pp-cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    .cs-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(26,21,14,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(198,168,88,0.06);
+    }
+    .cs-nav-back {
+      font-family: var(--font-body); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(240,230,214,0.4);
+      text-decoration: none; transition: color 0.3s ease;
+    }
+    .cs-nav-back:hover { color: var(--pp-cream); }
+    .cs-nav-label {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(240,230,214,0.3);
+    }
+    .cs-nav-label span { color: var(--pp-burnt); }
+
+    /* ===== HERO ===== */
+    .cs-hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #3A2E1A 0%, #1A150E 50%, #110D08 100%);
+      display: flex; align-items: flex-end;
+      padding: 0 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    /* Azulejo tile pattern background */
+    .cs-hero-tiles {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(198,168,88,0.03) 2px, transparent 2px),
+        radial-gradient(circle at 0 0, rgba(198,168,88,0.03) 2px, transparent 2px);
+      background-size: 40px 40px;
+    }
+    .cs-hero-number {
+      position: absolute; top: 120px; right: 48px;
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: 140px; color: rgba(198,168,88,0.08); line-height: 1;
+      letter-spacing: -6px; user-select: none;
+    }
+    .cs-hero-deco {
+      position: absolute; right: 60px; bottom: 100px;
+      opacity: 0.06;
+    }
+    .cs-hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .cs-hero-eyebrow {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--pp-burnt); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .cs-hero-eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--pp-burnt);
+    }
+    .cs-hero-title {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(52px, 8vw, 96px);
+      color: var(--pp-cream); line-height: 0.95;
+      letter-spacing: -2px; margin-bottom: 8px;
+    }
+    .cs-hero-title .accent { color: var(--pp-burnt); }
+    .cs-hero-hand {
+      font-family: var(--font-hand); font-weight: 500;
+      font-size: 28px; color: var(--pp-gold);
+      letter-spacing: 1px; margin-bottom: 12px;
+      opacity: 0.7;
+    }
+    .cs-hero-tagline {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 15px; color: rgba(240,230,214,0.45);
+      letter-spacing: 0.3px; font-style: italic;
+    }
+    .cs-hero-chips {
+      display: flex; gap: 8px; margin-top: 36px; flex-wrap: wrap;
+    }
+    .cs-chip {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      padding: 6px 14px; border-radius: 3px; border: 1px solid;
+    }
+    .cs-chip-brand { color: var(--pp-burnt); border-color: rgba(200,115,74,0.35); }
+    .cs-chip-dark { color: rgba(240,230,214,0.35); border-color: rgba(255,255,255,0.1); }
+    .cs-hero-scroll {
+      position: absolute; bottom: 48px; right: 48px;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(240,230,214,0.2); writing-mode: vertical-rl;
+    }
+
+    /* ===== OVERVIEW ===== */
+    .cs-overview {
+      background: var(--pp-cream);
+      padding: 100px 48px;
+    }
+    .cs-overview-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .cs-section-label {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--pp-burnt); margin-bottom: 20px;
+    }
+    .cs-brief-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(26px, 3vw, 36px);
+      color: var(--pp-espresso); letter-spacing: -0.5px;
+      line-height: 1.15; margin-bottom: 24px;
+    }
+    .cs-brief-text {
+      font-weight: 300; font-size: 15px;
+      color: #5A4A38; line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .cs-meta-block { border-top: 1px solid #D4C8B4; padding-top: 28px; }
+    .cs-meta-item { margin-bottom: 20px; }
+    .cs-meta-item-label {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
+      color: #A09080; margin-bottom: 5px;
+    }
+    .cs-meta-item-value {
+      font-weight: 500; font-size: 14px; color: var(--pp-espresso); line-height: 1.5;
+    }
+    .cs-deliverables { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .cs-deliverable {
+      font-size: 13px; font-weight: 300; color: #6A5A48;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cs-deliverable::before {
+      content: ''; display: block;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--pp-burnt); flex-shrink: 0;
+    }
+
+    /* ===== LOGO SYSTEM ===== */
+    .cs-logos {
+      background: var(--pp-dark);
+      padding: 100px 48px;
+    }
+    .cs-logos-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--pp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+    }
+    .cs-logo-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cs-logo-cell {
+      border-radius: 10px; padding: 48px 40px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 260px; position: relative; overflow: hidden;
+    }
+    .cs-logo-cell-label {
+      position: absolute; bottom: 16px; left: 20px;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+    }
+    .lc-espresso { background: var(--pp-espresso); }
+    .lc-espresso .cs-logo-cell-label { color: rgba(240,230,214,0.3); }
+    .lc-cream { background: var(--pp-cream); }
+    .lc-cream .cs-logo-cell-label { color: rgba(44,36,24,0.3); }
+    .lc-olive { background: var(--pp-olive); }
+    .lc-olive .cs-logo-cell-label { color: rgba(240,230,214,0.45); }
+    .lc-burnt { background: var(--pp-burnt); }
+    .lc-burnt .cs-logo-cell-label { color: rgba(240,230,214,0.5); }
+
+    /* Tile pattern on dark cells */
+    .lc-espresso::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 12px 12px, rgba(198,168,88,0.04) 1px, transparent 1px),
+        radial-gradient(circle at 0 0, rgba(198,168,88,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Logo mark */
+    .pp-mark { margin-bottom: 14px; }
+    .pp-wordmark {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: 32px; letter-spacing: -0.5px; line-height: 1;
+      text-align: center;
+    }
+    .pp-wordmark-sub {
+      font-family: var(--font-hand); font-size: 16px;
+      letter-spacing: 2px; margin-top: 4px;
+      text-align: center;
+    }
+    .pp-wm-cream { color: var(--pp-cream); }
+    .pp-wm-cream-sub { color: var(--pp-gold); opacity: 0.7; }
+    .pp-wm-dark { color: var(--pp-espresso); }
+    .pp-wm-dark-sub { color: rgba(44,36,24,0.45); }
+    .pp-wm-white { color: #fff; }
+    .pp-wm-white-sub { color: rgba(255,255,255,0.55); }
+
+    /* ===== COLOR PALETTE ===== */
+    .cs-colors {
+      background: var(--pp-cream);
+      padding: 100px 48px;
+    }
+    .cs-colors-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--pp-espresso); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 48px;
+    }
+    .cs-color-strip {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 12px; align-items: end;
+    }
+    .cs-color-swatch { border-radius: 8px; margin-bottom: 16px; }
+    .cs-color-item:nth-child(1) .cs-color-swatch { height: 180px; }
+    .cs-color-item:nth-child(2) .cs-color-swatch { height: 150px; }
+    .cs-color-item:nth-child(3) .cs-color-swatch { height: 130px; }
+    .cs-color-item:nth-child(4) .cs-color-swatch { height: 110px; }
+    .cs-color-item:nth-child(5) .cs-color-swatch { height: 90px; }
+    .cs-color-name {
+      font-family: var(--font-brand); font-weight: 600;
+      font-size: 15px; color: var(--pp-espresso); margin-bottom: 3px;
+    }
+    .cs-color-hex {
+      font-family: var(--font-body); font-size: 12px;
+      color: #A09080; letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    .cs-color-use { font-size: 11px; color: #7A6A58; line-height: 1.5; }
+
+    /* ===== TYPOGRAPHY ===== */
+    .cs-type {
+      background: #1A150E;
+      padding: 100px 48px;
+    }
+    .cs-type-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--pp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+    }
+    .cs-type-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .cs-type-block {
+      background: rgba(44,36,24,0.5);
+      border: 1px solid rgba(198,168,88,0.08);
+      border-radius: 10px; padding: 40px 36px;
+    }
+    .cs-type-role {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 3px;
+      color: rgba(240,230,214,0.3); margin-bottom: 28px;
+    }
+    .cs-type-specimen-brand {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(32px, 4vw, 52px);
+      color: var(--pp-cream); line-height: 1.05;
+      letter-spacing: -1px; margin-bottom: 16px;
+    }
+    .cs-type-specimen-hand {
+      font-family: var(--font-hand); font-weight: 500;
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--pp-gold); line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .cs-type-name {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 13px; color: var(--pp-burnt); margin-bottom: 4px;
+    }
+    .cs-type-desc {
+      font-size: 12px; color: rgba(240,230,214,0.3); line-height: 1.6;
+    }
+    .cs-type-sample {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 13px; color: rgba(240,230,214,0.4);
+      line-height: 1.75; margin-top: 20px;
+      border-top: 1px solid rgba(198,168,88,0.1); padding-top: 20px;
+    }
+
+    /* ===== MOCKUPS ===== */
+    .cs-mockups {
+      background: var(--pp-dark);
+      padding: 100px 48px;
+      border-top: 1px solid rgba(198,168,88,0.06);
+    }
+    .cs-mockups-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--pp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 60px;
+    }
+    .cs-mockup-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px; align-items: end;
+    }
+    .mockup-wrap {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 24px;
+    }
+    .mockup-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(240,230,214,0.25); text-align: center;
+    }
+
+    /* Menu mockup */
+    .mockup-menu {
+      width: 150px; height: 200px;
+      background: var(--pp-cream);
+      border-radius: 4px;
+      padding: 20px 16px;
+      box-shadow: 4px 6px 24px rgba(0,0,0,0.4);
+      display: flex; flex-direction: column;
+    }
+    .menu-header {
+      text-align: center; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(92,107,58,0.2);
+      margin-bottom: 12px;
+    }
+    .menu-logo {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: 14px; color: var(--pp-espresso); letter-spacing: -0.3px;
+    }
+    .menu-hand {
+      font-family: var(--font-hand); font-size: 10px;
+      color: var(--pp-burnt); margin-top: 2px;
+    }
+    .menu-section-title {
+      font-family: var(--font-hand); font-size: 11px;
+      color: var(--pp-olive); margin-bottom: 6px;
+    }
+    .menu-lines { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+    .menu-line {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .ml-name { height: 3px; border-radius: 2px; background: rgba(44,36,24,0.12); }
+    .ml-price { height: 3px; width: 16px; border-radius: 2px; background: rgba(44,36,24,0.08); }
+    .menu-footer {
+      margin-top: auto;
+      border-top: 1px solid rgba(92,107,58,0.15);
+      padding-top: 8px; text-align: center;
+    }
+    .menu-footer-text {
+      font-family: var(--font-hand); font-size: 8px;
+      color: rgba(44,36,24,0.3);
+    }
+
+    /* Wine label mockup */
+    .mockup-label-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+    }
+    .mockup-bottle-label {
+      width: 120px; height: 160px;
+      background: var(--pp-cream);
+      border-radius: 4px;
+      box-shadow: 4px 6px 24px rgba(0,0,0,0.4);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 16px; gap: 8px;
+      position: relative; overflow: hidden;
+    }
+    .bottle-tile-bg {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 10px 10px, rgba(92,107,58,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 0 0, rgba(92,107,58,0.06) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .bottle-mark { position: relative; z-index: 1; }
+    .bottle-brand {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: 12px; color: var(--pp-espresso); text-align: center;
+      position: relative; z-index: 1;
+    }
+    .bottle-hand {
+      font-family: var(--font-hand); font-size: 10px;
+      color: var(--pp-burnt); text-align: center;
+      position: relative; z-index: 1;
+    }
+    .bottle-rule {
+      width: 24px; height: 1px; background: var(--pp-olive);
+      opacity: 0.3; position: relative; z-index: 1;
+    }
+    .bottle-year {
+      font-family: var(--font-body); font-size: 7px;
+      letter-spacing: 3px; color: rgba(44,36,24,0.3);
+      text-transform: uppercase; position: relative; z-index: 1;
+    }
+
+    /* Business Card mockup */
+    .mockup-cards {
+      position: relative; width: 180px; height: 110px;
+    }
+    .biz-card {
+      position: absolute; width: 164px; height: 98px;
+      border-radius: 6px; padding: 16px 18px;
+    }
+    .biz-card-back {
+      background: var(--pp-cream);
+      top: 10px; right: 0;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+    .biz-card-back-mark { opacity: 0.1; }
+    .biz-card-back-info {
+      font-size: 7px; line-height: 1.9; color: rgba(44,36,24,0.4);
+      letter-spacing: 0.3px;
+    }
+    .biz-card-front {
+      background: var(--pp-espresso);
+      top: 0; left: 0;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 6px 8px 32px rgba(0,0,0,0.5);
+      position: relative; overflow: hidden;
+    }
+    .biz-card-front::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 8px 8px, rgba(198,168,88,0.04) 1px, transparent 1px),
+        radial-gradient(circle at 0 0, rgba(198,168,88,0.04) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .biz-card-logo {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: 13px; color: var(--pp-cream); letter-spacing: -0.3px;
+      position: relative; z-index: 1;
+    }
+    .biz-card-logo-sub {
+      font-family: var(--font-hand); font-size: 9px;
+      color: var(--pp-gold); opacity: 0.6;
+      position: relative; z-index: 1;
+    }
+    .biz-card-name {
+      font-size: 7px; color: rgba(240,230,214,0.4);
+      letter-spacing: 0.3px; position: relative; z-index: 1;
+    }
+
+    /* ===== SOCIAL POSTS ===== */
+    .cs-social {
+      background: var(--pp-cream);
+      padding: 100px 48px;
+    }
+    .cs-social-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--pp-espresso); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 48px;
+    }
+    .cs-posts-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cs-post {
+      aspect-ratio: 1; border-radius: 8px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 28px; overflow: hidden; position: relative;
+    }
+    .post-opening { background: var(--pp-espresso); }
+    .post-special { background: var(--pp-olive); }
+    .post-mood { background: var(--pp-burnt); }
+
+    .post-eyebrow {
+      font-size: 8px; text-transform: uppercase; letter-spacing: 3px;
+      margin-bottom: 14px; opacity: 0.6;
+    }
+    .post-opening .post-eyebrow { color: var(--pp-gold); }
+    .post-special .post-eyebrow { color: rgba(240,230,214,0.65); }
+    .post-mood .post-eyebrow { color: rgba(240,230,214,0.6); }
+
+    .post-big-hand {
+      font-family: var(--font-hand); font-weight: 600;
+      font-size: 38px; line-height: 1.1; text-align: center;
+    }
+    .post-opening .post-big-hand { color: var(--pp-cream); }
+    .post-special .post-big-hand { color: rgba(240,230,214,0.9); }
+    .post-mood .post-big-hand { color: rgba(240,230,214,0.12); position: absolute; font-size: 90px; }
+
+    .post-wm {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: 14px; letter-spacing: -0.3px;
+    }
+    .post-opening .post-wm { color: var(--pp-burnt); margin-bottom: 8px; }
+    .post-mood .post-wm { color: rgba(240,230,214,0.9); margin-bottom: 8px; position: relative; z-index: 1; }
+
+    .post-tagline {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 11px; text-align: center; line-height: 1.7;
+      letter-spacing: 0.2px; margin-top: 10px;
+    }
+    .post-opening .post-tagline { color: rgba(240,230,214,0.5); }
+    .post-special .post-tagline { color: rgba(240,230,214,0.7); }
+    .post-mood .post-tagline { color: rgba(240,230,214,0.7); position: relative; z-index: 1; }
+
+    .post-special-dish {
+      font-family: var(--font-brand); font-weight: 600; font-style: italic;
+      font-size: 20px; color: #fff; text-align: center;
+      position: relative; z-index: 1; margin-bottom: 6px;
+    }
+
+    /* ===== WEBSITE PREVIEW ===== */
+    .cs-web {
+      background: #0F0B06;
+      padding: 100px 48px;
+      border-top: 1px solid rgba(198,168,88,0.06);
+    }
+    .cs-web-heading {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--pp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 48px;
+    }
+    .cs-browser {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+      max-width: 800px;
+    }
+    .browser-bar {
+      background: #2A2218; padding: 10px 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .browser-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .browser-url {
+      flex: 1; margin-left: 8px;
+      background: rgba(240,230,214,0.06);
+      border-radius: 4px; padding: 5px 12px;
+      font-size: 10px; color: rgba(240,230,214,0.3);
+    }
+    .browser-content {
+      background: var(--pp-cream);
+      padding: 32px 28px; min-height: 260px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; gap: 12px;
+      position: relative; overflow: hidden;
+    }
+    .browser-tile-bg {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 16px 16px, rgba(92,107,58,0.04) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 0 0, rgba(92,107,58,0.04) 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+    }
+    .browser-hero-text {
+      font-family: var(--font-brand); font-weight: 700;
+      font-size: 28px; color: var(--pp-espresso);
+      letter-spacing: -0.5px; position: relative; z-index: 1;
+    }
+    .browser-hero-hand {
+      font-family: var(--font-hand); font-size: 18px;
+      color: var(--pp-burnt); position: relative; z-index: 1;
+    }
+    .browser-hero-cta {
+      display: inline-block; padding: 8px 20px;
+      background: var(--pp-olive); color: var(--pp-cream);
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+      border-radius: 3px; position: relative; z-index: 1;
+    }
+    .browser-nav {
+      display: flex; gap: 20px; margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+    .browser-nav span {
+      font-size: 8px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(44,36,24,0.35);
+    }
+
+    /* ===== PROJECT FOOTER ===== */
+    .cs-footer {
+      background: var(--pp-dark);
+      padding: 80px 48px;
+      border-top: 1px solid rgba(198,168,88,0.06);
+    }
+    .cs-footer-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .cs-footer-credit {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2.5px;
+      color: rgba(240,230,214,0.2); margin-bottom: 16px;
+    }
+    .cs-footer-studio {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 32px; color: var(--pp-burnt);
+      letter-spacing: -1.5px; margin-bottom: 8px;
+    }
+    .cs-footer-studio span { color: rgba(240,230,214,0.4); }
+    .cs-footer-desc {
+      font-size: 13px; color: rgba(240,230,214,0.3);
+      line-height: 1.7; max-width: 320px;
+    }
+    .cs-footer-nav {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
+    }
+    .cs-footer-next {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 13px; letter-spacing: -0.3px;
+      color: var(--pp-cream); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: gap 0.3s ease;
+    }
+    .cs-footer-next:hover { gap: 16px; }
+    .cs-footer-back {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(240,230,214,0.3); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .cs-footer-back:hover { color: var(--pp-cream); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .cs-nav { padding: 16px 24px; }
+      .cs-hero { padding: 0 24px 60px; }
+      .cs-hero-number { display: none; }
+      .cs-overview { padding: 60px 24px; }
+      .cs-overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cs-logos { padding: 60px 24px; }
+      .cs-logo-grid { grid-template-columns: 1fr; }
+      .cs-colors { padding: 60px 24px; }
+      .cs-color-strip { grid-template-columns: repeat(3, 1fr); }
+      .cs-color-item:nth-child(n) .cs-color-swatch { height: 100px; }
+      .cs-type { padding: 60px 24px; }
+      .cs-type-grid { grid-template-columns: 1fr; }
+      .cs-mockups { padding: 60px 24px; }
+      .cs-mockup-row { grid-template-columns: 1fr; align-items: center; gap: 48px; }
+      .cs-social { padding: 60px 24px; }
+      .cs-posts-grid { grid-template-columns: 1fr; max-width: 320px; }
+      .cs-web { padding: 60px 24px; }
+      .cs-footer { padding: 60px 24px; }
+      .cs-footer-grid { grid-template-columns: 1fr; }
+      .cs-footer-nav { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="cs-nav">
+    <a href="../index.html" class="cs-nav-back">← IRO Creative Studio</a>
+    <span class="cs-nav-label"><span>Porto & Pimenta</span> / Full Brand Package</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="cs-hero-tiles"></div>
+    <div class="cs-hero-number">04</div>
+    <div class="cs-hero-deco">
+      <svg width="280" height="280" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="36" stroke="#C6A858" stroke-width="0.75"/>
+        <circle cx="40" cy="40" r="24" stroke="#C6A858" stroke-width="0.5"/>
+        <path d="M40,10 C44,22 44,30 40,40 C36,30 36,22 40,10Z" fill="#C6A858"/>
+        <path d="M70,40 C58,44 50,44 40,40 C50,36 58,36 70,40Z" fill="#C6A858"/>
+        <path d="M40,70 C36,58 36,50 40,40 C44,50 44,58 40,70Z" fill="#C6A858"/>
+        <path d="M10,40 C22,36 30,36 40,40 C30,44 22,44 10,40Z" fill="#C6A858"/>
+      </svg>
+    </div>
+    <div class="cs-hero-content">
+      <p class="cs-hero-eyebrow">Brand Identity · Web · Social</p>
+      <h1 class="cs-hero-title">Porto &<br><span class="accent">Pimenta</span></h1>
+      <p class="cs-hero-hand">Seasonal plates. Portuguese soul.</p>
+      <p class="cs-hero-tagline">"Where Lisbon meets Mumbai, one plate at a time."</p>
+      <div class="cs-hero-chips">
+        <span class="cs-chip cs-chip-brand">Branding</span>
+        <span class="cs-chip cs-chip-dark">Web Design</span>
+        <span class="cs-chip cs-chip-dark">Social Media</span>
+        <span class="cs-chip cs-chip-dark">Menu Design</span>
+      </div>
+    </div>
+    <div class="cs-hero-scroll">Scroll to explore</div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="cs-overview">
+    <div class="cs-overview-grid">
+      <div>
+        <p class="cs-section-label">The Brief</p>
+        <h2 class="cs-brief-heading">A brasserie that doesn't just serve Portuguese food — it tells a Portuguese story.</h2>
+        <p class="cs-brief-text">Porto & Pimenta started as a conversation between two chefs — one trained in Porto, the other in Mumbai — about what happens when you bring Portuguese coastal cooking to Bandra's food scene. Not fusion. Not gimmick. Just honest plates rooted in tradition, made with what grows here.</p>
+        <p class="cs-brief-text">They needed a brand that could walk the line between old-world warmth and modern Bandra energy. Something that felt like a handwritten letter from Lisbon, but looked at home on Instagram. We built everything — identity, website, social templates, and a menu system that changes with the seasons.</p>
+      </div>
+      <div>
+        <div class="cs-meta-block">
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Services</div>
+            <div class="cs-meta-item-value">Brand Identity, Web Design, Social Media</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Industry</div>
+            <div class="cs-meta-item-value">Restaurant & Hospitality</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Location</div>
+            <div class="cs-meta-item-value">Bandra, Mumbai, India</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Year</div>
+            <div class="cs-meta-item-value">2025</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Deliverables</div>
+            <div class="cs-deliverables">
+              <span class="cs-deliverable">Logo mark & wordmark system</span>
+              <span class="cs-deliverable">Brand guidelines (36 pages)</span>
+              <span class="cs-deliverable">Responsive website (5 pages)</span>
+              <span class="cs-deliverable">Seasonal menu templates</span>
+              <span class="cs-deliverable">Business cards & stationery</span>
+              <span class="cs-deliverable">Social media templates (15 posts)</span>
+              <span class="cs-deliverable">Wine label design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO SYSTEM -->
+  <section class="cs-logos">
+    <p class="cs-section-label" style="color:var(--pp-burnt)">The Mark</p>
+    <h2 class="cs-logos-heading">Old-world charm,<br>modern precision.</h2>
+    <div class="cs-logo-grid">
+
+      <!-- Primary on Espresso -->
+      <div class="cs-logo-cell lc-espresso">
+        <div class="pp-mark">
+          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="28" stroke="#C6A858" stroke-width="1"/>
+            <circle cx="40" cy="40" r="18" stroke="#C6A858" stroke-width="0.5" opacity="0.4"/>
+            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#C6A858" opacity="0.85"/>
+            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#C6A858" opacity="0.85"/>
+            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#C6A858" opacity="0.85"/>
+            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#C6A858" opacity="0.85"/>
+            <circle cx="40" cy="40" r="3" fill="#C6A858"/>
+          </svg>
+        </div>
+        <div class="pp-wordmark pp-wm-cream">Porto & Pimenta</div>
+        <div class="pp-wordmark-sub pp-wm-cream-sub">Brasserie</div>
+        <span class="cs-logo-cell-label">Primary — On Espresso</span>
+      </div>
+
+      <!-- Reversed on Cream -->
+      <div class="cs-logo-cell lc-cream">
+        <div class="pp-mark">
+          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="28" stroke="#2C2418" stroke-width="1"/>
+            <circle cx="40" cy="40" r="18" stroke="#2C2418" stroke-width="0.5" opacity="0.3"/>
+            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#2C2418" opacity="0.8"/>
+            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#2C2418" opacity="0.8"/>
+            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#2C2418" opacity="0.8"/>
+            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#2C2418" opacity="0.8"/>
+            <circle cx="40" cy="40" r="3" fill="#2C2418"/>
+          </svg>
+        </div>
+        <div class="pp-wordmark pp-wm-dark">Porto & Pimenta</div>
+        <div class="pp-wordmark-sub pp-wm-dark-sub">Brasserie</div>
+        <span class="cs-logo-cell-label">Reversed — On Light</span>
+      </div>
+
+      <!-- On Olive -->
+      <div class="cs-logo-cell lc-olive">
+        <div class="pp-mark">
+          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="28" stroke="rgba(240,230,214,0.4)" stroke-width="1"/>
+            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#F0E6D6" opacity="0.85"/>
+            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#F0E6D6" opacity="0.85"/>
+            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#F0E6D6" opacity="0.85"/>
+            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#F0E6D6" opacity="0.85"/>
+            <circle cx="40" cy="40" r="3" fill="#F0E6D6"/>
+          </svg>
+        </div>
+        <div class="pp-wordmark pp-wm-white">Porto & Pimenta</div>
+        <div class="pp-wordmark-sub pp-wm-white-sub">Brasserie</div>
+        <span class="cs-logo-cell-label">Secondary — On Olive</span>
+      </div>
+
+      <!-- On Burnt -->
+      <div class="cs-logo-cell lc-burnt">
+        <div class="pp-mark">
+          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="28" stroke="rgba(240,230,214,0.35)" stroke-width="1"/>
+            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#fff" opacity="0.85"/>
+            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#fff" opacity="0.85"/>
+            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#fff" opacity="0.85"/>
+            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#fff" opacity="0.85"/>
+            <circle cx="40" cy="40" r="3" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="pp-wordmark pp-wm-white">Porto & Pimenta</div>
+        <div class="pp-wordmark-sub pp-wm-white-sub">Brasserie</div>
+        <span class="cs-logo-cell-label">Accent — On Burnt Orange</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COLOR PALETTE -->
+  <section class="cs-colors">
+    <p class="cs-section-label">Colour System</p>
+    <h2 class="cs-colors-heading">Rustic warmth,<br>bottled in five hues.</h2>
+    <div class="cs-color-strip">
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#5C6B3A"></div>
+        <div class="cs-color-name">Olive Grove</div>
+        <div class="cs-color-hex">#5C6B3A</div>
+        <div class="cs-color-use">Primary. Earthy, grounded, organic.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#C8734A"></div>
+        <div class="cs-color-name">Burnt Orange</div>
+        <div class="cs-color-hex">#C8734A</div>
+        <div class="cs-color-use">Brand accent. Warmth and appetite.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#C6A858"></div>
+        <div class="cs-color-name">Saffron Gold</div>
+        <div class="cs-color-hex">#C6A858</div>
+        <div class="cs-color-use">Highlight. Elegance and tradition.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#2C2418"></div>
+        <div class="cs-color-name">Espresso</div>
+        <div class="cs-color-hex">#2C2418</div>
+        <div class="cs-color-use">Dark text. Rich and intimate.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#F0E6D6; border:1px solid #D4C8B4"></div>
+        <div class="cs-color-name">Linen</div>
+        <div class="cs-color-hex">#F0E6D6</div>
+        <div class="cs-color-use">Light. Warm backgrounds, menus.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="cs-type">
+    <p class="cs-section-label" style="color:var(--pp-burnt)">Typography</p>
+    <h2 class="cs-type-heading">Written by hand,<br>set with care.</h2>
+    <div class="cs-type-grid">
+      <div class="cs-type-block">
+        <div class="cs-type-role">Display / Headlines</div>
+        <div class="cs-type-specimen-brand">Porto &<br>Pimenta</div>
+        <div class="cs-type-name">Cormorant Garamond</div>
+        <div class="cs-type-desc">Elegant serif for the wordmark, headlines, and menu titles. Rooted in classical Portuguese typography — refined but never fussy.</div>
+        <div class="cs-type-sample">Weights: Light 300 · Regular 400 · SemiBold 600 · Bold 700</div>
+      </div>
+      <div class="cs-type-block">
+        <div class="cs-type-role">Accent / Handwritten</div>
+        <div class="cs-type-specimen-hand">Seasonal plates,<br>Portuguese soul</div>
+        <div class="cs-type-name">Caveat</div>
+        <div class="cs-type-desc">Organic handwritten face for taglines, menu annotations, and social copy. Adds the warmth of a chef's handwriting on a chalkboard.</div>
+        <div class="cs-type-sample">Weights: Regular 400 · Medium 500 · SemiBold 600 · Bold 700</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCKUPS -->
+  <section class="cs-mockups">
+    <p class="cs-section-label" style="color:var(--pp-burnt)">Brand in Use</p>
+    <h2 class="cs-mockups-heading">From table<br>to timeline.</h2>
+    <div class="cs-mockup-row">
+
+      <!-- Menu -->
+      <div class="mockup-wrap">
+        <div class="mockup-menu">
+          <div class="menu-header">
+            <div class="menu-logo">Porto & Pimenta</div>
+            <div class="menu-hand">seasonal menu</div>
+          </div>
+          <div class="menu-section-title">Starters</div>
+          <div class="menu-lines">
+            <div class="menu-line"><div class="ml-name" style="width:70%"></div><div class="ml-price"></div></div>
+            <div class="menu-line"><div class="ml-name" style="width:55%"></div><div class="ml-price"></div></div>
+            <div class="menu-line"><div class="ml-name" style="width:65%"></div><div class="ml-price"></div></div>
+          </div>
+          <div class="menu-section-title">Mains</div>
+          <div class="menu-lines">
+            <div class="menu-line"><div class="ml-name" style="width:60%"></div><div class="ml-price"></div></div>
+            <div class="menu-line"><div class="ml-name" style="width:75%"></div><div class="ml-price"></div></div>
+            <div class="menu-line"><div class="ml-name" style="width:50%"></div><div class="ml-price"></div></div>
+          </div>
+          <div class="menu-footer">
+            <div class="menu-footer-text">Bandra · Mumbai</div>
+          </div>
+        </div>
+        <div class="mockup-label">Seasonal Menu</div>
+      </div>
+
+      <!-- Wine Label -->
+      <div class="mockup-label-wrap">
+        <div class="mockup-bottle-label">
+          <div class="bottle-tile-bg"></div>
+          <div class="bottle-mark">
+            <svg width="28" height="28" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="24" stroke="#5C6B3A" stroke-width="1"/>
+              <path d="M40,20 C42,28 42,34 40,40 C38,34 38,28 40,20Z" fill="#5C6B3A" opacity="0.8"/>
+              <path d="M60,40 C52,42 46,42 40,40 C46,38 52,38 60,40Z" fill="#5C6B3A" opacity="0.8"/>
+              <path d="M40,60 C38,52 38,46 40,40 C42,46 42,52 40,60Z" fill="#5C6B3A" opacity="0.8"/>
+              <path d="M20,40 C28,38 34,38 40,40 C34,42 28,42 20,40Z" fill="#5C6B3A" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="bottle-brand">Porto & Pimenta</div>
+          <div class="bottle-hand">house selection</div>
+          <div class="bottle-rule"></div>
+          <div class="bottle-year">Bandra · MMXXV</div>
+        </div>
+        <div class="mockup-label">House Wine Label</div>
+      </div>
+
+      <!-- Business Cards -->
+      <div class="mockup-wrap">
+        <div class="mockup-cards">
+          <div class="biz-card biz-card-back">
+            <div class="biz-card-back-mark">
+              <svg width="28" height="28" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="24" stroke="#2C2418" stroke-width="1" opacity="0.15"/>
+                <path d="M40,20 C42,28 42,34 40,40 C38,34 38,28 40,20Z" fill="#2C2418" opacity="0.12"/>
+                <path d="M60,40 C52,42 46,42 40,40 C46,38 52,38 60,40Z" fill="#2C2418" opacity="0.12"/>
+                <path d="M40,60 C38,52 38,46 40,40 C42,46 42,52 40,60Z" fill="#2C2418" opacity="0.12"/>
+                <path d="M20,40 C28,38 34,38 40,40 C34,42 28,42 20,40Z" fill="#2C2418" opacity="0.12"/>
+              </svg>
+            </div>
+            <div class="biz-card-back-info">
+              hello@portoepimenta.in<br>
+              portoepimenta.in<br>
+              Bandra West, Mumbai
+            </div>
+          </div>
+          <div class="biz-card biz-card-front">
+            <div>
+              <div class="biz-card-logo">Porto & Pimenta</div>
+              <div class="biz-card-logo-sub">Brasserie</div>
+            </div>
+            <div class="biz-card-name">Chef de Cuisine · Marco Fernandes</div>
+          </div>
+        </div>
+        <div class="mockup-label">Business Cards</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WEBSITE PREVIEW -->
+  <section class="cs-web">
+    <p class="cs-section-label" style="color:var(--pp-burnt)">Website</p>
+    <h2 class="cs-web-heading">Digital home,<br>analogue warmth.</h2>
+    <div class="cs-browser">
+      <div class="browser-bar">
+        <div class="browser-dot" style="background:#E8663C"></div>
+        <div class="browser-dot" style="background:#C6A858"></div>
+        <div class="browser-dot" style="background:#5C6B3A"></div>
+        <div class="browser-url">portoepimenta.in</div>
+      </div>
+      <div class="browser-content">
+        <div class="browser-tile-bg"></div>
+        <div class="browser-nav">
+          <span>Menu</span>
+          <span>Reservations</span>
+          <span>Our Story</span>
+          <span>Contact</span>
+        </div>
+        <div class="browser-hero-text">Porto & Pimenta</div>
+        <div class="browser-hero-hand">Seasonal plates. Portuguese soul.</div>
+        <div class="browser-hero-cta">Reserve a Table</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL MEDIA TEMPLATES -->
+  <section class="cs-social">
+    <p class="cs-section-label">Social Templates</p>
+    <h2 class="cs-social-heading">Content that<br>feels hand-picked.</h2>
+    <div class="cs-posts-grid">
+
+      <!-- Post 1: Grand Opening -->
+      <div class="cs-post post-opening">
+        <p class="post-eyebrow">Now Open</p>
+        <div class="post-wm">Porto & Pimenta</div>
+        <div class="post-big-hand">Grand<br>Opening</div>
+        <p class="post-tagline">Seasonal plates.<br>Portuguese soul.<br>Bandra West, Mumbai.</p>
+      </div>
+
+      <!-- Post 2: Dish Feature -->
+      <div class="cs-post post-special">
+        <p class="post-eyebrow">Today's Special</p>
+        <div class="post-special-dish">Bacalhau<br>à Brás</div>
+        <p class="post-tagline">Salt cod, crispy potatoes,<br>scrambled eggs. The Lisbon classic,<br>made with Konkan catch.</p>
+      </div>
+
+      <!-- Post 3: Mood -->
+      <div class="cs-post post-mood">
+        <div class="post-big-hand">Saudade</div>
+        <div class="post-wm">Porto & Pimenta</div>
+        <p class="post-tagline">That beautiful ache<br>for something far away.<br>We bring it closer.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECT FOOTER -->
+  <section class="cs-footer">
+    <div class="cs-footer-grid">
+      <div>
+        <div class="cs-footer-credit">A project by</div>
+        <div class="cs-footer-studio">IRO <span>Creative Studio</span></div>
+        <p class="cs-footer-desc">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
+      </div>
+      <div class="cs-footer-nav">
+        <a href="./verdant-labs.html" class="cs-footer-next">← Previous — Verdant Labs</a>
+        <a href="../index.html" class="cs-footer-back">← Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
