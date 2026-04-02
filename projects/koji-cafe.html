@@ -7,16 +7,11 @@
   <meta name="description" content="Brand identity and packaging system for Kōji Café, a specialty Japanese-inspired café in Bangalore. By IRO Creative Studio.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      /* IRO brand */
-      --iro-charcoal: #141414;
-      --iro-coral: #E8663C;
-      --iro-cyan: #2CB5BF;
-      --iro-cream: #F5F0EB;
       /* Kōji brand palette */
       --k-espresso: #2C2420;
       --k-terracotta: #C85C3A;
@@ -24,8 +19,10 @@
       --k-tan: #D4A27A;
       --k-cream: #F5ECD7;
       --k-dark: #1A110C;
-      --font-display: 'Sora', sans-serif;
-      --font-body: 'Space Grotesk', sans-serif;
+      --k-paper: #EDE4D3;
+      /* Unique font pairing for Kōji */
+      --font-display: 'Cormorant', serif;
+      --font-body: 'DM Sans', sans-serif;
       --font-jp: 'Noto Serif JP', serif;
     }
 
@@ -37,7 +34,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== CASE STUDY NAV ===== */
+    /* ===== NAV ===== */
     .cs-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
@@ -62,60 +59,94 @@
     }
     .cs-nav-label span { color: var(--k-terracotta); }
 
-    /* ===== HERO ===== */
+    /* ===== HERO — VERTICAL SCROLL AXIS ===== */
     .cs-hero {
       min-height: 100vh;
-      background: linear-gradient(160deg, #2E2018 0%, #1A110C 50%, #0F0907 100%);
-      display: flex; align-items: flex-end;
-      padding: 0 48px 80px;
+      background: 
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,92,58,0.06) 0%, transparent 70%),
+        linear-gradient(180deg, #2C2018 0%, #1A110C 40%, #140E09 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 80px;
       position: relative; overflow: hidden;
+      text-align: center;
+    }
+    /* Washi paper texture overlay */
+    .cs-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    /* Decorative brush stroke — horizontal ink line */
+    .cs-hero-brush {
+      position: absolute;
+      top: 50%; left: 50%; 
+      transform: translate(-50%, -50%);
+      width: 1px; height: 60vh;
+      background: linear-gradient(
+        180deg, 
+        transparent 0%, 
+        rgba(200,92,58,0.15) 20%, 
+        rgba(200,92,58,0.25) 50%, 
+        rgba(200,92,58,0.15) 80%, 
+        transparent 100%
+      );
     }
     .cs-hero-kanji {
-      position: absolute; right: -20px; top: 50%;
-      transform: translateY(-50%);
       font-family: var(--font-jp);
-      font-size: clamp(280px, 36vw, 480px);
-      color: #2E1A10; line-height: 1;
-      pointer-events: none; user-select: none;
+      font-size: clamp(100px, 18vw, 200px);
+      color: rgba(200,92,58,0.08);
+      line-height: 1;
+      margin-bottom: -20px;
+      position: relative; z-index: 1;
+      user-select: none;
     }
-    .cs-hero-number {
-      position: absolute; top: 120px; right: 48px;
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 120px; color: #2E1A10; line-height: 1;
-      letter-spacing: -6px; user-select: none;
-    }
-    .cs-hero-content { position: relative; z-index: 1; max-width: 700px; }
     .cs-hero-eyebrow {
       font-family: var(--font-body); font-size: 10px;
-      text-transform: uppercase; letter-spacing: 3px;
-      color: var(--k-terracotta); margin-bottom: 24px;
-      display: flex; align-items: center; gap: 12px;
+      text-transform: uppercase; letter-spacing: 4px;
+      color: var(--k-tan); margin-bottom: 20px;
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 16px;
     }
-    .cs-hero-eyebrow::before {
+    .cs-hero-eyebrow::before,
+    .cs-hero-eyebrow::after {
       content: ''; display: block;
-      width: 24px; height: 1px; background: var(--k-terracotta);
+      width: 28px; height: 1px; background: var(--k-tan); opacity: 0.4;
     }
     .cs-hero-title {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(52px, 8vw, 96px);
-      color: var(--k-cream); line-height: 0.95;
-      letter-spacing: -3px; margin-bottom: 8px;
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(56px, 10vw, 120px);
+      color: var(--k-cream); line-height: 0.9;
+      letter-spacing: -2px; margin-bottom: 12px;
+      position: relative; z-index: 1;
     }
-    .cs-hero-title .accent { color: var(--k-terracotta); }
+    .cs-hero-title .accent {
+      font-weight: 700;
+      color: var(--k-terracotta);
+      font-style: italic;
+    }
     .cs-hero-subtitle {
       font-family: var(--font-jp); font-weight: 300;
-      font-size: 20px; color: var(--k-tan);
-      letter-spacing: 2px; margin-bottom: 32px;
+      font-size: 16px; color: rgba(212,162,122,0.5);
+      letter-spacing: 6px; margin-bottom: 28px;
+      position: relative; z-index: 1;
     }
     .cs-hero-tagline {
-      font-family: var(--font-body); font-weight: 300;
-      font-size: 16px; color: rgba(245,236,215,0.5);
-      font-style: italic; letter-spacing: 0.3px;
+      font-family: var(--font-display); font-weight: 300;
+      font-size: 18px; color: rgba(245,236,215,0.4);
+      font-style: italic; letter-spacing: 0.5px;
+      position: relative; z-index: 1;
     }
     .cs-hero-chips {
       display: flex; gap: 8px; margin-top: 36px; flex-wrap: wrap;
+      justify-content: center;
+      position: relative; z-index: 1;
     }
     .cs-chip {
+      font-family: var(--font-body);
       font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
       padding: 6px 14px; border-radius: 3px; border: 1px solid;
     }
@@ -123,8 +154,9 @@
     .cs-chip-dark { color: rgba(245,236,215,0.4); border-color: rgba(255,255,255,0.1); }
     .cs-hero-scroll {
       position: absolute; bottom: 48px; right: 48px;
+      font-family: var(--font-body);
       font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
-      color: rgba(245,236,215,0.25);
+      color: rgba(245,236,215,0.2);
       writing-mode: vertical-rl;
     }
 
@@ -143,23 +175,25 @@
       color: var(--k-terracotta); margin-bottom: 20px;
     }
     .cs-brief-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(26px, 3vw, 34px);
-      color: var(--k-espresso); letter-spacing: -1px;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(28px, 3.5vw, 40px);
+      color: var(--k-espresso); letter-spacing: -0.5px;
       line-height: 1.15; margin-bottom: 24px;
     }
     .cs-brief-text {
-      font-weight: 300; font-size: 15px;
+      font-family: var(--font-body); font-weight: 300; font-size: 15px;
       color: #5A4A3A; line-height: 1.85;
       margin-bottom: 16px;
     }
     .cs-meta-block { border-top: 1px solid #D9CFC3; padding-top: 28px; }
     .cs-meta-item { margin-bottom: 20px; }
     .cs-meta-item-label {
+      font-family: var(--font-body);
       font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
       color: #A89880; margin-bottom: 5px;
     }
     .cs-meta-item-value {
+      font-family: var(--font-body);
       font-weight: 500; font-size: 14px; color: var(--k-espresso);
       line-height: 1.5;
     }
@@ -167,6 +201,7 @@
       display: flex; flex-direction: column; gap: 6px; margin-top: 6px;
     }
     .cs-deliverable {
+      font-family: var(--font-body);
       font-size: 13px; font-weight: 300; color: #6A5548;
       display: flex; align-items: center; gap: 8px;
     }
@@ -182,10 +217,11 @@
       padding: 100px 48px;
     }
     .cs-logos-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--k-cream); letter-spacing: -1.5px;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--k-cream); letter-spacing: -1px;
       margin-top: 10px; margin-bottom: 56px;
+      font-style: italic;
     }
     .cs-logo-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -199,6 +235,7 @@
     }
     .cs-logo-cell-label {
       position: absolute; bottom: 16px; left: 20px;
+      font-family: var(--font-body);
       font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
     }
     .lc-dark { background: #2C2420; }
@@ -215,47 +252,55 @@
 
     /* Wordmark in different contexts */
     .koji-wm-primary {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 42px; color: var(--k-terracotta);
-      letter-spacing: -2px; line-height: 1;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 48px; color: var(--k-terracotta);
+      letter-spacing: -1px; line-height: 1;
+      font-style: italic;
     }
     .koji-wm-sub {
       font-family: var(--font-body); font-size: 11px;
       letter-spacing: 7px; color: var(--k-tan);
       text-transform: uppercase; margin-top: 4px;
     }
-    .koji-wm-reversed { color: var(--k-espresso); }
+    .koji-wm-reversed { color: var(--k-espresso); font-style: italic; }
     .koji-wm-reversed-sub { color: rgba(44,36,32,0.5); }
-    .koji-wm-white { color: #fff; }
+    .koji-wm-white { color: #fff; font-style: italic; }
     .koji-wm-white-sub { color: rgba(255,255,255,0.55); }
 
-    /* ===== COLOR PALETTE ===== */
+    /* ===== COLOR PALETTE — INK WASH STYLE ===== */
     .cs-colors {
       background: var(--k-cream);
       padding: 100px 48px;
     }
     .cs-colors-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--k-espresso); letter-spacing: -1.5px;
-      margin-top: 10px; margin-bottom: 48px;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--k-espresso); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+      font-style: italic;
     }
     .cs-color-strip {
       display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 12px; align-items: end;
+      gap: 0; align-items: stretch;
     }
-    .cs-color-item {}
+    .cs-color-item {
+      padding: 0 16px 24px;
+      position: relative;
+    }
+    /* Ink-wash style: tall irregular swatches with soft tops */
     .cs-color-swatch {
-      border-radius: 8px; margin-bottom: 16px;
+      margin-bottom: 20px;
+      position: relative;
+      border-radius: 0;
     }
-    .cs-color-item:nth-child(1) .cs-color-swatch { height: 180px; }
-    .cs-color-item:nth-child(2) .cs-color-swatch { height: 150px; }
-    .cs-color-item:nth-child(3) .cs-color-swatch { height: 130px; }
-    .cs-color-item:nth-child(4) .cs-color-swatch { height: 110px; }
-    .cs-color-item:nth-child(5) .cs-color-swatch { height: 90px; }
+    .cs-color-item:nth-child(1) .cs-color-swatch { height: 200px; border-radius: 40% 35% 2px 2px / 20% 25% 0 0; }
+    .cs-color-item:nth-child(2) .cs-color-swatch { height: 170px; border-radius: 30% 45% 2px 2px / 18% 22% 0 0; }
+    .cs-color-item:nth-child(3) .cs-color-swatch { height: 150px; border-radius: 35% 40% 2px 2px / 22% 18% 0 0; }
+    .cs-color-item:nth-child(4) .cs-color-swatch { height: 130px; border-radius: 45% 30% 2px 2px / 16% 20% 0 0; }
+    .cs-color-item:nth-child(5) .cs-color-swatch { height: 110px; border-radius: 38% 42% 2px 2px / 24% 16% 0 0; }
     .cs-color-name {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 14px; color: var(--k-espresso);
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 16px; color: var(--k-espresso);
       margin-bottom: 3px;
     }
     .cs-color-hex {
@@ -263,75 +308,89 @@
       color: #A89880; letter-spacing: 0.5px; margin-bottom: 6px;
     }
     .cs-color-use {
+      font-family: var(--font-body);
       font-size: 11px; color: #8A7060; line-height: 1.5;
     }
 
-    /* ===== TYPOGRAPHY ===== */
+    /* ===== TYPOGRAPHY — POETIC VERTICAL LAYOUT ===== */
     .cs-type {
       background: #1A110C;
       padding: 100px 48px;
     }
     .cs-type-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--k-cream); letter-spacing: -1.5px;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--k-cream); letter-spacing: -1px;
       margin-top: 10px; margin-bottom: 56px;
+      font-style: italic;
     }
     .cs-type-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 40px;
     }
     .cs-type-block {
-      background: #231510; border-radius: 10px;
-      padding: 40px 36px;
+      background: rgba(44,36,32,0.4);
+      border: 1px solid rgba(200,92,58,0.08);
+      border-radius: 10px; padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative corner mark */
+    .cs-type-block::after {
+      content: '麹';
+      position: absolute; bottom: -10px; right: 16px;
+      font-family: var(--font-jp); font-size: 80px;
+      color: rgba(200,92,58,0.03);
+      line-height: 1;
     }
     .cs-type-role {
+      font-family: var(--font-body);
       font-size: 9px; text-transform: uppercase; letter-spacing: 3px;
       color: rgba(245,236,215,0.3); margin-bottom: 28px;
     }
     .cs-type-specimen-jp {
       font-family: var(--font-jp); font-weight: 300;
-      font-size: clamp(36px, 5vw, 56px);
-      color: var(--k-terracotta); line-height: 1.1;
-      letter-spacing: -1px; margin-bottom: 16px;
+      font-size: 52px; color: var(--k-cream);
+      line-height: 1.2; letter-spacing: 4px; margin-bottom: 20px;
     }
     .cs-type-specimen-display {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 4vw, 42px);
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(32px, 4vw, 52px);
       color: var(--k-cream); line-height: 1.05;
-      letter-spacing: -1.5px; margin-bottom: 16px;
+      letter-spacing: -1px; margin-bottom: 20px;
+      font-style: italic;
     }
     .cs-type-name {
       font-family: var(--font-body); font-weight: 500;
-      font-size: 13px; color: var(--k-tan);
-      margin-bottom: 4px;
+      font-size: 13px; color: var(--k-terracotta); margin-bottom: 4px;
     }
     .cs-type-desc {
-      font-size: 12px; color: rgba(245,236,215,0.3);
-      line-height: 1.6;
+      font-family: var(--font-body);
+      font-size: 12px; color: rgba(245,236,215,0.3); line-height: 1.6;
     }
     .cs-type-sample {
       font-family: var(--font-body); font-weight: 300;
-      font-size: 14px; color: rgba(245,236,215,0.5);
+      font-size: 13px; color: rgba(245,236,215,0.4);
       line-height: 1.75; margin-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 20px;
+      border-top: 1px solid rgba(200,92,58,0.08); padding-top: 20px;
     }
 
     /* ===== MOCKUPS ===== */
     .cs-mockups {
-      background: #0F0907;
+      background: var(--k-dark);
       padding: 100px 48px;
+      border-top: 1px solid rgba(200,92,58,0.06);
     }
     .cs-mockups-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--k-cream); letter-spacing: -1.5px;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--k-cream); letter-spacing: -1px;
       margin-top: 10px; margin-bottom: 60px;
+      font-style: italic;
     }
     .cs-mockup-row {
       display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 28px; align-items: end;
+      gap: 32px; align-items: end;
     }
 
     /* Coffee Cup mockup */
@@ -339,22 +398,22 @@
       display: flex; flex-direction: column; align-items: center; gap: 20px;
     }
     .mockup-cup {
-      position: relative; width: 120px;
       display: flex; flex-direction: column; align-items: center;
     }
     .cup-lid {
-      width: 104px; height: 18px;
-      background: #D4C4B0; border-radius: 12px 12px 2px 2px;
-      position: relative; z-index: 2;
+      width: 84px; height: 12px;
+      background: #DDD4C4;
+      border-radius: 4px 4px 0 0;
+      position: relative;
     }
     .cup-lid::after {
-      content: ''; position: absolute;
-      top: 10px; left: 50%; transform: translateX(-50%);
-      width: 22px; height: 6px;
-      background: #C4B4A0; border-radius: 3px;
+      content: ''; position: absolute; top: 2px; left: 50%;
+      transform: translateX(-50%);
+      width: 18px; height: 4px;
+      border: 1.5px solid #B8AFA0; border-radius: 3px;
     }
     .cup-body {
-      width: 100%; position: relative;
+      width: 76px; position: relative;
       clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 100%, 0% 100%);
       background: #F5ECD7;
       height: 140px;
@@ -366,8 +425,9 @@
       align-items: center; justify-content: center; gap: 3px;
     }
     .cup-sleeve-logo {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 13px; color: var(--k-terracotta); letter-spacing: -0.5px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 15px; color: var(--k-terracotta); letter-spacing: 0;
+      font-style: italic;
     }
     .cup-sleeve-sub {
       font-family: var(--font-body); font-size: 7px;
@@ -378,6 +438,7 @@
       background: #DDD4C4; border-radius: 0 0 6px 6px;
     }
     .mockup-label {
+      font-family: var(--font-body);
       font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
       color: rgba(245,236,215,0.25); text-align: center;
     }
@@ -415,9 +476,10 @@
       border-radius: 4px 4px 0 0;
     }
     .bag-logo {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 16px; color: var(--k-espresso); letter-spacing: -0.5px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 18px; color: var(--k-espresso); letter-spacing: 0;
       position: relative; z-index: 1;
+      font-style: italic;
     }
     .bag-kanji {
       font-family: var(--font-jp); font-size: 24px;
@@ -453,6 +515,7 @@
       color: rgba(44,36,32,0.2);
     }
     .biz-card-back-info {
+      font-family: var(--font-body);
       font-size: 7px; line-height: 1.8; color: rgba(44,36,32,0.4);
       letter-spacing: 0.3px;
     }
@@ -464,10 +527,12 @@
       box-shadow: 4px 4px 20px rgba(0,0,0,0.4);
     }
     .biz-card-front-logo {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 14px; color: var(--k-terracotta); letter-spacing: -0.5px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 16px; color: var(--k-terracotta); letter-spacing: 0;
+      font-style: italic;
     }
     .biz-card-front-name {
+      font-family: var(--font-body);
       font-size: 7px; color: var(--k-tan); letter-spacing: 0.5px;
     }
 
@@ -477,10 +542,11 @@
       padding: 100px 48px;
     }
     .cs-social-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--k-espresso); letter-spacing: -1.5px;
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--k-espresso); letter-spacing: -1px;
       margin-top: 10px; margin-bottom: 48px;
+      font-style: italic;
     }
     .cs-posts-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -492,16 +558,11 @@
       align-items: center; justify-content: center;
       padding: 28px; overflow: hidden; position: relative;
     }
-    .post-announce {
-      background: var(--k-espresso);
-    }
-    .post-feature {
-      background: var(--k-terracotta);
-    }
-    .post-ambient {
-      background: var(--k-matcha);
-    }
+    .post-announce { background: var(--k-espresso); }
+    .post-feature { background: var(--k-terracotta); }
+    .post-ambient { background: var(--k-matcha); }
     .post-eyebrow {
+      font-family: var(--font-body);
       font-size: 8px; text-transform: uppercase; letter-spacing: 3px;
       margin-bottom: 16px; opacity: 0.6;
     }
@@ -528,8 +589,9 @@
       text-align: center; position: relative; z-index: 1; margin-bottom: 8px;
     }
     .post-wm {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 13px; letter-spacing: -0.3px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 15px; letter-spacing: 0;
+      font-style: italic;
     }
     .post-announce .post-wm { color: var(--k-terracotta); margin-bottom: 8px; }
     .post-ambient .post-wm { color: rgba(245,236,215,0.9); margin-bottom: 10px; }
@@ -539,6 +601,7 @@
       text-align: center; line-height: 1.8; margin-bottom: 12px;
     }
     .post-ambient-tagline {
+      font-family: var(--font-body);
       font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
       color: rgba(245,236,215,0.4); text-align: center;
     }
@@ -559,12 +622,14 @@
       color: rgba(245,236,215,0.25); margin-bottom: 16px;
     }
     .cs-footer-studio {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 32px; color: var(--k-terracotta);
-      letter-spacing: -1.5px; margin-bottom: 8px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 36px; color: var(--k-terracotta);
+      letter-spacing: -1px; margin-bottom: 8px;
+      font-style: italic;
     }
-    .cs-footer-studio span { color: rgba(245,236,215,0.5); }
+    .cs-footer-studio span { color: rgba(245,236,215,0.5); font-style: normal; }
     .cs-footer-desc {
+      font-family: var(--font-body);
       font-size: 13px; color: rgba(245,236,215,0.3);
       line-height: 1.7; max-width: 320px;
     }
@@ -572,14 +637,16 @@
       display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
     }
     .cs-footer-next {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 13px; letter-spacing: -0.3px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 15px; letter-spacing: 0;
       color: var(--k-cream); text-decoration: none;
       display: flex; align-items: center; gap: 10px;
       transition: gap 0.3s ease;
+      font-style: italic;
     }
     .cs-footer-next:hover { gap: 16px; }
     .cs-footer-back {
+      font-family: var(--font-body);
       font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
       color: rgba(245,236,215,0.3); text-decoration: none;
       transition: color 0.3s ease;
@@ -589,15 +656,14 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .cs-nav { padding: 16px 24px; }
-      .cs-hero { padding: 0 24px 60px; }
-      .cs-hero-number { display: none; }
+      .cs-hero { padding: 100px 24px 60px; }
       .cs-overview { padding: 60px 24px; }
       .cs-overview-grid { grid-template-columns: 1fr; gap: 40px; }
       .cs-logos { padding: 60px 24px; }
       .cs-logo-grid { grid-template-columns: 1fr; }
       .cs-colors { padding: 60px 24px; }
       .cs-color-strip { grid-template-columns: repeat(3, 1fr); }
-      .cs-color-item:nth-child(n) .cs-color-swatch { height: 100px; }
+      .cs-color-item:nth-child(n) .cs-color-swatch { height: 100px; border-radius: 30% 30% 2px 2px / 15% 15% 0 0; }
       .cs-type { padding: 60px 24px; }
       .cs-type-grid { grid-template-columns: 1fr; }
       .cs-mockups { padding: 60px 24px; }
@@ -620,19 +686,17 @@
 
   <!-- HERO -->
   <section class="cs-hero">
+    <div class="cs-hero-brush"></div>
     <div class="cs-hero-kanji">麹</div>
-    <div class="cs-hero-number">01</div>
-    <div class="cs-hero-content">
-      <p class="cs-hero-eyebrow">Brand Identity & Packaging</p>
-      <h1 class="cs-hero-title">Kōji<br><span class="accent">Café</span></h1>
-      <p class="cs-hero-subtitle">麹 — 2024</p>
-      <p class="cs-hero-tagline">"Crafted slowly. Savored deeply."</p>
-      <div class="cs-hero-chips">
-        <span class="cs-chip cs-chip-brand">Branding</span>
-        <span class="cs-chip cs-chip-dark">Packaging</span>
-        <span class="cs-chip cs-chip-dark">Identity System</span>
-        <span class="cs-chip cs-chip-dark">Social Templates</span>
-      </div>
+    <p class="cs-hero-eyebrow">Brand Identity & Packaging</p>
+    <h1 class="cs-hero-title">Kōji<br><span class="accent">Café</span></h1>
+    <p class="cs-hero-subtitle">麹 — 2024</p>
+    <p class="cs-hero-tagline">"Crafted slowly. Savored deeply."</p>
+    <div class="cs-hero-chips">
+      <span class="cs-chip cs-chip-brand">Branding</span>
+      <span class="cs-chip cs-chip-dark">Packaging</span>
+      <span class="cs-chip cs-chip-dark">Identity System</span>
+      <span class="cs-chip cs-chip-dark">Social Templates</span>
     </div>
     <div class="cs-hero-scroll">Scroll to explore</div>
   </section>
@@ -688,60 +752,50 @@
 
       <!-- Primary — dark bg -->
       <div class="cs-logo-cell lc-dark">
-        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 60 60" fill="none">
-          <circle cx="30" cy="30" r="27" stroke="#C85C3A" stroke-width="1"/>
-          <path d="M30,8 C34,17 34,24 30,30 C26,24 26,17 30,8Z" fill="#C85C3A" opacity="0.9"/>
-          <path d="M52,30 C43,34 36,34 30,30 C36,26 43,26 52,30Z" fill="#C85C3A" opacity="0.9"/>
-          <path d="M30,52 C26,43 26,36 30,30 C34,36 34,43 30,52Z" fill="#C85C3A" opacity="0.9"/>
-          <path d="M8,30 C17,26 24,26 30,30 C24,34 17,34 8,30Z" fill="#C85C3A" opacity="0.9"/>
-          <circle cx="30" cy="30" r="2.5" fill="#C85C3A"/>
+        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="22" stroke="#C85C3A" stroke-width="1.2"/>
+          <circle cx="26" cy="26" r="14" stroke="#C85C3A" stroke-width="0.6" opacity="0.4"/>
+          <text x="26" y="32" text-anchor="middle" font-family="'Noto Serif JP', serif" font-size="18" fill="#C85C3A" opacity="0.9">麹</text>
         </svg>
-        <div class="koji-wm-primary">KŌJI</div>
+        <div class="koji-wm-primary">Kōji</div>
         <div class="koji-wm-sub">CAFÉ</div>
-        <span class="cs-logo-cell-label">Primary — On Dark</span>
+        <div class="cs-logo-cell-label">Primary — dark</div>
       </div>
 
       <!-- Reversed — cream bg -->
       <div class="cs-logo-cell lc-cream">
-        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 60 60" fill="none">
-          <circle cx="30" cy="30" r="27" stroke="#2C2420" stroke-width="1"/>
-          <path d="M30,8 C34,17 34,24 30,30 C26,24 26,17 30,8Z" fill="#2C2420" opacity="0.85"/>
-          <path d="M52,30 C43,34 36,34 30,30 C36,26 43,26 52,30Z" fill="#2C2420" opacity="0.85"/>
-          <path d="M30,52 C26,43 26,36 30,30 C34,36 34,43 30,52Z" fill="#2C2420" opacity="0.85"/>
-          <path d="M8,30 C17,26 24,26 30,30 C24,34 17,34 8,30Z" fill="#2C2420" opacity="0.85"/>
-          <circle cx="30" cy="30" r="2.5" fill="#2C2420"/>
+        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="22" stroke="#2C2420" stroke-width="1.2"/>
+          <circle cx="26" cy="26" r="14" stroke="#2C2420" stroke-width="0.6" opacity="0.4"/>
+          <text x="26" y="32" text-anchor="middle" font-family="'Noto Serif JP', serif" font-size="18" fill="#2C2420" opacity="0.9">麹</text>
         </svg>
-        <div class="koji-wm-primary koji-wm-reversed">KŌJI</div>
+        <div class="koji-wm-primary koji-wm-reversed">Kōji</div>
         <div class="koji-wm-sub koji-wm-reversed-sub">CAFÉ</div>
-        <span class="cs-logo-cell-label" style="color:rgba(44,36,32,0.35)">Reversed — On Light</span>
+        <div class="cs-logo-cell-label">Reversed — light</div>
       </div>
 
-      <!-- Symbol only — terracotta -->
+      <!-- Terracotta bg -->
       <div class="cs-logo-cell lc-terracotta">
-        <svg width="80" height="80" viewBox="0 0 60 60" fill="none">
-          <circle cx="30" cy="30" r="27" stroke="rgba(245,236,215,0.5)" stroke-width="1"/>
-          <path d="M30,8 C34,17 34,24 30,30 C26,24 26,17 30,8Z" fill="#fff" opacity="0.9"/>
-          <path d="M52,30 C43,34 36,34 30,30 C36,26 43,26 52,30Z" fill="#fff" opacity="0.9"/>
-          <path d="M30,52 C26,43 26,36 30,30 C34,36 34,43 30,52Z" fill="#fff" opacity="0.9"/>
-          <path d="M8,30 C17,26 24,26 30,30 C24,34 17,34 8,30Z" fill="#fff" opacity="0.9"/>
-          <circle cx="30" cy="30" r="2.5" fill="#fff"/>
+        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="22" stroke="rgba(245,236,215,0.6)" stroke-width="1.2"/>
+          <circle cx="26" cy="26" r="14" stroke="rgba(245,236,215,0.3)" stroke-width="0.6"/>
+          <text x="26" y="32" text-anchor="middle" font-family="'Noto Serif JP', serif" font-size="18" fill="rgba(245,236,215,0.8)">麹</text>
         </svg>
-        <span class="cs-logo-cell-label">Symbol — On Brand Colour</span>
+        <div class="koji-wm-primary koji-wm-white">Kōji</div>
+        <div class="koji-wm-sub koji-wm-white-sub">CAFÉ</div>
+        <div class="cs-logo-cell-label">Accent background</div>
       </div>
 
-      <!-- Monochrome — matcha -->
+      <!-- Matcha bg -->
       <div class="cs-logo-cell lc-matcha">
-        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 60 60" fill="none">
-          <circle cx="30" cy="30" r="27" stroke="rgba(245,236,215,0.4)" stroke-width="1"/>
-          <path d="M30,8 C34,17 34,24 30,30 C26,24 26,17 30,8Z" fill="rgba(245,236,215,0.85)"/>
-          <path d="M52,30 C43,34 36,34 30,30 C36,26 43,26 52,30Z" fill="rgba(245,236,215,0.85)"/>
-          <path d="M30,52 C26,43 26,36 30,30 C34,36 34,43 30,52Z" fill="rgba(245,236,215,0.85)"/>
-          <path d="M8,30 C17,26 24,26 30,30 C24,34 17,34 8,30Z" fill="rgba(245,236,215,0.85)"/>
-          <circle cx="30" cy="30" r="2.5" fill="rgba(245,236,215,0.85)"/>
+        <svg class="koji-mark-svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="22" stroke="rgba(245,236,215,0.5)" stroke-width="1.2"/>
+          <circle cx="26" cy="26" r="14" stroke="rgba(245,236,215,0.25)" stroke-width="0.6"/>
+          <text x="26" y="32" text-anchor="middle" font-family="'Noto Serif JP', serif" font-size="18" fill="rgba(245,236,215,0.7)">麹</text>
         </svg>
-        <div class="koji-wm-primary koji-wm-white">KŌJI</div>
+        <div class="koji-wm-primary koji-wm-white">Kōji</div>
         <div class="koji-wm-sub koji-wm-white-sub">CAFÉ</div>
-        <span class="cs-logo-cell-label">Secondary Colour Application</span>
+        <div class="cs-logo-cell-label">Secondary background</div>
       </div>
 
     </div>
@@ -750,19 +804,19 @@
   <!-- COLOR PALETTE -->
   <section class="cs-colors">
     <p class="cs-section-label">Colour System</p>
-    <h2 class="cs-colors-heading">Five shades that<br>tell one story.</h2>
+    <h2 class="cs-colors-heading">Drawn from earth,<br>steeped in warmth.</h2>
     <div class="cs-color-strip">
       <div class="cs-color-item">
         <div class="cs-color-swatch" style="background:#2C2420"></div>
         <div class="cs-color-name">Espresso</div>
         <div class="cs-color-hex">#2C2420</div>
-        <div class="cs-color-use">Primary dark. Deep, warm, authoritative.</div>
+        <div class="cs-color-use">Primary dark. Grounding.</div>
       </div>
       <div class="cs-color-item">
         <div class="cs-color-swatch" style="background:#C85C3A"></div>
         <div class="cs-color-name">Terracotta</div>
         <div class="cs-color-hex">#C85C3A</div>
-        <div class="cs-color-use">Brand accent. Energy and warmth.</div>
+        <div class="cs-color-use">Energy and warmth.</div>
       </div>
       <div class="cs-color-item">
         <div class="cs-color-swatch" style="background:#6B7C4E"></div>
@@ -800,9 +854,9 @@
       <div class="cs-type-block">
         <div class="cs-type-role">Body / UI</div>
         <div class="cs-type-specimen-display">Crafted<br>Slowly.</div>
-        <div class="cs-type-name">Sora</div>
-        <div class="cs-type-desc">Clean geometric sans for menus, signage, and digital touchpoints. Crisp at small sizes, bold at large ones.</div>
-        <div class="cs-type-sample">Weights: Light 300 · Regular 400 · ExtraBold 800</div>
+        <div class="cs-type-name">Cormorant</div>
+        <div class="cs-type-desc">Elegant serif for menus, signage, and digital touchpoints. Warm and refined with a quiet sophistication that matches the café's philosophy.</div>
+        <div class="cs-type-sample">Weights: Light 300 · Regular 400 · SemiBold 600 · Bold 700</div>
       </div>
     </div>
   </section>
@@ -819,7 +873,7 @@
           <div class="cup-lid"></div>
           <div class="cup-body">
             <div class="cup-sleeve">
-              <div class="cup-sleeve-logo">KŌJI</div>
+              <div class="cup-sleeve-logo">Kōji</div>
               <div class="cup-sleeve-sub">CAFÉ</div>
             </div>
           </div>
@@ -836,7 +890,7 @@
             <div class="bag-handle"></div>
           </div>
           <div class="bag-body">
-            <div class="bag-logo">KŌJI</div>
+            <div class="bag-logo">Kōji</div>
             <div class="bag-kanji">麹</div>
             <div class="bag-sub">CAFÉ</div>
           </div>
@@ -856,7 +910,7 @@
             </div>
           </div>
           <div class="biz-card biz-card-front">
-            <div class="biz-card-front-logo">KŌJI</div>
+            <div class="biz-card-front-logo">Kōji</div>
             <div class="biz-card-front-name">Head Barista</div>
           </div>
         </div>
@@ -876,7 +930,7 @@
       <div class="cs-post post-announce">
         <p class="post-eyebrow">Now Open</p>
         <div class="post-big-jp">麹</div>
-        <div class="post-wm">KŌJI CAFÉ</div>
+        <div class="post-wm">Kōji Café</div>
         <p class="post-tagline">Crafted slowly.<br>Savored deeply.<br>Indiranagar, Bangalore.</p>
       </div>
 
@@ -890,7 +944,7 @@
 
       <!-- Post 3: Ambient/Quote -->
       <div class="cs-post post-ambient">
-        <div class="post-wm">KŌJI</div>
+        <div class="post-wm">Kōji</div>
         <p class="post-ambient-quote">「ゆっくりと<br>丁寧に」</p>
         <p class="post-ambient-tagline">Slowly. With care.</p>
       </div>
