@@ -12,15 +12,15 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      /* Porto & Pimenta palette */
-      --pp-olive:      #5C6B3A;
-      --pp-olive-deep: #3A4425;
-      --pp-burnt:      #C8734A;
-      --pp-gold:       #C6A858;
-      --pp-cream:      #F0E6D6;
-      --pp-dark:       #1A150E;
-      --pp-espresso:   #2C2418;
-      --pp-warm:       #D4B896;
+      /* Porto & Pimenta — REAL brand palette from assets */
+      --pp-navy:       #182640;   /* deep navy — primary dark */
+      --pp-burnt:      #B04711;   /* burnt orange — brand accent */
+      --pp-cream:      #F6F0E8;   /* warm cream — light bg */
+      --pp-navy-deep:  #0F1929;   /* deeper navy for dark sections */
+      --pp-navy-mid:   #1E3050;   /* mid navy for cards */
+      --pp-warm:       #D4B896;   /* warm tan — secondary text */
+      --pp-gold:       #C6A858;   /* saffron gold — Caveat accent */
+      --pp-espresso:   #2C2418;   /* text on light */
       /* Fonts */
       --font-brand:    'Cormorant Garamond', Georgia, serif;
       --font-hand:     'Caveat', cursive;
@@ -32,7 +32,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-body);
-      background: var(--pp-dark);
+      background: var(--pp-navy-deep);
       color: var(--pp-cream);
       -webkit-font-smoothing: antialiased;
     }
@@ -42,50 +42,49 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
       padding: 18px 48px;
-      background: rgba(26,21,14,0.9);
+      background: rgba(15,25,41,0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(198,168,88,0.06);
+      border-bottom: 1px solid rgba(176,71,17,0.12);
     }
     .cs-nav-back {
       font-family: var(--font-body); font-size: 11px;
       text-transform: uppercase; letter-spacing: 1.5px;
-      color: rgba(240,230,214,0.4);
+      color: rgba(246,240,232,0.4);
       text-decoration: none; transition: color 0.3s ease;
     }
     .cs-nav-back:hover { color: var(--pp-cream); }
     .cs-nav-label {
       font-family: var(--font-body); font-size: 10px;
       text-transform: uppercase; letter-spacing: 2px;
-      color: rgba(240,230,214,0.3);
+      color: rgba(246,240,232,0.3);
     }
     .cs-nav-label span { color: var(--pp-burnt); }
 
     /* ===== HERO ===== */
     .cs-hero {
       min-height: 100vh;
-      background: linear-gradient(160deg, #3A2E1A 0%, #1A150E 50%, #110D08 100%);
+      background: linear-gradient(160deg, #1E3050 0%, #182640 50%, #0F1929 100%);
       display: flex; align-items: flex-end;
       padding: 0 48px 80px;
       position: relative; overflow: hidden;
     }
-    /* Azulejo tile pattern background */
     .cs-hero-tiles {
       position: absolute; inset: 0;
       background-image:
-        radial-gradient(circle at 20px 20px, rgba(198,168,88,0.03) 2px, transparent 2px),
-        radial-gradient(circle at 0 0, rgba(198,168,88,0.03) 2px, transparent 2px);
+        radial-gradient(circle at 20px 20px, rgba(176,71,17,0.06) 2px, transparent 2px),
+        radial-gradient(circle at 0 0, rgba(176,71,17,0.04) 2px, transparent 2px);
       background-size: 40px 40px;
     }
     .cs-hero-number {
       position: absolute; top: 120px; right: 48px;
       font-family: var(--font-brand); font-weight: 300;
-      font-size: 140px; color: rgba(198,168,88,0.08); line-height: 1;
+      font-size: 140px; color: rgba(176,71,17,0.06); line-height: 1;
       letter-spacing: -6px; user-select: none;
     }
     .cs-hero-deco {
       position: absolute; right: 60px; bottom: 100px;
-      opacity: 0.06;
+      opacity: 0.07;
     }
     .cs-hero-content { position: relative; z-index: 1; max-width: 700px; }
     .cs-hero-eyebrow {
@@ -109,11 +108,11 @@
       font-family: var(--font-hand); font-weight: 500;
       font-size: 28px; color: var(--pp-gold);
       letter-spacing: 1px; margin-bottom: 12px;
-      opacity: 0.7;
+      opacity: 0.8;
     }
     .cs-hero-tagline {
       font-family: var(--font-body); font-weight: 300;
-      font-size: 15px; color: rgba(240,230,214,0.45);
+      font-size: 15px; color: rgba(246,240,232,0.45);
       letter-spacing: 0.3px; font-style: italic;
     }
     .cs-hero-chips {
@@ -123,12 +122,12 @@
       font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
       padding: 6px 14px; border-radius: 3px; border: 1px solid;
     }
-    .cs-chip-brand { color: var(--pp-burnt); border-color: rgba(200,115,74,0.35); }
-    .cs-chip-dark { color: rgba(240,230,214,0.35); border-color: rgba(255,255,255,0.1); }
+    .cs-chip-brand { color: var(--pp-burnt); border-color: rgba(176,71,17,0.4); }
+    .cs-chip-dark  { color: rgba(246,240,232,0.35); border-color: rgba(255,255,255,0.1); }
     .cs-hero-scroll {
       position: absolute; bottom: 48px; right: 48px;
       font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
-      color: rgba(240,230,214,0.2); writing-mode: vertical-rl;
+      color: rgba(246,240,232,0.2); writing-mode: vertical-rl;
     }
 
     /* ===== OVERVIEW ===== */
@@ -176,9 +175,9 @@
       background: var(--pp-burnt); flex-shrink: 0;
     }
 
-    /* ===== LOGO SYSTEM ===== */
+    /* ===== LOGO SYSTEM — REAL IMAGES ===== */
     .cs-logos {
-      background: var(--pp-dark);
+      background: var(--pp-navy-deep);
       padding: 100px 48px;
     }
     .cs-logos-heading {
@@ -195,48 +194,43 @@
       border-radius: 10px; padding: 48px 40px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      min-height: 260px; position: relative; overflow: hidden;
+      min-height: 280px; position: relative; overflow: hidden;
     }
     .cs-logo-cell-label {
       position: absolute; bottom: 16px; left: 20px;
       font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
     }
-    .lc-espresso { background: var(--pp-espresso); }
-    .lc-espresso .cs-logo-cell-label { color: rgba(240,230,214,0.3); }
-    .lc-cream { background: var(--pp-cream); }
-    .lc-cream .cs-logo-cell-label { color: rgba(44,36,24,0.3); }
-    .lc-olive { background: var(--pp-olive); }
-    .lc-olive .cs-logo-cell-label { color: rgba(240,230,214,0.45); }
-    .lc-burnt { background: var(--pp-burnt); }
-    .lc-burnt .cs-logo-cell-label { color: rgba(240,230,214,0.5); }
 
-    /* Tile pattern on dark cells */
-    .lc-espresso::before {
+    /* Real logo image in cells */
+    .cs-logo-cell img {
+      width: 220px; height: 220px;
+      object-fit: contain;
+    }
+
+    /* cell backgrounds */
+    .lc-navy    { background: var(--pp-navy); }
+    .lc-navy .cs-logo-cell-label { color: rgba(246,240,232,0.3); }
+    .lc-cream   { background: var(--pp-cream); }
+    .lc-cream .cs-logo-cell-label { color: rgba(24,38,64,0.35); }
+    .lc-burnt   { background: var(--pp-burnt); }
+    .lc-burnt .cs-logo-cell-label { color: rgba(246,240,232,0.5); }
+    .lc-deep    { background: var(--pp-navy-deep); border: 1px solid rgba(176,71,17,0.15); }
+    .lc-deep .cs-logo-cell-label { color: rgba(246,240,232,0.25); }
+
+    /* tile pattern on navy cells */
+    .lc-navy::before, .lc-deep::before {
       content: ''; position: absolute; inset: 0;
       background-image:
-        radial-gradient(circle at 12px 12px, rgba(198,168,88,0.04) 1px, transparent 1px),
-        radial-gradient(circle at 0 0, rgba(198,168,88,0.04) 1px, transparent 1px);
+        radial-gradient(circle at 12px 12px, rgba(176,71,17,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 0 0, rgba(176,71,17,0.05) 1px, transparent 1px);
       background-size: 24px 24px;
     }
+    /* logo images sit on top of pseudo */
+    .cs-logo-cell img { position: relative; z-index: 1; }
+    .cs-logo-cell-label { position: absolute; z-index: 1; }
 
-    /* Logo mark */
-    .pp-mark { margin-bottom: 14px; }
-    .pp-wordmark {
-      font-family: var(--font-brand); font-weight: 700;
-      font-size: 32px; letter-spacing: -0.5px; line-height: 1;
-      text-align: center;
-    }
-    .pp-wordmark-sub {
-      font-family: var(--font-hand); font-size: 16px;
-      letter-spacing: 2px; margin-top: 4px;
-      text-align: center;
-    }
-    .pp-wm-cream { color: var(--pp-cream); }
-    .pp-wm-cream-sub { color: var(--pp-gold); opacity: 0.7; }
-    .pp-wm-dark { color: var(--pp-espresso); }
-    .pp-wm-dark-sub { color: rgba(44,36,24,0.45); }
-    .pp-wm-white { color: #fff; }
-    .pp-wm-white-sub { color: rgba(255,255,255,0.55); }
+    /* invert logo on burnt orange bg */
+    .lc-burnt img { filter: brightness(0) invert(1); }
 
     /* ===== COLOR PALETTE ===== */
     .cs-colors {
@@ -271,7 +265,7 @@
 
     /* ===== TYPOGRAPHY ===== */
     .cs-type {
-      background: #1A150E;
+      background: var(--pp-navy);
       padding: 100px 48px;
     }
     .cs-type-heading {
@@ -284,13 +278,13 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
     }
     .cs-type-block {
-      background: rgba(44,36,24,0.5);
-      border: 1px solid rgba(198,168,88,0.08);
+      background: rgba(15,25,41,0.6);
+      border: 1px solid rgba(176,71,17,0.1);
       border-radius: 10px; padding: 40px 36px;
     }
     .cs-type-role {
       font-size: 9px; text-transform: uppercase; letter-spacing: 3px;
-      color: rgba(240,230,214,0.3); margin-bottom: 28px;
+      color: rgba(246,240,232,0.3); margin-bottom: 28px;
     }
     .cs-type-specimen-brand {
       font-family: var(--font-brand); font-weight: 700;
@@ -309,171 +303,81 @@
       font-size: 13px; color: var(--pp-burnt); margin-bottom: 4px;
     }
     .cs-type-desc {
-      font-size: 12px; color: rgba(240,230,214,0.3); line-height: 1.6;
+      font-size: 12px; color: rgba(246,240,232,0.3); line-height: 1.6;
     }
     .cs-type-sample {
       font-family: var(--font-body); font-weight: 300;
-      font-size: 13px; color: rgba(240,230,214,0.4);
+      font-size: 13px; color: rgba(246,240,232,0.4);
       line-height: 1.75; margin-top: 20px;
-      border-top: 1px solid rgba(198,168,88,0.1); padding-top: 20px;
+      border-top: 1px solid rgba(176,71,17,0.1); padding-top: 20px;
     }
 
-    /* ===== MOCKUPS ===== */
+    /* ===== BRAND IN USE — REAL PHOTOS ===== */
     .cs-mockups {
-      background: var(--pp-dark);
+      background: var(--pp-navy-deep);
       padding: 100px 48px;
-      border-top: 1px solid rgba(198,168,88,0.06);
+      border-top: 1px solid rgba(176,71,17,0.08);
     }
     .cs-mockups-heading {
       font-family: var(--font-brand); font-weight: 700;
       font-size: clamp(28px, 4vw, 46px);
       color: var(--pp-cream); letter-spacing: -1px;
-      margin-top: 10px; margin-bottom: 60px;
+      margin-top: 10px; margin-bottom: 16px;
     }
-    .cs-mockup-row {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 28px; align-items: end;
-    }
-    .mockup-wrap {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 24px;
-    }
-    .mockup-label {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
-      color: rgba(240,230,214,0.25); text-align: center;
+    .cs-mockups-sub {
+      font-family: var(--font-hand); font-size: 20px;
+      color: var(--pp-gold); opacity: 0.7;
+      margin-bottom: 52px;
     }
 
-    /* Menu mockup */
-    .mockup-menu {
-      width: 150px; height: 200px;
-      background: var(--pp-cream);
-      border-radius: 4px;
-      padding: 20px 16px;
-      box-shadow: 4px 6px 24px rgba(0,0,0,0.4);
-      display: flex; flex-direction: column;
+    /* Photo grid row 1 — 3 columns */
+    .cs-photo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
     }
-    .menu-header {
-      text-align: center; padding-bottom: 12px;
-      border-bottom: 1px solid rgba(92,107,58,0.2);
-      margin-bottom: 12px;
-    }
-    .menu-logo {
-      font-family: var(--font-brand); font-weight: 700;
-      font-size: 14px; color: var(--pp-espresso); letter-spacing: -0.3px;
-    }
-    .menu-hand {
-      font-family: var(--font-hand); font-size: 10px;
-      color: var(--pp-burnt); margin-top: 2px;
-    }
-    .menu-section-title {
-      font-family: var(--font-hand); font-size: 11px;
-      color: var(--pp-olive); margin-bottom: 6px;
-    }
-    .menu-lines { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
-    .menu-line {
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .ml-name { height: 3px; border-radius: 2px; background: rgba(44,36,24,0.12); }
-    .ml-price { height: 3px; width: 16px; border-radius: 2px; background: rgba(44,36,24,0.08); }
-    .menu-footer {
-      margin-top: auto;
-      border-top: 1px solid rgba(92,107,58,0.15);
-      padding-top: 8px; text-align: center;
-    }
-    .menu-footer-text {
-      font-family: var(--font-hand); font-size: 8px;
-      color: rgba(44,36,24,0.3);
+    /* Photo grid row 2 — 2 columns (wider) */
+    .cs-photo-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
-    /* Wine label mockup */
-    .mockup-label-wrap {
-      display: flex; flex-direction: column; align-items: center; gap: 20px;
+    .cs-photo-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--pp-navy-mid);
     }
-    .mockup-bottle-label {
-      width: 120px; height: 160px;
-      background: var(--pp-cream);
-      border-radius: 4px;
-      box-shadow: 4px 6px 24px rgba(0,0,0,0.4);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 16px; gap: 8px;
-      position: relative; overflow: hidden;
+    .cs-photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
     }
-    .bottle-tile-bg {
-      position: absolute; inset: 0;
-      background-image:
-        radial-gradient(circle at 10px 10px, rgba(92,107,58,0.06) 1px, transparent 1px),
-        radial-gradient(circle at 0 0, rgba(92,107,58,0.06) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-    .bottle-mark { position: relative; z-index: 1; }
-    .bottle-brand {
-      font-family: var(--font-brand); font-weight: 700;
-      font-size: 12px; color: var(--pp-espresso); text-align: center;
-      position: relative; z-index: 1;
-    }
-    .bottle-hand {
-      font-family: var(--font-hand); font-size: 10px;
-      color: var(--pp-burnt); text-align: center;
-      position: relative; z-index: 1;
-    }
-    .bottle-rule {
-      width: 24px; height: 1px; background: var(--pp-olive);
-      opacity: 0.3; position: relative; z-index: 1;
-    }
-    .bottle-year {
-      font-family: var(--font-body); font-size: 7px;
-      letter-spacing: 3px; color: rgba(44,36,24,0.3);
-      text-transform: uppercase; position: relative; z-index: 1;
-    }
+    .cs-photo-item:hover img { transform: scale(1.03); }
 
-    /* Business Card mockup */
-    .mockup-cards {
-      position: relative; width: 180px; height: 110px;
+    /* Heights — calibrated to real image ratios */
+    /* Menu & Wine: 1499x2000 (3:4 portrait) → tall cells */
+    /* Packaging, Apron, Tshirt: 2000x1500 (4:3 landscape) → shorter cells */
+    .cs-photo-row    .cs-photo-item { height: 420px; }
+    .cs-photo-row-2  .cs-photo-item { height: 340px; }
+
+    /* Caption overlay */
+    .cs-photo-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 20px 16px;
+      background: linear-gradient(transparent, rgba(15,25,41,0.85));
     }
-    .biz-card {
-      position: absolute; width: 164px; height: 98px;
-      border-radius: 6px; padding: 16px 18px;
+    .cs-photo-caption-label {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--pp-burnt); margin-bottom: 3px;
     }
-    .biz-card-back {
-      background: var(--pp-cream);
-      top: 10px; right: 0;
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-    }
-    .biz-card-back-mark { opacity: 0.1; }
-    .biz-card-back-info {
-      font-size: 7px; line-height: 1.9; color: rgba(44,36,24,0.4);
-      letter-spacing: 0.3px;
-    }
-    .biz-card-front {
-      background: var(--pp-espresso);
-      top: 0; left: 0;
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 6px 8px 32px rgba(0,0,0,0.5);
-      position: relative; overflow: hidden;
-    }
-    .biz-card-front::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        radial-gradient(circle at 8px 8px, rgba(198,168,88,0.04) 1px, transparent 1px),
-        radial-gradient(circle at 0 0, rgba(198,168,88,0.04) 1px, transparent 1px);
-      background-size: 16px 16px;
-    }
-    .biz-card-logo {
-      font-family: var(--font-brand); font-weight: 700;
-      font-size: 13px; color: var(--pp-cream); letter-spacing: -0.3px;
-      position: relative; z-index: 1;
-    }
-    .biz-card-logo-sub {
-      font-family: var(--font-hand); font-size: 9px;
-      color: var(--pp-gold); opacity: 0.6;
-      position: relative; z-index: 1;
-    }
-    .biz-card-name {
-      font-size: 7px; color: rgba(240,230,214,0.4);
-      letter-spacing: 0.3px; position: relative; z-index: 1;
+    .cs-photo-caption-name {
+      font-family: var(--font-brand); font-size: 16px;
+      color: var(--pp-cream); font-weight: 600;
     }
 
     /* ===== SOCIAL POSTS ===== */
@@ -497,41 +401,41 @@
       align-items: center; justify-content: center;
       padding: 28px; overflow: hidden; position: relative;
     }
-    .post-opening { background: var(--pp-espresso); }
-    .post-special { background: var(--pp-olive); }
-    .post-mood { background: var(--pp-burnt); }
+    .post-opening { background: var(--pp-navy); }
+    .post-special  { background: var(--pp-burnt); }
+    .post-mood     { background: var(--pp-navy-deep); }
 
     .post-eyebrow {
       font-size: 8px; text-transform: uppercase; letter-spacing: 3px;
       margin-bottom: 14px; opacity: 0.6;
     }
     .post-opening .post-eyebrow { color: var(--pp-gold); }
-    .post-special .post-eyebrow { color: rgba(240,230,214,0.65); }
-    .post-mood .post-eyebrow { color: rgba(240,230,214,0.6); }
+    .post-special .post-eyebrow { color: rgba(246,240,232,0.7); }
+    .post-mood    .post-eyebrow { color: rgba(246,240,232,0.5); }
 
     .post-big-hand {
       font-family: var(--font-hand); font-weight: 600;
       font-size: 38px; line-height: 1.1; text-align: center;
     }
     .post-opening .post-big-hand { color: var(--pp-cream); }
-    .post-special .post-big-hand { color: rgba(240,230,214,0.9); }
-    .post-mood .post-big-hand { color: rgba(240,230,214,0.12); position: absolute; font-size: 90px; }
+    .post-special .post-big-hand { color: rgba(246,240,232,0.12); position: absolute; font-size: 90px; }
+    .post-mood    .post-big-hand { color: var(--pp-cream); }
 
     .post-wm {
       font-family: var(--font-brand); font-weight: 700;
       font-size: 14px; letter-spacing: -0.3px;
     }
     .post-opening .post-wm { color: var(--pp-burnt); margin-bottom: 8px; }
-    .post-mood .post-wm { color: rgba(240,230,214,0.9); margin-bottom: 8px; position: relative; z-index: 1; }
+    .post-mood    .post-wm { color: rgba(246,240,232,0.85); margin-bottom: 8px; position: relative; z-index: 1; }
 
     .post-tagline {
       font-family: var(--font-body); font-weight: 300;
       font-size: 11px; text-align: center; line-height: 1.7;
       letter-spacing: 0.2px; margin-top: 10px;
     }
-    .post-opening .post-tagline { color: rgba(240,230,214,0.5); }
-    .post-special .post-tagline { color: rgba(240,230,214,0.7); }
-    .post-mood .post-tagline { color: rgba(240,230,214,0.7); position: relative; z-index: 1; }
+    .post-opening .post-tagline { color: rgba(246,240,232,0.5); }
+    .post-special .post-tagline { color: rgba(246,240,232,0.85); position: relative; z-index: 1; }
+    .post-mood    .post-tagline { color: rgba(246,240,232,0.5); position: relative; z-index: 1; }
 
     .post-special-dish {
       font-family: var(--font-brand); font-weight: 600; font-style: italic;
@@ -541,9 +445,9 @@
 
     /* ===== WEBSITE PREVIEW ===== */
     .cs-web {
-      background: #0F0B06;
+      background: var(--pp-navy);
       padding: 100px 48px;
-      border-top: 1px solid rgba(198,168,88,0.06);
+      border-top: 1px solid rgba(176,71,17,0.08);
     }
     .cs-web-heading {
       font-family: var(--font-brand); font-weight: 700;
@@ -557,17 +461,15 @@
       max-width: 800px;
     }
     .browser-bar {
-      background: #2A2218; padding: 10px 16px;
+      background: #0F1929; padding: 10px 16px;
       display: flex; align-items: center; gap: 8px;
     }
-    .browser-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
     .browser-url {
       flex: 1; margin-left: 8px;
-      background: rgba(240,230,214,0.06);
+      background: rgba(246,240,232,0.06);
       border-radius: 4px; padding: 5px 12px;
-      font-size: 10px; color: rgba(240,230,214,0.3);
+      font-size: 10px; color: rgba(246,240,232,0.3);
     }
     .browser-content {
       background: var(--pp-cream);
@@ -580,13 +482,13 @@
     .browser-tile-bg {
       position: absolute; inset: 0;
       background-image:
-        radial-gradient(circle at 16px 16px, rgba(92,107,58,0.04) 1.5px, transparent 1.5px),
-        radial-gradient(circle at 0 0, rgba(92,107,58,0.04) 1.5px, transparent 1.5px);
+        radial-gradient(circle at 16px 16px, rgba(24,38,64,0.04) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 0 0, rgba(24,38,64,0.04) 1.5px, transparent 1.5px);
       background-size: 32px 32px;
     }
     .browser-hero-text {
       font-family: var(--font-brand); font-weight: 700;
-      font-size: 28px; color: var(--pp-espresso);
+      font-size: 28px; color: var(--pp-navy);
       letter-spacing: -0.5px; position: relative; z-index: 1;
     }
     .browser-hero-hand {
@@ -595,7 +497,7 @@
     }
     .browser-hero-cta {
       display: inline-block; padding: 8px 20px;
-      background: var(--pp-olive); color: var(--pp-cream);
+      background: var(--pp-navy); color: var(--pp-cream);
       font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
       border-radius: 3px; position: relative; z-index: 1;
     }
@@ -605,14 +507,14 @@
     }
     .browser-nav span {
       font-size: 8px; text-transform: uppercase; letter-spacing: 1.5px;
-      color: rgba(44,36,24,0.35);
+      color: rgba(24,38,64,0.35);
     }
 
     /* ===== PROJECT FOOTER ===== */
     .cs-footer {
-      background: var(--pp-dark);
+      background: var(--pp-navy-deep);
       padding: 80px 48px;
-      border-top: 1px solid rgba(198,168,88,0.06);
+      border-top: 1px solid rgba(176,71,17,0.08);
     }
     .cs-footer-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -621,16 +523,16 @@
     .cs-footer-credit {
       font-family: var(--font-body); font-size: 10px;
       text-transform: uppercase; letter-spacing: 2.5px;
-      color: rgba(240,230,214,0.2); margin-bottom: 16px;
+      color: rgba(246,240,232,0.2); margin-bottom: 16px;
     }
     .cs-footer-studio {
       font-family: 'Sora', sans-serif; font-weight: 800;
       font-size: 32px; color: var(--pp-burnt);
       letter-spacing: -1.5px; margin-bottom: 8px;
     }
-    .cs-footer-studio span { color: rgba(240,230,214,0.4); }
+    .cs-footer-studio span { color: rgba(246,240,232,0.4); }
     .cs-footer-desc {
-      font-size: 13px; color: rgba(240,230,214,0.3);
+      font-size: 13px; color: rgba(246,240,232,0.3);
       line-height: 1.7; max-width: 320px;
     }
     .cs-footer-nav {
@@ -646,7 +548,7 @@
     .cs-footer-next:hover { gap: 16px; }
     .cs-footer-back {
       font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
-      color: rgba(240,230,214,0.3); text-decoration: none;
+      color: rgba(246,240,232,0.3); text-decoration: none;
       transition: color 0.3s ease;
     }
     .cs-footer-back:hover { color: var(--pp-cream); }
@@ -660,13 +562,17 @@
       .cs-overview-grid { grid-template-columns: 1fr; gap: 40px; }
       .cs-logos { padding: 60px 24px; }
       .cs-logo-grid { grid-template-columns: 1fr; }
+      .cs-logo-cell img { width: 160px; height: 160px; }
       .cs-colors { padding: 60px 24px; }
       .cs-color-strip { grid-template-columns: repeat(3, 1fr); }
       .cs-color-item:nth-child(n) .cs-color-swatch { height: 100px; }
       .cs-type { padding: 60px 24px; }
       .cs-type-grid { grid-template-columns: 1fr; }
       .cs-mockups { padding: 60px 24px; }
-      .cs-mockup-row { grid-template-columns: 1fr; align-items: center; gap: 48px; }
+      .cs-photo-row { grid-template-columns: 1fr; }
+      .cs-photo-row-2 { grid-template-columns: 1fr; }
+      .cs-photo-row .cs-photo-item { height: 280px; }
+      .cs-photo-row-2 .cs-photo-item { height: 260px; }
       .cs-social { padding: 60px 24px; }
       .cs-posts-grid { grid-template-columns: 1fr; max-width: 320px; }
       .cs-web { padding: 60px 24px; }
@@ -690,12 +596,12 @@
     <div class="cs-hero-number">04</div>
     <div class="cs-hero-deco">
       <svg width="280" height="280" viewBox="0 0 80 80" fill="none">
-        <circle cx="40" cy="40" r="36" stroke="#C6A858" stroke-width="0.75"/>
-        <circle cx="40" cy="40" r="24" stroke="#C6A858" stroke-width="0.5"/>
-        <path d="M40,10 C44,22 44,30 40,40 C36,30 36,22 40,10Z" fill="#C6A858"/>
-        <path d="M70,40 C58,44 50,44 40,40 C50,36 58,36 70,40Z" fill="#C6A858"/>
-        <path d="M40,70 C36,58 36,50 40,40 C44,50 44,58 40,70Z" fill="#C6A858"/>
-        <path d="M10,40 C22,36 30,36 40,40 C30,44 22,44 10,40Z" fill="#C6A858"/>
+        <circle cx="40" cy="40" r="36" stroke="#B04711" stroke-width="0.75"/>
+        <circle cx="40" cy="40" r="24" stroke="#B04711" stroke-width="0.5"/>
+        <path d="M40,10 C44,22 44,30 40,40 C36,30 36,22 40,10Z" fill="#B04711"/>
+        <path d="M70,40 C58,44 50,44 40,40 C50,36 58,36 70,40Z" fill="#B04711"/>
+        <path d="M40,70 C36,58 36,50 40,40 C44,50 44,58 40,70Z" fill="#B04711"/>
+        <path d="M10,40 C22,36 30,36 40,40 C30,44 22,44 10,40Z" fill="#B04711"/>
       </svg>
     </div>
     <div class="cs-hero-content">
@@ -757,80 +663,30 @@
     </div>
   </section>
 
-  <!-- LOGO SYSTEM -->
+  <!-- LOGO SYSTEM — REAL IMAGES -->
   <section class="cs-logos">
     <p class="cs-section-label" style="color:var(--pp-burnt)">The Mark</p>
     <h2 class="cs-logos-heading">Old-world charm,<br>modern precision.</h2>
     <div class="cs-logo-grid">
 
-      <!-- Primary on Espresso -->
-      <div class="cs-logo-cell lc-espresso">
-        <div class="pp-mark">
-          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="28" stroke="#C6A858" stroke-width="1"/>
-            <circle cx="40" cy="40" r="18" stroke="#C6A858" stroke-width="0.5" opacity="0.4"/>
-            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#C6A858" opacity="0.85"/>
-            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#C6A858" opacity="0.85"/>
-            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#C6A858" opacity="0.85"/>
-            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#C6A858" opacity="0.85"/>
-            <circle cx="40" cy="40" r="3" fill="#C6A858"/>
-          </svg>
-        </div>
-        <div class="pp-wordmark pp-wm-cream">Porto & Pimenta</div>
-        <div class="pp-wordmark-sub pp-wm-cream-sub">Brasserie</div>
-        <span class="cs-logo-cell-label">Primary — On Espresso</span>
+      <div class="cs-logo-cell lc-navy">
+        <img src="../assets/images/porto/MAIN_LOGO.png" alt="Porto & Pimenta logo on navy">
+        <span class="cs-logo-cell-label">Primary — On Navy</span>
       </div>
 
-      <!-- Reversed on Cream -->
       <div class="cs-logo-cell lc-cream">
-        <div class="pp-mark">
-          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="28" stroke="#2C2418" stroke-width="1"/>
-            <circle cx="40" cy="40" r="18" stroke="#2C2418" stroke-width="0.5" opacity="0.3"/>
-            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#2C2418" opacity="0.8"/>
-            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#2C2418" opacity="0.8"/>
-            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#2C2418" opacity="0.8"/>
-            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#2C2418" opacity="0.8"/>
-            <circle cx="40" cy="40" r="3" fill="#2C2418"/>
-          </svg>
-        </div>
-        <div class="pp-wordmark pp-wm-dark">Porto & Pimenta</div>
-        <div class="pp-wordmark-sub pp-wm-dark-sub">Brasserie</div>
-        <span class="cs-logo-cell-label">Reversed — On Light</span>
+        <img src="../assets/images/porto/MAIN_LOGO.png" alt="Porto & Pimenta logo on cream" style="filter: brightness(0) saturate(100%) invert(14%) sepia(30%) saturate(800%) hue-rotate(185deg) brightness(85%);">
+        <span class="cs-logo-cell-label" style="color:rgba(24,38,64,0.35)">Reversed — On Light</span>
       </div>
 
-      <!-- On Olive -->
-      <div class="cs-logo-cell lc-olive">
-        <div class="pp-mark">
-          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="28" stroke="rgba(240,230,214,0.4)" stroke-width="1"/>
-            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#F0E6D6" opacity="0.85"/>
-            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#F0E6D6" opacity="0.85"/>
-            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#F0E6D6" opacity="0.85"/>
-            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#F0E6D6" opacity="0.85"/>
-            <circle cx="40" cy="40" r="3" fill="#F0E6D6"/>
-          </svg>
-        </div>
-        <div class="pp-wordmark pp-wm-white">Porto & Pimenta</div>
-        <div class="pp-wordmark-sub pp-wm-white-sub">Brasserie</div>
-        <span class="cs-logo-cell-label">Secondary — On Olive</span>
-      </div>
-
-      <!-- On Burnt -->
       <div class="cs-logo-cell lc-burnt">
-        <div class="pp-mark">
-          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="28" stroke="rgba(240,230,214,0.35)" stroke-width="1"/>
-            <path d="M40,16 C43,26 43,32 40,40 C37,32 37,26 40,16Z" fill="#fff" opacity="0.85"/>
-            <path d="M64,40 C54,43 48,43 40,40 C48,37 54,37 64,40Z" fill="#fff" opacity="0.85"/>
-            <path d="M40,64 C37,54 37,48 40,40 C43,48 43,54 40,64Z" fill="#fff" opacity="0.85"/>
-            <path d="M16,40 C26,37 32,37 40,40 C32,43 26,43 16,40Z" fill="#fff" opacity="0.85"/>
-            <circle cx="40" cy="40" r="3" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="pp-wordmark pp-wm-white">Porto & Pimenta</div>
-        <div class="pp-wordmark-sub pp-wm-white-sub">Brasserie</div>
+        <img src="../assets/images/porto/MAIN_LOGO.png" alt="Porto & Pimenta logo on burnt orange">
         <span class="cs-logo-cell-label">Accent — On Burnt Orange</span>
+      </div>
+
+      <div class="cs-logo-cell lc-deep">
+        <img src="../assets/images/porto/MAIN_LOGO.png" alt="Porto & Pimenta logo on deep navy" style="opacity:0.75;">
+        <span class="cs-logo-cell-label">Monochrome — On Dark</span>
       </div>
 
     </div>
@@ -842,16 +698,16 @@
     <h2 class="cs-colors-heading">Rustic warmth,<br>bottled in five hues.</h2>
     <div class="cs-color-strip">
       <div class="cs-color-item">
-        <div class="cs-color-swatch" style="background:#5C6B3A"></div>
-        <div class="cs-color-name">Olive Grove</div>
-        <div class="cs-color-hex">#5C6B3A</div>
-        <div class="cs-color-use">Primary. Earthy, grounded, organic.</div>
+        <div class="cs-color-swatch" style="background:#182640"></div>
+        <div class="cs-color-name">Porto Navy</div>
+        <div class="cs-color-hex">#182640</div>
+        <div class="cs-color-use">Primary. Deep, coastal, commanding.</div>
       </div>
       <div class="cs-color-item">
-        <div class="cs-color-swatch" style="background:#C8734A"></div>
+        <div class="cs-color-swatch" style="background:#B04711"></div>
         <div class="cs-color-name">Burnt Orange</div>
-        <div class="cs-color-hex">#C8734A</div>
-        <div class="cs-color-use">Brand accent. Warmth and appetite.</div>
+        <div class="cs-color-hex">#B04711</div>
+        <div class="cs-color-use">Brand accent. Heat and appetite.</div>
       </div>
       <div class="cs-color-item">
         <div class="cs-color-swatch" style="background:#C6A858"></div>
@@ -866,9 +722,9 @@
         <div class="cs-color-use">Dark text. Rich and intimate.</div>
       </div>
       <div class="cs-color-item">
-        <div class="cs-color-swatch" style="background:#F0E6D6; border:1px solid #D4C8B4"></div>
-        <div class="cs-color-name">Linen</div>
-        <div class="cs-color-hex">#F0E6D6</div>
+        <div class="cs-color-swatch" style="background:#F6F0E8; border:1px solid #D4C8B4"></div>
+        <div class="cs-color-name">Linen Cream</div>
+        <div class="cs-color-hex">#F6F0E8</div>
         <div class="cs-color-use">Light. Warm backgrounds, menus.</div>
       </div>
     </div>
@@ -896,87 +752,61 @@
     </div>
   </section>
 
-  <!-- MOCKUPS -->
+  <!-- BRAND IN USE — REAL PHOTOS -->
   <section class="cs-mockups">
     <p class="cs-section-label" style="color:var(--pp-burnt)">Brand in Use</p>
     <h2 class="cs-mockups-heading">From table<br>to timeline.</h2>
-    <div class="cs-mockup-row">
+    <p class="cs-mockups-sub">Every touchpoint, considered.</p>
 
-      <!-- Menu -->
-      <div class="mockup-wrap">
-        <div class="mockup-menu">
-          <div class="menu-header">
-            <div class="menu-logo">Porto & Pimenta</div>
-            <div class="menu-hand">seasonal menu</div>
-          </div>
-          <div class="menu-section-title">Starters</div>
-          <div class="menu-lines">
-            <div class="menu-line"><div class="ml-name" style="width:70%"></div><div class="ml-price"></div></div>
-            <div class="menu-line"><div class="ml-name" style="width:55%"></div><div class="ml-price"></div></div>
-            <div class="menu-line"><div class="ml-name" style="width:65%"></div><div class="ml-price"></div></div>
-          </div>
-          <div class="menu-section-title">Mains</div>
-          <div class="menu-lines">
-            <div class="menu-line"><div class="ml-name" style="width:60%"></div><div class="ml-price"></div></div>
-            <div class="menu-line"><div class="ml-name" style="width:75%"></div><div class="ml-price"></div></div>
-            <div class="menu-line"><div class="ml-name" style="width:50%"></div><div class="ml-price"></div></div>
-          </div>
-          <div class="menu-footer">
-            <div class="menu-footer-text">Bandra · Mumbai</div>
-          </div>
+    <!-- Row 1: Menu / Wine Bottle / Packaging -->
+    <div class="cs-photo-row">
+
+      <!-- Menu: 1499x2000 portrait — show top/centre -->
+      <div class="cs-photo-item">
+        <img src="../assets/images/porto/Menu.png" alt="Porto & Pimenta seasonal menu design" style="object-position: center top;">
+        <div class="cs-photo-caption">
+          <div class="cs-photo-caption-label">Print · Collateral</div>
+          <div class="cs-photo-caption-name">Seasonal Menu</div>
         </div>
-        <div class="mockup-label">Seasonal Menu</div>
       </div>
 
-      <!-- Wine Label -->
-      <div class="mockup-label-wrap">
-        <div class="mockup-bottle-label">
-          <div class="bottle-tile-bg"></div>
-          <div class="bottle-mark">
-            <svg width="28" height="28" viewBox="0 0 80 80" fill="none">
-              <circle cx="40" cy="40" r="24" stroke="#5C6B3A" stroke-width="1"/>
-              <path d="M40,20 C42,28 42,34 40,40 C38,34 38,28 40,20Z" fill="#5C6B3A" opacity="0.8"/>
-              <path d="M60,40 C52,42 46,42 40,40 C46,38 52,38 60,40Z" fill="#5C6B3A" opacity="0.8"/>
-              <path d="M40,60 C38,52 38,46 40,40 C42,46 42,52 40,60Z" fill="#5C6B3A" opacity="0.8"/>
-              <path d="M20,40 C28,38 34,38 40,40 C34,42 28,42 20,40Z" fill="#5C6B3A" opacity="0.8"/>
-            </svg>
-          </div>
-          <div class="bottle-brand">Porto & Pimenta</div>
-          <div class="bottle-hand">house selection</div>
-          <div class="bottle-rule"></div>
-          <div class="bottle-year">Bandra · MMXXV</div>
+      <!-- Wine Bottle: 1499x2000 portrait — centre focus -->
+      <div class="cs-photo-item">
+        <img src="../assets/images/porto/Wine_Bottle.png" alt="Porto & Pimenta wine bottle label" style="object-position: center center;">
+        <div class="cs-photo-caption">
+          <div class="cs-photo-caption-label">Label · Design</div>
+          <div class="cs-photo-caption-name">House Wine Label</div>
         </div>
-        <div class="mockup-label">House Wine Label</div>
       </div>
 
-      <!-- Business Cards -->
-      <div class="mockup-wrap">
-        <div class="mockup-cards">
-          <div class="biz-card biz-card-back">
-            <div class="biz-card-back-mark">
-              <svg width="28" height="28" viewBox="0 0 80 80" fill="none">
-                <circle cx="40" cy="40" r="24" stroke="#2C2418" stroke-width="1" opacity="0.15"/>
-                <path d="M40,20 C42,28 42,34 40,40 C38,34 38,28 40,20Z" fill="#2C2418" opacity="0.12"/>
-                <path d="M60,40 C52,42 46,42 40,40 C46,38 52,38 60,40Z" fill="#2C2418" opacity="0.12"/>
-                <path d="M40,60 C38,52 38,46 40,40 C42,46 42,52 40,60Z" fill="#2C2418" opacity="0.12"/>
-                <path d="M20,40 C28,38 34,38 40,40 C34,42 28,42 20,40Z" fill="#2C2418" opacity="0.12"/>
-              </svg>
-            </div>
-            <div class="biz-card-back-info">
-              hello@portoepimenta.in<br>
-              portoepimenta.in<br>
-              Bandra West, Mumbai
-            </div>
-          </div>
-          <div class="biz-card biz-card-front">
-            <div>
-              <div class="biz-card-logo">Porto & Pimenta</div>
-              <div class="biz-card-logo-sub">Brasserie</div>
-            </div>
-            <div class="biz-card-name">Chef de Cuisine · Marco Fernandes</div>
-          </div>
+      <!-- Packaging: 2000x1500 landscape — centre -->
+      <div class="cs-photo-item">
+        <img src="../assets/images/porto/Packaging.png" alt="Porto & Pimenta branded packaging box" style="object-position: center center;">
+        <div class="cs-photo-caption">
+          <div class="cs-photo-caption-label">Packaging · Brand</div>
+          <div class="cs-photo-caption-name">Takeaway Packaging</div>
         </div>
-        <div class="mockup-label">Business Cards</div>
+      </div>
+
+    </div>
+
+    <!-- Row 2: Apron / T-shirt — both 2000x1500 landscape -->
+    <div class="cs-photo-row-2">
+
+      <div class="cs-photo-item">
+        <img src="../assets/images/porto/Apron.png" alt="Porto & Pimenta branded staff apron" style="object-position: center top;">
+        <div class="cs-photo-caption">
+          <div class="cs-photo-caption-label">Apparel · Staff</div>
+          <div class="cs-photo-caption-name">Staff Apron</div>
+        </div>
+      </div>
+
+      <div class="cs-photo-item">
+        <img src="../assets/images/porto/Tshirt.png" alt="Porto & Pimenta branded t-shirt" style="object-position: center center;">
+        <div class="cs-photo-caption">
+          <div class="cs-photo-caption-label">Merch · Apparel</div>
+          <div class="cs-photo-caption-name">Brand T-Shirt</div>
+        </div>
       </div>
 
     </div>
@@ -988,9 +818,9 @@
     <h2 class="cs-web-heading">Digital home,<br>analogue warmth.</h2>
     <div class="cs-browser">
       <div class="browser-bar">
-        <div class="browser-dot" style="background:#E8663C"></div>
+        <div class="browser-dot" style="background:#B04711"></div>
         <div class="browser-dot" style="background:#C6A858"></div>
-        <div class="browser-dot" style="background:#5C6B3A"></div>
+        <div class="browser-dot" style="background:#182640"></div>
         <div class="browser-url">portoepimenta.in</div>
       </div>
       <div class="browser-content">
@@ -1014,7 +844,6 @@
     <h2 class="cs-social-heading">Content that<br>feels hand-picked.</h2>
     <div class="cs-posts-grid">
 
-      <!-- Post 1: Grand Opening -->
       <div class="cs-post post-opening">
         <p class="post-eyebrow">Now Open</p>
         <div class="post-wm">Porto & Pimenta</div>
@@ -1022,18 +851,17 @@
         <p class="post-tagline">Seasonal plates.<br>Portuguese soul.<br>Bandra West, Mumbai.</p>
       </div>
 
-      <!-- Post 2: Dish Feature -->
       <div class="cs-post post-special">
-        <p class="post-eyebrow">Today's Special</p>
+        <div class="post-big-hand">Saudade</div>
+        <p class="post-eyebrow" style="position:relative;z-index:1">Today's Special</p>
         <div class="post-special-dish">Bacalhau<br>à Brás</div>
         <p class="post-tagline">Salt cod, crispy potatoes,<br>scrambled eggs. The Lisbon classic,<br>made with Konkan catch.</p>
       </div>
 
-      <!-- Post 3: Mood -->
       <div class="cs-post post-mood">
-        <div class="post-big-hand">Saudade</div>
+        <div class="post-big-hand" style="position:absolute;font-size:80px;opacity:0.06;color:var(--pp-burnt)">Saudade</div>
         <div class="post-wm">Porto & Pimenta</div>
-        <p class="post-tagline">That beautiful ache<br>for something far away.<br>We bring it closer.</p>
+        <p class="post-tagline" style="margin-top:10px">That beautiful ache<br>for something far away.<br>We bring it closer.</p>
       </div>
 
     </div>
