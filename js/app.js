@@ -28,7 +28,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── 4. IRO ↔ 色 MORPH ANIMATION ── */
+  /* ── 4. TORCH EFFECT on hero kanji (desktop only) ── */
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const heroSection = document.querySelector('.hero');
+  const heroKanji  = document.querySelector('.hero-kanji-bg');
+  if (!isTouch && heroSection && heroKanji) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroKanji.getBoundingClientRect();
+      heroKanji.style.setProperty('--torch-x', (e.clientX - rect.left) + 'px');
+      heroKanji.style.setProperty('--torch-y', (e.clientY - rect.top)  + 'px');
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      heroKanji.style.setProperty('--torch-x', '-600px');
+      heroKanji.style.setProperty('--torch-y', '-600px');
+    });
+  }
+
+  /* ── 5. IRO ↔ 色 MORPH ANIMATION ── */
+
   const morph = document.getElementById('heroMorph');
   if (morph) {
     let showKanji = false;
@@ -69,7 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── MOBILE NAV (called inline from HTML) ── */
 function toggleMobileNav() {
-  document.getElementById('mobileNav').classList.toggle('open');
+  const mobileNav = document.getElementById('mobileNav');
+  const hamburger = document.getElementById('hamburger');
+  const isOpen = mobileNav.classList.toggle('open');
+  if (hamburger) hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 
 /* ── COPY EMAIL (called inline from HTML) ── */

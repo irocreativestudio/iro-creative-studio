@@ -15,10 +15,10 @@
   --cyan:        #2CB5BF;
   --cream:       #F5F0EB;
   --cream-border:#E0DBD4;
-  --text-muted:  #777;
-  --text-dim:    #555;
-  --text-faint:  #888;
-  --text-ghost:  #999;
+  --text-muted:  #9a9a9a;
+  --text-dim:    #808080;
+  --text-faint:  #999;
+  --text-ghost:  #aaa;
   --font-display:'Sora', sans-serif;
   --font-body:   'Space Grotesk', sans-serif;
   --font-jp:     'Noto Serif JP', serif;
@@ -53,6 +53,14 @@ body {
 .reveal-d2 { transition-delay: 0.2s; }
 .reveal-d3 { transition-delay: 0.3s; }
 .reveal-d4 { transition-delay: 0.4s; }
+
+/* ===== FOCUS INDICATORS ===== */
+:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+a:focus-visible { outline-color: var(--cyan); }
+button:focus-visible { outline-color: var(--coral); outline-offset: 2px; }
 
 /* ===== NAV ===== */
 nav {
@@ -117,8 +125,22 @@ nav.scrolled { padding: 14px 48px; }
   transform: translateY(-50%);
   font-family: var(--font-jp);
   font-size: clamp(200px, 30vw, 400px);
-  color: var(--dark); line-height: 1;
-  pointer-events: none; user-select: none; opacity: 0.5;
+  color: var(--coral); line-height: 1;
+  pointer-events: none; user-select: none;
+  -webkit-mask-image: radial-gradient(
+    circle 220px at var(--torch-x, -600px) var(--torch-y, -600px),
+    rgba(0,0,0,1)    0%,
+    rgba(0,0,0,0.85) 25%,
+    rgba(0,0,0,0.4)  60%,
+    rgba(0,0,0,0.18) 100%
+  );
+  mask-image: radial-gradient(
+    circle 220px at var(--torch-x, -600px) var(--torch-y, -600px),
+    rgba(0,0,0,1)    0%,
+    rgba(0,0,0,0.85) 25%,
+    rgba(0,0,0,0.4)  60%,
+    rgba(0,0,0,0.18) 100%
+  );
 }
 
 .hero-content { position: relative; z-index: 1; max-width: 720px; }
@@ -253,9 +275,9 @@ nav.scrolled { padding: 14px 48px; }
 
 .work-item-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 24px;
-  background: linear-gradient(transparent, rgba(20,20,20,0.95));
-  z-index: 1;
+  padding: 80px 24px 24px;
+  background: linear-gradient(transparent 0%, rgba(14,14,14,0.75) 40%, rgba(14,14,14,0.97) 75%, rgba(14,14,14,1) 100%);
+  z-index: 2;
 }
 .work-item-overlay h3 {
   font-family: var(--font-display); font-weight: 700;
@@ -321,7 +343,14 @@ nav.scrolled { padding: 14px 48px; }
 
 .contact-form { max-width: 480px; margin: 36px auto 0; position: relative; z-index: 1; text-align: left; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-.form-group { margin-bottom: 12px; }
+.form-field { display: flex; flex-direction: column; }
+.form-group { margin-bottom: 12px; display: flex; flex-direction: column; }
+.contact-form label {
+  font-family: var(--font-body); font-size: 11px; font-weight: 500;
+  color: var(--text-faint); letter-spacing: 0.5px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.form-required-note { font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
 .contact-form input, .contact-form textarea {
   width: 100%; font-family: var(--font-body); font-size: 13px; font-weight: 400;
   color: var(--cream); background: var(--dark);
@@ -330,6 +359,11 @@ nav.scrolled { padding: 14px 48px; }
 }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-dim); }
 .contact-form input:focus, .contact-form textarea:focus { border-color: var(--coral); }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(232,102,60,0.2);
+  outline: none;
+}
 .contact-form textarea { resize: vertical; min-height: 100px; }
 .form-submit { width: 100%; margin-top: 4px; }
 .form-status { text-align: center; margin-top: 12px; font-size: 13px; color: var(--cyan); min-height: 20px; }
@@ -381,12 +415,36 @@ footer {
 
 /* ===== MOBILE NAV OVERLAY ===== */
 .mobile-nav {
-  display: none; position: fixed; inset: 0; z-index: 99;
+  display: flex;
+  position: fixed; inset: 0; z-index: 99;
   background: rgba(15,15,15,0.97);
   backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
   flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
-.mobile-nav.open { display: flex; }
+.mobile-nav.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Link + close button enter from below */
+.mobile-nav a,
+.mobile-nav-close {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.mobile-nav-close { transform: translateY(-12px); }
+
+.mobile-nav.open .mobile-nav-close       { opacity: 1; transform: translateY(0); transition-delay: 0.08s; }
+.mobile-nav.open a:nth-child(2)          { opacity: 1; transform: translateY(0); transition-delay: 0.14s; }
+.mobile-nav.open a:nth-child(3)          { opacity: 1; transform: translateY(0); transition-delay: 0.20s; }
+.mobile-nav.open a:nth-child(4)          { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+.mobile-nav.open a:nth-child(5)          { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
 .mobile-nav a {
   font-family: var(--font-display); font-weight: 800; font-size: 28px;
   color: var(--cream); text-decoration: none; letter-spacing: -1px;
@@ -518,14 +576,14 @@ footer {
 /* --- Porto & Pimenta --- */
 .proj-porto {
   position: absolute; inset: 0;
-  background: linear-gradient(145deg, #3D2E1A 40%, #1F170D 100%);
+  background: linear-gradient(145deg, #1E3050 40%, #0F1929 100%);
   overflow: hidden;
 }
 .proj-porto-tile {
   position: absolute; inset: 0;
   background-image:
-    radial-gradient(circle at 25% 25%, rgba(198,132,72,0.06) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(198,132,72,0.06) 1px, transparent 1px);
+    radial-gradient(circle at 25% 25%, rgba(176,71,17,0.07) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(176,71,17,0.07) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 .proj-porto-inner {
@@ -535,20 +593,20 @@ footer {
 .proj-porto-label {
   font-family: var(--font-body); font-size: 9px;
   text-transform: uppercase; letter-spacing: 3px;
-  color: rgba(198,132,72,0.5); margin-bottom: 14px;
+  color: rgba(176,71,17,0.7); margin-bottom: 14px;
 }
 .proj-porto-logo {
   font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
-  font-size: 28px; color: #F0E6D6; letter-spacing: -0.5px; line-height: 1.1;
+  font-size: 28px; color: #F6F0E8; letter-spacing: -0.5px; line-height: 1.1;
 }
 .proj-porto-sub {
   font-family: var(--font-body); font-size: 9px;
-  letter-spacing: 5px; color: rgba(198,168,88,0.55);
+  letter-spacing: 5px; color: rgba(198,168,88,0.65);
   text-transform: uppercase; margin-top: 6px;
 }
 .proj-porto-tagline {
   font-family: var(--font-body); font-size: 10px;
-  color: rgba(240,230,214,0.2); margin-top: 16px;
+  color: rgba(246,240,232,0.28); margin-top: 16px;
   letter-spacing: 0.2px; line-height: 1.6;
 }
 .proj-porto-swatches {
@@ -618,7 +676,8 @@ footer {
   .about-stats { gap: 24px; }
 
   .contact { padding: 60px 24px; }
-  .form-row { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-field { margin-bottom: 12px; }
 
   footer { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
 }
