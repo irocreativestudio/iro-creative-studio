@@ -1,195 +1,287 @@
-/* ============================================================
+/* ================================================================
    IRO Creative Studio — js/animations.js
-   ─────────────────────────────────────────────────────────────
-   Heavyweight animation layer. Loaded AFTER app.js.
-   Handles: Lenis smooth scroll, GSAP hero entrance,
-            custom cursor, nav scroll behavior.
-   Safe to delete this file to revert to original site behavior.
-   ============================================================ */
+   ─────────────────────────────────────────────────────────────────
+   Heavyweight animation engine. Loads AFTER app.js.
+   Uses: GSAP 3.12 + ScrollTrigger + Lenis (loaded via CDN in HTML)
+
+   STEP 1 — Lenis, Cursor, Hero entrance, Nav
+   STEP 2 — Marquee infinite loop (GSAP-driven)
+   ================================================================ */
 
 (function () {
+  'use strict';
 
-  /* Bail out if user prefers reduced motion */
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (typeof gsap === 'undefined') {
+    console.warn('[IRO] GSAP not loaded — animations skipped.');
     return;
   }
 
-  /* Wait for GSAP + Lenis to load (CDN scripts in <head>) */
-  window.addEventListener('load', initAnimations);
+  gsap.registerPlugin(ScrollTrigger);
 
-  function initAnimations() {
+  document.documentElement.classList.add('js-loaded');
+  document.body.classList.add('js-loaded');
 
-    if (typeof gsap === 'undefined') {
-      console.warn('[IRO] GSAP not loaded — animations skipped.');
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* ───────────────────────────────────────────────────────
-       1. LENIS SMOOTH SCROLL
-       ─────────────────────────────────────────────────────── */
-    let lenis = null;
-    if (typeof Lenis !== 'undefined') {
-      lenis = new Lenis({
-        duration: 1.15,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        smoothTouch: false,
-        touchMultiplier: 2,
-      });
-
-      lenis.on('scroll', ScrollTrigger.update);
-
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
-    }
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 
-    /* ───────────────────────────────────────────────────────
-       2. CUSTOM CURSOR (cream dot, grows on hover targets)
-       ─────────────────────────────────────────────────────── */
-    const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (isDesktop) {
-      const cursor = document.createElement('div');
-      cursor.className = 'iro-cursor';
-      document.body.appendChild(cursor);
-      document.body.classList.add('iro-cursor-on');
-
-      let mouseX = 0, mouseY = 0;
-      let curX = 0,   curY = 0;
-
-      window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.classList.add('active');
-      });
-
-      window.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
-      });
-
-      /* Smooth follow loop — lerp for buttery movement */
-      function tick() {
-        curX += (mouseX - curX) * 0.18;
-        curY += (mouseY - curY) * 0.18;
-        cursor.style.transform =
-          `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
-        requestAnimationFrame(tick);
-      }
-      tick();
-
-      /* Grow on interactive targets */
-      const hoverSelectors = 'a, button, .work-item, .service-card, .btn, [onclick], input, textarea';
-      const attachHover = () => {
-        document.querySelectorAll(hoverSelectors).forEach(el => {
-          el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
-        });
-      };
-      attachHover();
-
-      /* Re-attach after work grid is rendered (projects.js) */
-      setTimeout(attachHover, 200);
-      setTimeout(attachHover, 800);
-    }
-
-
-    /* ───────────────────────────────────────────────────────
-       3. HERO ENTRANCE TIMELINE — punchy 1.2s, 60fps
-       ─────────────────────────────────────────────────────── */
-    document.body.classList.add('hero-anim-ready');
-
-    const ease = 'power3.out';
-
-    const tl = gsap.timeline({
-      defaults: { ease: ease, duration: 0.9 },
-      delay: 0.15,
+  /* ════════════════════════════════════════════════════════════
+     1. LENIS SMOOTH SCROLL
+     ════════════════════════════════════════════════════════════ */
+  let lenis = null;
+  if (typeof Lenis !== 'undefined' && !reducedMotion) {
+    lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
     });
 
-    /* Big background kanji fades in first as a soft backdrop */
-    tl.fromTo('.hero-kanji-bg',
-      { opacity: 0, scale: 0.92 },
-      { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' },
-      0
-    );
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-    /* Eyebrow location label */
-    tl.fromTo('.hero-location',
-      { y: 24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7 },
-      0.1
-    );
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
 
-    /* Main headline rises fast */
-    tl.fromTo('.hero h1',
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.95 },
-      0.2
-    );
-
-    /* Divider line + label */
-    tl.fromTo('.hero-divider',
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7 },
-      0.45
-    );
-
-    /* Description */
-    tl.fromTo('.hero-desc',
-      { y: 24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.75 },
-      0.55
-    );
-
-    /* CTA buttons */
-    tl.fromTo('.hero-buttons',
-      { y: 24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.75 },
-      0.65
-    );
-
-
-    /* ───────────────────────────────────────────────────────
-       4. NAV SCROLL BEHAVIOR — hide on scroll down, show on up
-       ─────────────────────────────────────────────────────── */
-    const nav = document.getElementById('nav');
-    if (nav) {
-      nav.classList.add('nav-visible');
-      let lastScroll = 0;
-
-      const onScroll = () => {
-        const y = window.scrollY;
-
-        /* Premium hide-on-scroll-down behavior */
-        if (y > 200 && y > lastScroll + 8) {
-          nav.classList.add('nav-hidden');
-          nav.classList.remove('nav-visible');
-        } else if (y < lastScroll - 8 || y < 100) {
-          nav.classList.remove('nav-hidden');
-          nav.classList.add('nav-visible');
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          const target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -20, duration: 1.4 });
+          }
         }
-        lastScroll = y;
-      };
+      });
+    });
+  }
 
-      /* Use Lenis scroll if available, otherwise window */
-      if (lenis) {
-        lenis.on('scroll', onScroll);
-      } else {
-        window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ════════════════════════════════════════════════════════════
+     2. CUSTOM CURSOR — single cream dot, grows on hover
+     ════════════════════════════════════════════════════════════ */
+  if (!isTouch && !reducedMotion) {
+    const cursor = document.createElement('div');
+    cursor.className = 'iro-cursor';
+    document.body.appendChild(cursor);
+    document.body.classList.add('has-iro-cursor');
+
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let cx = mx;
+    let cy = my;
+
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!cursor.classList.contains('ready')) cursor.classList.add('ready');
+    });
+
+    function tick() {
+      cx += (mx - cx) * 0.18;
+      cy += (my - cy) * 0.18;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    const hoverSelector = 'a, button, .work-item, .service-card, input, textarea, [data-cursor-hover]';
+    document.querySelectorAll(hoverSelector).forEach((el) => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
+    document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
+  }
+
+
+  /* ════════════════════════════════════════════════════════════
+     3. WORD-SPLIT UTILITY
+     ════════════════════════════════════════════════════════════ */
+  function splitWords(el) {
+    if (!el || el.dataset.split === 'done') return [];
+
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    const textNodes = [];
+    let node;
+    while ((node = walker.nextNode())) textNodes.push(node);
+
+    textNodes.forEach((textNode) => {
+      const parent = textNode.parentNode;
+      if (!parent) return;
+      const text = textNode.textContent;
+      if (!text.trim()) return;
+
+      const frag = document.createDocumentFragment();
+      const parts = text.split(/(\s+)/);
+      parts.forEach((part) => {
+        if (/^\s+$/.test(part)) {
+          frag.appendChild(document.createTextNode(part));
+        } else if (part.length) {
+          const wrap = document.createElement('span');
+          wrap.className = 'split-word';
+          const inner = document.createElement('span');
+          inner.className = 'split-word-inner';
+          inner.textContent = part;
+          wrap.appendChild(inner);
+          frag.appendChild(wrap);
+        }
+      });
+      parent.replaceChild(frag, textNode);
+    });
+
+    el.dataset.split = 'done';
+    return el.querySelectorAll('.split-word-inner');
+  }
+
+
+  /* ════════════════════════════════════════════════════════════
+     4. HERO ENTRANCE TIMELINE — punchy, ~1.2s core
+     ════════════════════════════════════════════════════════════ */
+  function initHero() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const headline = hero.querySelector('h1');
+    const location = hero.querySelector('.hero-location');
+    const divider  = hero.querySelector('.hero-divider');
+    const desc     = hero.querySelector('.hero-desc');
+    const buttons  = hero.querySelector('.hero-buttons');
+    const kanjiBg  = hero.querySelector('.hero-kanji-bg');
+
+    let words = [];
+    if (headline) {
+      const morph = headline.querySelector('.hero-morph');
+      let morphPlaceholder = null;
+      if (morph) {
+        morphPlaceholder = document.createComment('morph');
+        morph.parentNode.replaceChild(morphPlaceholder, morph);
+      }
+      words = Array.from(splitWords(headline));
+      if (morph && morphPlaceholder) {
+        morphPlaceholder.parentNode.replaceChild(morph, morphPlaceholder);
       }
     }
 
+    gsap.set([location, divider, desc, buttons].filter(Boolean), { y: 18 });
 
-    /* ───────────────────────────────────────────────────────
-       5. ScrollTrigger refresh after fonts load
-       ─────────────────────────────────────────────────────── */
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    const tl = gsap.timeline({
+      defaults: { ease: 'expo.out' },
+      delay: 0.2,
+    });
+
+    if (kanjiBg) {
+      tl.to(kanjiBg, { opacity: 1, scale: 1, duration: 1.8, ease: 'expo.out' }, 0);
+    }
+    if (location) {
+      tl.to(location, { opacity: 1, y: 0, duration: 0.7 }, 0);
+    }
+    if (words.length) {
+      tl.to(words, { y: '0%', duration: 1.0, stagger: 0.05, ease: 'expo.out' }, 0.1);
+    }
+
+    const morph = hero.querySelector('.hero-morph');
+    if (morph) {
+      gsap.set(morph, { opacity: 0, y: 20 });
+      tl.to(morph, { opacity: 1, y: 0, duration: 0.9 }, 0.25);
+    }
+
+    if (divider) tl.to(divider, { opacity: 1, y: 0, duration: 0.7 }, 0.55);
+    if (desc)    tl.to(desc,    { opacity: 1, y: 0, duration: 0.7 }, 0.65);
+    if (buttons) tl.to(buttons, { opacity: 1, y: 0, duration: 0.7 }, 0.78);
+
+    return tl;
+  }
+
+
+  /* ════════════════════════════════════════════════════════════
+     5. NAV ENTRANCE + SCROLL BEHAVIOUR
+     ════════════════════════════════════════════════════════════ */
+  function initNav() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+
+    setTimeout(() => nav.classList.add('nav-ready'), 100);
+
+    const handleScroll = () => {
+      const y = lenis ? lenis.scroll : window.scrollY;
+      nav.classList.toggle('scrolled', y > 60);
+    };
+
+    if (lenis) {
+      lenis.on('scroll', handleScroll);
+    } else {
+      window.addEventListener('scroll', handleScroll, { passive: true });
     }
   }
 
+
+  /* ════════════════════════════════════════════════════════════
+     6. MARQUEE — GSAP infinite loop with hover slow-down
+     ════════════════════════════════════════════════════════════ */
+  function initMarquee() {
+    const marquee = document.querySelector('.iro-marquee');
+    if (!marquee) return;
+
+    const track = marquee.querySelector('.iro-marquee-track');
+    if (!track) return;
+
+    // Duplicate the items so we can loop seamlessly.
+    // We need at least 2x the viewport width.
+    const originalHTML = track.innerHTML;
+    track.innerHTML = originalHTML + originalHTML;
+
+    // Wait one frame for layout
+    requestAnimationFrame(() => {
+      const trackWidth = track.scrollWidth;
+      const halfWidth = trackWidth / 2; // since we duplicated
+
+      // Speed: pixels per second (slower = more elegant)
+      const speed = 60;
+      const duration = halfWidth / speed;
+
+      const tween = gsap.to(track, {
+        x: -halfWidth,
+        duration: duration,
+        ease: 'none',
+        repeat: -1,
+      });
+
+      // Hover slows down (doesn't stop) — feels alive
+      let targetSpeed = 1;
+      marquee.addEventListener('mouseenter', () => { targetSpeed = 0.25; });
+      marquee.addEventListener('mouseleave', () => { targetSpeed = 1; });
+
+      // Smooth lerp toward target speed
+      gsap.ticker.add(() => {
+        const current = tween.timeScale();
+        const next = current + (targetSpeed - current) * 0.06;
+        tween.timeScale(next);
+      });
+    });
+  }
+
+
+  /* ════════════════════════════════════════════════════════════
+     INIT
+     ════════════════════════════════════════════════════════════ */
+  function init() {
+    initHero();
+    initNav();
+    initMarquee();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
