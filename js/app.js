@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = Object.fromEntries(new FormData(form));
       try {
         await fetch(
-          'https://script.google.com/macros/s/AKfycbxkppCDv_ANycIuw7uy2ji_lt570G8KOT4sX9oJbXgfgypsRrHfZCURTvgTj1i0gaTOCA/exec',
+          'https://script.google.com/macros/s/AKfycbxVhswNj9rGzObeUggFK0UaguUBMZ9Vlubsu0ItT3MxVEyDc47_BlEuCAhLGo098P4yhw/exec',
           { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
         );
         status.textContent = "Message sent — we'll be in touch!";
