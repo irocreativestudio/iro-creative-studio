@@ -2,19 +2,18 @@
    IRO Creative Studio — css/animations.css
    ─────────────────────────────────────────────────────────────────
    Heavyweight animation layer. Loaded AFTER style.css.
-   Contains:
-     1. Custom cursor (desktop only)
-     2. Hero entrance pre-states (hidden until JS reveals)
-     3. Nav scroll behaviour additions
-     4. Lenis smooth scroll container
-     5. Reduced motion fallbacks
-   This file is ADDITIVE — safe to delete to roll back.
+   Sections:
+     STEP 1 — Hero + Nav + Cursor + Lenis
+     STEP 2 — Marquee strip
+     REDUCED MOTION FALLBACK
    ================================================================ */
 
 
 /* ════════════════════════════════════════════════════════════════
-   1. CUSTOM CURSOR — single cream dot, grows on hover
+   ░░░ STEP 1 ░░░
    ════════════════════════════════════════════════════════════════ */
+
+/* ── 1.1 CUSTOM CURSOR — single cream dot, grows on hover ── */
 .iro-cursor {
   position: fixed;
   top: 0;
@@ -34,13 +33,8 @@
   opacity: 0;
 }
 .iro-cursor.ready { opacity: 1; }
+.iro-cursor.hover { width: 44px; height: 44px; }
 
-.iro-cursor.hover {
-  width: 44px;
-  height: 44px;
-}
-
-/* Hide native cursor on desktop only */
 @media (hover: hover) and (pointer: fine) {
   body.has-iro-cursor,
   body.has-iro-cursor a,
@@ -50,17 +44,11 @@
     cursor: none !important;
   }
 }
-
-/* Disable cursor entirely on touch devices */
 @media (hover: none), (pointer: coarse) {
   .iro-cursor { display: none !important; }
 }
 
-
-/* ════════════════════════════════════════════════════════════════
-   2. HERO ENTRANCE PRE-STATES
-   Elements hidden until GSAP reveals them.
-   ════════════════════════════════════════════════════════════════ */
+/* ── 1.2 HERO ENTRANCE PRE-STATES ── */
 .js-loaded .hero-location,
 .js-loaded .hero-divider,
 .js-loaded .hero-desc,
@@ -68,18 +56,13 @@
   opacity: 0;
   will-change: transform, opacity;
 }
-
-.js-loaded .hero h1 {
-  opacity: 1;
-}
-
+.js-loaded .hero h1 { opacity: 1; }
 .js-loaded .hero-kanji-bg {
   opacity: 0;
   transform: scale(1.15);
   will-change: transform, opacity;
 }
 
-/* Word-split spans injected by JS */
 .split-word {
   display: inline-block;
   overflow: hidden;
@@ -92,10 +75,7 @@
   will-change: transform;
 }
 
-
-/* ════════════════════════════════════════════════════════════════
-   3. NAV ENTRANCE
-   ════════════════════════════════════════════════════════════════ */
+/* ── 1.3 NAV ENTRANCE ── */
 .js-loaded #nav {
   transform: translateY(-100%);
   opacity: 0;
@@ -109,10 +89,7 @@
   opacity: 1;
 }
 
-
-/* ════════════════════════════════════════════════════════════════
-   4. LENIS SMOOTH SCROLL
-   ════════════════════════════════════════════════════════════════ */
+/* ── 1.4 LENIS SMOOTH SCROLL ── */
 html.lenis,
 html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -121,7 +98,89 @@ html.lenis body { height: auto; }
 
 
 /* ════════════════════════════════════════════════════════════════
-   5. REDUCED MOTION — accessibility fallback
+   ░░░ STEP 2 ░░░ — MARQUEE STRIP
+   ════════════════════════════════════════════════════════════════ */
+
+.iro-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0F0F0F;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 36px 0;
+  user-select: none;
+}
+
+.iro-marquee::before,
+.iro-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.iro-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, #0F0F0F 0%, rgba(15,15,15,0) 100%);
+}
+.iro-marquee::after {
+  right: 0;
+  background: linear-gradient(-90deg, #0F0F0F 0%, rgba(15,15,15,0) 100%);
+}
+
+.iro-marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+}
+
+.iro-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: 1;
+  letter-spacing: -2px;
+  color: #E8663C;
+  padding: 0 40px;
+  flex-shrink: 0;
+}
+
+.iro-marquee-item .iro-marquee-dot {
+  display: inline-block;
+  margin-left: 80px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #E8663C;
+  opacity: 0.5;
+}
+
+.iro-marquee-item.kanji {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  color: #F5F0EB;
+  font-size: clamp(40px, 6vw, 80px);
+  letter-spacing: 0;
+}
+
+@media (max-width: 700px) {
+  .iro-marquee { padding: 26px 0; }
+  .iro-marquee-item { padding: 0 24px; }
+  .iro-marquee-item .iro-marquee-dot { margin-left: 48px; width: 10px; height: 10px; }
+  .iro-marquee::before,
+  .iro-marquee::after { width: 60px; }
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   ░░░ REDUCED MOTION FALLBACK ░░░
    ════════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   .js-loaded .hero-location,
@@ -135,4 +194,5 @@ html.lenis body { height: auto; }
   .split-word-inner { transform: none !important; }
   .iro-cursor { display: none !important; }
   .js-loaded #nav { transform: none !important; opacity: 1 !important; }
+  .iro-marquee-track { transform: none !important; }
 }
