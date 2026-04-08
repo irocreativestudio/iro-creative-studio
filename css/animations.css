@@ -1,0 +1,138 @@
+/* ================================================================
+   IRO Creative Studio — css/animations.css
+   ─────────────────────────────────────────────────────────────────
+   Heavyweight animation layer. Loaded AFTER style.css.
+   Contains:
+     1. Custom cursor (desktop only)
+     2. Hero entrance pre-states (hidden until JS reveals)
+     3. Nav scroll behaviour additions
+     4. Lenis smooth scroll container
+     5. Reduced motion fallbacks
+   This file is ADDITIVE — safe to delete to roll back.
+   ================================================================ */
+
+
+/* ════════════════════════════════════════════════════════════════
+   1. CUSTOM CURSOR — single cream dot, grows on hover
+   ════════════════════════════════════════════════════════════════ */
+.iro-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F5F0EB;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+  opacity: 0;
+}
+.iro-cursor.ready { opacity: 1; }
+
+.iro-cursor.hover {
+  width: 44px;
+  height: 44px;
+}
+
+/* Hide native cursor on desktop only */
+@media (hover: hover) and (pointer: fine) {
+  body.has-iro-cursor,
+  body.has-iro-cursor a,
+  body.has-iro-cursor button,
+  body.has-iro-cursor input,
+  body.has-iro-cursor textarea {
+    cursor: none !important;
+  }
+}
+
+/* Disable cursor entirely on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .iro-cursor { display: none !important; }
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   2. HERO ENTRANCE PRE-STATES
+   Elements hidden until GSAP reveals them.
+   ════════════════════════════════════════════════════════════════ */
+.js-loaded .hero-location,
+.js-loaded .hero-divider,
+.js-loaded .hero-desc,
+.js-loaded .hero-buttons {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.js-loaded .hero h1 {
+  opacity: 1;
+}
+
+.js-loaded .hero-kanji-bg {
+  opacity: 0;
+  transform: scale(1.15);
+  will-change: transform, opacity;
+}
+
+/* Word-split spans injected by JS */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.05;
+}
+.split-word-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   3. NAV ENTRANCE
+   ════════════════════════════════════════════════════════════════ */
+.js-loaded #nav {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              padding 0.3s ease,
+              background 0.4s ease;
+}
+.js-loaded #nav.nav-ready {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   4. LENIS SMOOTH SCROLL
+   ════════════════════════════════════════════════════════════════ */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+
+/* ════════════════════════════════════════════════════════════════
+   5. REDUCED MOTION — accessibility fallback
+   ════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .js-loaded .hero-location,
+  .js-loaded .hero-divider,
+  .js-loaded .hero-desc,
+  .js-loaded .hero-buttons,
+  .js-loaded .hero-kanji-bg {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .split-word-inner { transform: none !important; }
+  .iro-cursor { display: none !important; }
+  .js-loaded #nav { transform: none !important; opacity: 1 !important; }
+}
