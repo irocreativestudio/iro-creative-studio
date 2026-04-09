@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /projects/
+Disallow:
+
+Sitemap: https://www.irocreativestudio.com/sitemap.xml
