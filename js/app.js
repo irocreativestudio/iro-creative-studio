@@ -89,7 +89,11 @@ function toggleMobileNav() {
   const mobileNav = document.getElementById('mobileNav');
   const hamburger = document.getElementById('hamburger');
   const isOpen = mobileNav.classList.toggle('open');
-  if (hamburger) hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (hamburger) {
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  }
 }
 
 /* ── COPY EMAIL (called inline from HTML) ── */
