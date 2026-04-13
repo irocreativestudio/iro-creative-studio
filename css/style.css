@@ -112,12 +112,19 @@ nav.scrolled {
 .nav-hamburger {
   display: none; flex-direction: column;
   gap: 5px; cursor: pointer; padding: 4px;
+  background: none; border: none; outline: none;
 }
 .nav-hamburger span {
   width: 24px; height: 2px;
   background: var(--cream); border-radius: 1px;
-  transition: all 0.3s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  display: block;
 }
+
+/* Morph to X when active */
+.nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ===== HERO ===== */
 .hero {
@@ -467,31 +474,20 @@ footer {
   pointer-events: auto;
 }
 
-/* Link + close button enter from below */
-.mobile-nav a,
-.mobile-nav-close {
+/* Links enter from below with stagger */
+.mobile-nav a {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.mobile-nav-close { transform: translateY(-12px); }
-
-.mobile-nav.open .mobile-nav-close       { opacity: 1; transform: translateY(0); transition-delay: 0.08s; }
-.mobile-nav.open a:nth-child(2)          { opacity: 1; transform: translateY(0); transition-delay: 0.14s; }
-.mobile-nav.open a:nth-child(3)          { opacity: 1; transform: translateY(0); transition-delay: 0.20s; }
-.mobile-nav.open a:nth-child(4)          { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
-.mobile-nav.open a:nth-child(5)          { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
-.mobile-nav a {
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
   font-family: var(--font-display); font-weight: 800; font-size: 28px;
   color: var(--cream); text-decoration: none; letter-spacing: -1px;
-  transition: color 0.3s ease;
 }
 .mobile-nav a:hover { color: var(--coral); }
-.mobile-nav-close {
-  position: absolute; top: 24px; right: 28px;
-  font-size: 28px; color: var(--cream); cursor: pointer;
-  background: none; border: none; font-family: var(--font-body);
-}
+
+.mobile-nav.open a:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.10s; }
+.mobile-nav.open a:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.18s; }
+.mobile-nav.open a:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+.mobile-nav.open a:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.34s; }
 
 /* =====================================================
    PROJECT THUMBNAILS
