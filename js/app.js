@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  /* ── 5. CONTACT FORM (Google Apps Script) ── */
+  /* ── 6. CONTACT FORM (Google Apps Script) ── */
   const form   = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   if (form && status) {

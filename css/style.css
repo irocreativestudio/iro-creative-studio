@@ -684,6 +684,81 @@ footer {
   color: rgba(44,181,191,0.45);
 }
 
+/* --- Sable Pradhan --- */
+.proj-sable {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1b2530 0%, #243341 45%, #2f4352 100%);
+  overflow: hidden;
+}
+.proj-sable-grain {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 18% 32%, rgba(222,151,38,0.10) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 78% 68%, rgba(84,149,171,0.08) 1.5px, transparent 1.5px);
+  background-size: 34px 34px, 46px 46px;
+  opacity: 0.6;
+}
+.proj-sable-ghost {
+  position: absolute; right: 28px; bottom: -22px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300; font-style: italic;
+  font-size: 280px; line-height: 0.85;
+  color: rgba(222,151,38,0.06); letter-spacing: -6px;
+  user-select: none; pointer-events: none;
+}
+.proj-sable-inner {
+  position: absolute; left: 48px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.proj-sable-label {
+  font-family: var(--font-body); font-size: 9px;
+  text-transform: uppercase; letter-spacing: 3px;
+  color: #de9726; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.proj-sable-label::before {
+  content: ''; display: block;
+  width: 22px; height: 1px; background: #de9726; opacity: 0.7;
+}
+.proj-sable-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300; color: #F2EDE6;
+  font-size: 52px; letter-spacing: -1px; line-height: 1;
+}
+.proj-sable-logo em {
+  font-style: italic; color: #de9726;
+  font-weight: 300;
+}
+.proj-sable-sub {
+  font-family: var(--font-body); font-size: 10px;
+  letter-spacing: 4px; color: rgba(242,237,230,0.5);
+  text-transform: uppercase; margin-top: 10px;
+}
+.proj-sable-rule {
+  width: 36px; height: 1px; background: #de9726;
+  opacity: 0.6; margin: 18px 0;
+}
+.proj-sable-tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-weight: 300;
+  font-size: 14px; color: rgba(242,237,230,0.7);
+  max-width: 320px; line-height: 1.4;
+}
+.proj-sable-swatches {
+  display: flex; gap: 8px; margin-top: 18px;
+}
+.proj-sable-sw {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+@media (max-width: 900px) {
+  .proj-sable-inner { left: 24px; }
+  .proj-sable-logo { font-size: 34px; }
+  .proj-sable-ghost { font-size: 180px; right: 12px; }
+  .proj-sable-tagline { font-size: 12px; max-width: 220px; }
+}
+
 /* =====================================================
    ADD NEW PROJECT THUMBNAIL ABOVE THIS LINE
    ===================================================== */

@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Sable Pradhan — Personal Brand Identity | IRO Creative Studio</title>
+  <meta name="description" content="Sable Pradhan personal brand by IRO Creative Studio. Brand identity and collateral for a Kolkata-based corporate wellness consultant and mental health practitioner.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sora:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Sable Pradhan — client-provided palette */
+      --sp-amber:      #de9726;   /* PRIMARY accent */
+      --sp-cobalt:     #5495ab;   /* deep teal-blue */
+      --sp-mist:       #6b9daf;   /* soft blue-grey */
+      --sp-sage:       #7a9e8e;   /* muted sage */
+
+      /* derived dark & neutral grounds (no #000 / #fff — warmth preserved) */
+      --sp-ink-deep:   #162028;   /* deep cool ink for hero / dark slides */
+      --sp-ink:        #1F2D38;   /* primary dark ground */
+      --sp-ink-mid:    #2A3D4B;   /* elevated card on dark */
+      --sp-linen:      #F3EEE6;   /* warm linen surface */
+      --sp-cream:      #FAF6EE;   /* warm white */
+      --sp-charcoal:   #1C1C1C;   /* primary body text */
+      --sp-muted:      #8A8070;   /* captions / secondary copy */
+
+      /* fonts — per client brief */
+      --font-brand:    'Cormorant Garamond', Georgia, serif;
+      --font-body:     'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-display:  'Sora', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--sp-ink-deep);
+      color: var(--sp-cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    .cs-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(22,32,40,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(222,151,38,0.12);
+    }
+    .cs-nav-back {
+      font-family: var(--font-body); font-size: 11px; font-weight: 400;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(250,246,238,0.4);
+      text-decoration: none; transition: color 0.3s ease;
+    }
+    .cs-nav-back:hover { color: var(--sp-cream); }
+    .cs-nav-label {
+      font-family: var(--font-body); font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(250,246,238,0.3);
+    }
+    .cs-nav-label span { color: var(--sp-amber); }
+
+    /* ===== HERO ===== */
+    .cs-hero {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(84,149,171,0.18) 0%, transparent 55%),
+        radial-gradient(circle at 15% 85%, rgba(222,151,38,0.10) 0%, transparent 50%),
+        linear-gradient(160deg, #1F2D38 0%, #162028 55%, #0F1820 100%);
+      display: flex; align-items: flex-end;
+      padding: 0 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .cs-hero-grain {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(222,151,38,0.05) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 0 0, rgba(107,157,175,0.04) 1.5px, transparent 1.5px);
+      background-size: 40px 40px;
+    }
+    .cs-hero-number {
+      position: absolute; top: 120px; right: 48px;
+      font-family: var(--font-brand); font-weight: 300; font-style: italic;
+      font-size: 160px; color: rgba(222,151,38,0.08); line-height: 1;
+      letter-spacing: -8px; user-select: none;
+    }
+    .cs-hero-ghost {
+      position: absolute; right: 60px; bottom: 80px;
+      font-family: var(--font-brand); font-weight: 300; font-style: italic;
+      font-size: 380px; color: rgba(222,151,38,0.04);
+      line-height: 0.85; letter-spacing: -20px;
+      user-select: none; pointer-events: none;
+    }
+    .cs-hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .cs-hero-eyebrow {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--sp-amber); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .cs-hero-eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--sp-amber);
+    }
+    .cs-hero-title {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(56px, 9vw, 108px);
+      color: var(--sp-cream); line-height: 0.98;
+      letter-spacing: -2px; margin-bottom: 14px;
+    }
+    .cs-hero-title em {
+      font-style: italic; color: var(--sp-amber);
+      font-weight: 300;
+    }
+    .cs-hero-phrase {
+      font-family: var(--font-brand); font-weight: 300; font-style: italic;
+      font-size: clamp(20px, 2.4vw, 28px);
+      color: var(--sp-cobalt); line-height: 1.3;
+      letter-spacing: 0.2px; margin-bottom: 14px;
+    }
+    .cs-hero-tagline {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 15px; color: rgba(250,246,238,0.5);
+      letter-spacing: 0.2px; max-width: 560px; line-height: 1.6;
+    }
+    .cs-hero-chips {
+      display: flex; gap: 8px; margin-top: 36px; flex-wrap: wrap;
+    }
+    .cs-chip {
+      font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      padding: 6px 14px; border-radius: 3px; border: 1px solid;
+    }
+    .cs-chip-brand { color: var(--sp-amber); border-color: rgba(222,151,38,0.4); }
+    .cs-chip-dark  { color: rgba(250,246,238,0.4); border-color: rgba(255,255,255,0.12); }
+    .cs-hero-scroll {
+      position: absolute; bottom: 48px; right: 48px;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(250,246,238,0.22); writing-mode: vertical-rl;
+    }
+
+    /* ===== OVERVIEW ===== */
+    .cs-overview {
+      background: var(--sp-linen);
+      padding: 100px 48px;
+    }
+    .cs-overview-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .cs-section-label {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--sp-amber); margin-bottom: 20px;
+    }
+    .cs-brief-heading {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(28px, 3.2vw, 42px);
+      color: var(--sp-ink-deep); letter-spacing: -0.5px;
+      line-height: 1.15; margin-bottom: 26px;
+    }
+    .cs-brief-heading em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-brief-text {
+      font-weight: 300; font-size: 15px;
+      color: #4A4540; line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .cs-meta-block { border-top: 1px solid #D8CEBE; padding-top: 28px; }
+    .cs-meta-item { margin-bottom: 20px; }
+    .cs-meta-item-label {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--sp-muted); margin-bottom: 5px;
+    }
+    .cs-meta-item-value {
+      font-weight: 500; font-size: 14px; color: var(--sp-charcoal); line-height: 1.5;
+    }
+    .cs-deliverables { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .cs-deliverable {
+      font-size: 13px; font-weight: 300; color: #5A5248;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cs-deliverable::before {
+      content: ''; display: block;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sp-amber); flex-shrink: 0;
+    }
+
+    /* ===== LOGO SYSTEM ===== */
+    .cs-logos {
+      background: var(--sp-ink-deep);
+      padding: 100px 48px;
+    }
+    .cs-logos-heading {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--sp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+    }
+    .cs-logos-heading em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-logo-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cs-logo-cell {
+      border-radius: 10px; padding: 48px 40px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 300px; position: relative; overflow: hidden;
+    }
+    .cs-logo-cell-label {
+      position: absolute; bottom: 16px; left: 20px;
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+    }
+    .cs-logo-cell img {
+      width: 260px; height: auto; object-fit: contain;
+      position: relative; z-index: 1;
+    }
+
+    .lc-ink     { background: var(--sp-ink); }
+    .lc-ink .cs-logo-cell-label { color: rgba(250,246,238,0.3); }
+    .lc-linen   { background: var(--sp-linen); }
+    .lc-linen .cs-logo-cell-label { color: rgba(28,28,28,0.4); }
+    .lc-amber   { background: var(--sp-amber); }
+    .lc-amber .cs-logo-cell-label { color: rgba(250,246,238,0.6); }
+    .lc-cobalt  { background: var(--sp-cobalt); }
+    .lc-cobalt .cs-logo-cell-label { color: rgba(250,246,238,0.7); }
+
+    /* decorative grain on dark cells */
+    .lc-ink::before, .lc-cobalt::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 12px 12px, rgba(222,151,38,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 0 0, rgba(222,151,38,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* invert logo on amber/cobalt backgrounds so it reads */
+    .lc-amber img, .lc-cobalt img { filter: brightness(0) invert(1); }
+    /* on ink, keep logo warm white */
+    .lc-ink img { filter: brightness(0) invert(1); }
+
+    /* ===== COLOR PALETTE ===== */
+    .cs-colors {
+      background: var(--sp-linen);
+      padding: 100px 48px;
+    }
+    .cs-colors-heading {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--sp-ink-deep); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 48px;
+    }
+    .cs-colors-heading em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-color-strip {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      gap: 12px; align-items: end;
+    }
+    .cs-color-swatch { border-radius: 8px; margin-bottom: 16px; }
+    .cs-color-item:nth-child(1) .cs-color-swatch { height: 190px; }
+    .cs-color-item:nth-child(2) .cs-color-swatch { height: 160px; }
+    .cs-color-item:nth-child(3) .cs-color-swatch { height: 140px; }
+    .cs-color-item:nth-child(4) .cs-color-swatch { height: 120px; }
+    .cs-color-item:nth-child(5) .cs-color-swatch { height: 100px; }
+    .cs-color-item:nth-child(6) .cs-color-swatch { height: 90px; }
+    .cs-color-name {
+      font-family: var(--font-brand); font-weight: 600;
+      font-size: 15px; color: var(--sp-ink-deep); margin-bottom: 3px;
+    }
+    .cs-color-hex {
+      font-family: var(--font-body); font-weight: 400;
+      font-size: 12px; color: var(--sp-muted);
+      letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    .cs-color-use { font-size: 11px; font-weight: 300; color: #6A5A48; line-height: 1.5; }
+
+    /* ===== TYPOGRAPHY ===== */
+    .cs-type {
+      background: var(--sp-ink);
+      padding: 100px 48px;
+    }
+    .cs-type-heading {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--sp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+    }
+    .cs-type-heading em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-type-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .cs-type-block {
+      background: rgba(15,24,32,0.55);
+      border: 1px solid rgba(222,151,38,0.1);
+      border-radius: 10px; padding: 40px 36px;
+    }
+    .cs-type-role {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 3px;
+      color: rgba(250,246,238,0.3); margin-bottom: 28px;
+    }
+    .cs-type-specimen-brand {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(44px, 5.5vw, 72px);
+      color: var(--sp-cream); line-height: 1.05;
+      letter-spacing: -1.5px; margin-bottom: 18px;
+    }
+    .cs-type-specimen-brand em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-type-specimen-body {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: clamp(22px, 2.6vw, 32px);
+      color: var(--sp-cream); line-height: 1.35;
+      margin-bottom: 18px;
+    }
+    .cs-type-specimen-body strong { font-weight: 600; color: var(--sp-cream); }
+    .cs-type-name {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 13px; color: var(--sp-amber); margin-bottom: 4px;
+      letter-spacing: 0.2px;
+    }
+    .cs-type-desc {
+      font-size: 12px; font-weight: 300;
+      color: rgba(250,246,238,0.35); line-height: 1.7;
+    }
+    .cs-type-sample {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 12px; color: rgba(250,246,238,0.4);
+      line-height: 1.75; margin-top: 20px;
+      border-top: 1px solid rgba(222,151,38,0.1); padding-top: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== BUSINESS CARD — REAL ASSET ===== */
+    .cs-card {
+      background: var(--sp-ink-deep);
+      padding: 100px 48px;
+      border-top: 1px solid rgba(222,151,38,0.08);
+    }
+    .cs-card-heading {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--sp-cream); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 14px;
+    }
+    .cs-card-heading em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-card-sub {
+      font-family: var(--font-brand); font-weight: 300; font-style: italic;
+      font-size: 20px; color: var(--sp-mist);
+      margin-bottom: 48px;
+    }
+    .cs-card-frame {
+      background: linear-gradient(160deg, #1F2D38 0%, #162028 100%);
+      border-radius: 14px;
+      padding: 72px 48px;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(222,151,38,0.08);
+    }
+    .cs-card-frame::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(84,149,171,0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(222,151,38,0.06) 0%, transparent 45%);
+      pointer-events: none;
+    }
+    .cs-card-image {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 960px;
+      margin: 0 auto; display: block;
+      border-radius: 6px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    }
+    .cs-card-captions {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between;
+      max-width: 960px; margin: 24px auto 0;
+      gap: 24px;
+    }
+    .cs-card-caption {
+      flex: 1;
+    }
+    .cs-card-caption-label {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--sp-amber); margin-bottom: 4px;
+    }
+    .cs-card-caption-name {
+      font-family: var(--font-brand); font-size: 16px; font-weight: 400;
+      color: var(--sp-cream);
+    }
+
+    /* ===== PITCH DECK PREVIEW ===== */
+    .cs-deck {
+      background: var(--sp-linen);
+      padding: 100px 48px;
+    }
+    .cs-deck-heading {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--sp-ink-deep); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 48px;
+    }
+    .cs-deck-heading em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .cs-deck-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 20px;
+    }
+    .cs-slide {
+      aspect-ratio: 16 / 10;
+      border-radius: 8px;
+      padding: 32px 28px;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+    /* Slide A — Cover */
+    .slide-cover {
+      background: var(--sp-ink-deep);
+      border: 1px solid rgba(222,151,38,0.15);
+    }
+    .slide-cover::before {
+      content: 'SP'; position: absolute;
+      right: -20px; bottom: -50px;
+      font-family: var(--font-brand); font-style: italic; font-weight: 300;
+      font-size: 280px; line-height: 1;
+      color: rgba(222,151,38,0.06);
+      letter-spacing: -10px; pointer-events: none;
+    }
+    .slide-cover .slide-stripe {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--sp-amber);
+    }
+    .slide-cover-eyebrow {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--sp-amber); position: relative; z-index: 1;
+    }
+    .slide-cover-title {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(24px, 2.6vw, 36px);
+      color: var(--sp-cream); line-height: 1.05;
+      letter-spacing: -0.5px; position: relative; z-index: 1;
+    }
+    .slide-cover-title em { font-style: italic; color: var(--sp-amber); font-weight: 300; }
+    .slide-cover-meta {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 10px; letter-spacing: 2px;
+      color: rgba(250,246,238,0.35); position: relative; z-index: 1;
+    }
+
+    /* Slide B — Quote */
+    .slide-quote {
+      background: var(--sp-cobalt);
+    }
+    .slide-quote-mark {
+      font-family: var(--font-brand); font-style: italic; font-weight: 300;
+      font-size: 80px; color: rgba(255,255,255,0.18);
+      line-height: 0.6; margin-bottom: 10px;
+    }
+    .slide-quote-text {
+      font-family: var(--font-brand); font-style: italic; font-weight: 300;
+      font-size: clamp(16px, 1.7vw, 22px);
+      color: var(--sp-cream); line-height: 1.3;
+    }
+    .slide-quote-attr {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(250,246,238,0.5);
+    }
+
+    /* Slide C — Data */
+    .slide-data {
+      background: var(--sp-cream);
+      border: 1px solid #E6DDC8;
+    }
+    .slide-data-label {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--sp-amber);
+    }
+    .slide-data-number {
+      font-family: var(--font-brand); font-weight: 300;
+      font-size: clamp(64px, 8vw, 110px);
+      color: var(--sp-ink-deep); line-height: 0.95;
+      letter-spacing: -4px;
+    }
+    .slide-data-caption {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 12px; color: #5A5248;
+      line-height: 1.5; max-width: 220px;
+    }
+    .slide-data-caption strong { font-weight: 600; color: var(--sp-ink-deep); }
+
+    /* ===== PROJECT FOOTER ===== */
+    .cs-footer {
+      background: var(--sp-ink-deep);
+      padding: 80px 48px;
+      border-top: 1px solid rgba(222,151,38,0.08);
+    }
+    .cs-footer-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .cs-footer-credit {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px;
+      color: rgba(250,246,238,0.2); margin-bottom: 16px;
+    }
+    .cs-footer-studio {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 32px; color: var(--sp-amber);
+      letter-spacing: -1.5px; margin-bottom: 8px;
+    }
+    .cs-footer-studio span { color: rgba(250,246,238,0.4); }
+    .cs-footer-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(250,246,238,0.35); line-height: 1.7; max-width: 320px;
+    }
+    .cs-footer-nav {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
+    }
+    .cs-footer-next {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 13px; letter-spacing: -0.3px;
+      color: var(--sp-cream); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: gap 0.3s ease;
+    }
+    .cs-footer-next:hover { gap: 16px; color: var(--sp-amber); }
+    .cs-footer-back {
+      font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(250,246,238,0.3); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .cs-footer-back:hover { color: var(--sp-cream); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .cs-nav { padding: 16px 24px; }
+      .cs-hero { padding: 0 24px 60px; }
+      .cs-hero-number { display: none; }
+      .cs-hero-ghost { font-size: 220px; right: -20px; bottom: 60px; }
+      .cs-overview { padding: 60px 24px; }
+      .cs-overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cs-logos { padding: 60px 24px; }
+      .cs-logo-grid { grid-template-columns: 1fr; }
+      .cs-logo-cell img { width: 180px; }
+      .cs-colors { padding: 60px 24px; }
+      .cs-color-strip { grid-template-columns: repeat(3, 1fr); }
+      .cs-color-item:nth-child(n) .cs-color-swatch { height: 100px; }
+      .cs-type { padding: 60px 24px; }
+      .cs-type-grid { grid-template-columns: 1fr; }
+      .cs-card { padding: 60px 24px; }
+      .cs-card-frame { padding: 36px 20px; }
+      .cs-card-captions { flex-direction: column; gap: 16px; }
+      .cs-deck { padding: 60px 24px; }
+      .cs-deck-grid { grid-template-columns: 1fr; }
+      .cs-footer { padding: 60px 24px; }
+      .cs-footer-grid { grid-template-columns: 1fr; }
+      .cs-footer-nav { align-items: flex-start; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Sable Pradhan Personal Brand Identity",
+    "creator": {
+      "@type": "LocalBusiness",
+      "name": "IRO Creative Studio",
+      "url": "https://www.irocreativestudio.com"
+    },
+    "description": "Personal brand identity and collateral for Sable Pradhan, a Kolkata-based corporate wellness consultant, mental health practitioner, and EAP specialist.",
+    "url": "https://www.irocreativestudio.com/projects/sable-pradhan.html",
+    "dateCreated": "2026-04-01",
+    "keywords": "personal branding, mental health practitioner, corporate wellness, Kolkata, identity design, editorial branding",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "IRO Creative Studio Portfolio"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="cs-nav">
+    <a href="../index.html" class="cs-nav-back">← IRO Creative Studio</a>
+    <span class="cs-nav-label"><span>Sable Pradhan</span> / Personal Brand Identity</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="cs-hero-grain"></div>
+    <div class="cs-hero-number">01</div>
+    <div class="cs-hero-ghost">SP</div>
+    <div class="cs-hero-content">
+      <p class="cs-hero-eyebrow">Personal Brand · Identity · Print</p>
+      <h1 class="cs-hero-title">Sable<br><em>Pradhan.</em></h1>
+      <p class="cs-hero-phrase">Quiet depth — composed, intelligent, deeply welcoming.</p>
+      <p class="cs-hero-tagline">"The only practitioner who speaks the language of both the boardroom and the therapy room." An identity built for a clinician who operates with equal authority in C-suites and therapy rooms.</p>
+      <div class="cs-hero-chips">
+        <span class="cs-chip cs-chip-brand">Branding</span>
+        <span class="cs-chip cs-chip-dark">Identity System</span>
+        <span class="cs-chip cs-chip-dark">Business Card</span>
+        <span class="cs-chip cs-chip-dark">Pitch Deck</span>
+      </div>
+    </div>
+    <div class="cs-hero-scroll">Scroll to explore</div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="cs-overview">
+    <div class="cs-overview-grid">
+      <div>
+        <p class="cs-section-label">The Brief</p>
+        <h2 class="cs-brief-heading">A mental health brand that refuses the soft-pink wellness playbook — and the sterile clinical one.</h2>
+        <p class="cs-brief-text">Sable Pradhan is a corporate wellness consultant and mental health practitioner based in Kolkata — a clinician who sits with individuals in therapy, runs EAP programs for companies, and teaches inside schools. Rare combination. The brand had to earn credibility in all three rooms without flattening into any of them.</p>
+        <p class="cs-brief-text">We built the identity around a single phrase — <em>Quiet Depth</em> — and an editorial tension between roman and italic, warm amber and cool dusk, the composed and the intimate. Cormorant Garamond carries the emotional weight; Plus Jakarta Sans handles the clinical precision. The result is a practitioner's brand that looks as confident at a boardroom pitch as it does across a consultation room.</p>
+      </div>
+      <div>
+        <div class="cs-meta-block">
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Services</div>
+            <div class="cs-meta-item-value">Brand Identity, Print Collateral, Pitch Deck</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Industry</div>
+            <div class="cs-meta-item-value">Mental Health · Corporate Wellness · EAP</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Location</div>
+            <div class="cs-meta-item-value">Kolkata, India</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Year</div>
+            <div class="cs-meta-item-value">2026</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Deliverables</div>
+            <div class="cs-deliverables">
+              <span class="cs-deliverable">Primary wordmark &amp; SP monogram</span>
+              <span class="cs-deliverable">Colour system &amp; typography</span>
+              <span class="cs-deliverable">Business card (dual-sided)</span>
+              <span class="cs-deliverable">Pitch deck slide system</span>
+              <span class="cs-deliverable">Photography &amp; motif direction</span>
+              <span class="cs-deliverable">Social media template system</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO SYSTEM -->
+  <section class="cs-logos">
+    <p class="cs-section-label">The Mark</p>
+    <h2 class="cs-logos-heading">One mark,<br>four <em>rooms.</em></h2>
+    <div class="cs-logo-grid">
+      <div class="cs-logo-cell lc-ink">
+        <img src="../assets/images/sable-pradhan/brandmark.svg" alt="Sable Pradhan brandmark on deep ink background">
+        <div class="cs-logo-cell-label">Primary · on ink</div>
+      </div>
+      <div class="cs-logo-cell lc-linen">
+        <img src="../assets/images/sable-pradhan/brandmark.svg" alt="Sable Pradhan brandmark on warm linen background">
+        <div class="cs-logo-cell-label">Light · on linen</div>
+      </div>
+      <div class="cs-logo-cell lc-amber">
+        <img src="../assets/images/sable-pradhan/brandmark.svg" alt="Sable Pradhan brandmark reversed on amber">
+        <div class="cs-logo-cell-label">Accent · on amber</div>
+      </div>
+      <div class="cs-logo-cell lc-cobalt">
+        <img src="../assets/images/sable-pradhan/brandmark.svg" alt="Sable Pradhan brandmark reversed on cobalt">
+        <div class="cs-logo-cell-label">Secondary · on cobalt</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR PALETTE -->
+  <section class="cs-colors">
+    <p class="cs-section-label">Colour System</p>
+    <h2 class="cs-colors-heading">Amber is the light.<br>Cool tones are the <em>room.</em></h2>
+    <div class="cs-color-strip">
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#de9726"></div>
+        <div class="cs-color-name">Amber</div>
+        <div class="cs-color-hex">#DE9726</div>
+        <div class="cs-color-use">Primary accent. Labels, rule lines, CTAs.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#5495ab"></div>
+        <div class="cs-color-name">Cobalt</div>
+        <div class="cs-color-hex">#5495AB</div>
+        <div class="cs-color-use">Secondary. Quote slides, pull copy.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#6b9daf"></div>
+        <div class="cs-color-name">Mist</div>
+        <div class="cs-color-hex">#6B9DAF</div>
+        <div class="cs-color-use">Tint. Highlights, hover states.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#7a9e8e"></div>
+        <div class="cs-color-name">Sage</div>
+        <div class="cs-color-hex">#7A9E8E</div>
+        <div class="cs-color-use">Support. Calming fills, data charts.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#162028"></div>
+        <div class="cs-color-name">Deep Ink</div>
+        <div class="cs-color-hex">#162028</div>
+        <div class="cs-color-use">Dark ground. Cover slides, print front.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#F3EEE6; border:1px solid #DCD2C2"></div>
+        <div class="cs-color-name">Linen</div>
+        <div class="cs-color-hex">#F3EEE6</div>
+        <div class="cs-color-use">Warm surface. Body pages, card stock.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="cs-type">
+    <p class="cs-section-label">Typography</p>
+    <h2 class="cs-type-heading">Roman &amp; <em>italic</em>,<br>set together.</h2>
+    <div class="cs-type-grid">
+      <div class="cs-type-block">
+        <div class="cs-type-role">Display / Headline</div>
+        <div class="cs-type-specimen-brand">Sable<br><em>Pradhan.</em></div>
+        <div class="cs-type-name">Cormorant Garamond</div>
+        <div class="cs-type-desc">Editorial serif used at Light 300 — roman and italic mixed in the same line. The italic carries the emotional word; the roman anchors it. Never used at weight 600 or above.</div>
+        <div class="cs-type-sample">Weights · 300 Light · 400 Regular · 300 Italic · 400 Italic</div>
+      </div>
+      <div class="cs-type-block">
+        <div class="cs-type-role">Body / Interface</div>
+        <div class="cs-type-specimen-body">Grounded, accessible, <strong>direct.</strong><br>Clinical when it adds precision — never as gatekeeping.</div>
+        <div class="cs-type-name">Plus Jakarta Sans</div>
+        <div class="cs-type-desc">Clean humanist sans for body copy, captions, and labels. Labels always set in 500, uppercase, with generous 0.15–0.2em tracking — in amber.</div>
+        <div class="cs-type-sample">Weights · 300 Light · 400 Regular · 500 Medium · 600 SemiBold</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS CARD -->
+  <section class="cs-card">
+    <p class="cs-section-label">Print · Collateral</p>
+    <h2 class="cs-card-heading">A card that <em>carries</em> the room.</h2>
+    <p class="cs-card-sub">Dual-sided — ink front, linen back.</p>
+
+    <div class="cs-card-frame">
+      <img src="../assets/images/sable-pradhan/business-card.jpg" alt="Sable Pradhan business card — front and back, dual-sided print" class="cs-card-image">
+      <div class="cs-card-captions">
+        <div class="cs-card-caption">
+          <div class="cs-card-caption-label">Front · Ink</div>
+          <div class="cs-card-caption-name">Name &amp; monogram — amber stripe, ghost SP</div>
+        </div>
+        <div class="cs-card-caption">
+          <div class="cs-card-caption-label">Back · Linen</div>
+          <div class="cs-card-caption-name">Tagline &amp; contact — cobalt stripe, warmth forward</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PITCH DECK PREVIEW -->
+  <section class="cs-deck">
+    <p class="cs-section-label">Pitch Deck</p>
+    <h2 class="cs-deck-heading">A slide system built for the <em>boardroom.</em></h2>
+    <div class="cs-deck-grid">
+
+      <!-- Cover slide -->
+      <div class="cs-slide slide-cover">
+        <span class="slide-stripe"></span>
+        <div class="slide-cover-eyebrow">Corporate Wellness · 2026</div>
+        <div class="slide-cover-title">Sable<br><em>Pradhan.</em></div>
+        <div class="slide-cover-meta">EAP · Workshops · Consulting</div>
+      </div>
+
+      <!-- Quote slide -->
+      <div class="cs-slide slide-quote">
+        <div class="slide-quote-mark">"</div>
+        <div class="slide-quote-text">Burnout isn't a mindset problem. It's a structural one.</div>
+        <div class="slide-quote-attr">— Sable Pradhan</div>
+      </div>
+
+      <!-- Data slide -->
+      <div class="cs-slide slide-data">
+        <div class="slide-data-label">Clinical Hours</div>
+        <div class="slide-data-number">100<span style="color:var(--sp-amber); font-style:italic;">+</span></div>
+        <div class="slide-data-caption"><strong>Therapy sessions delivered</strong> — online and in-person, across adolescent, adult, and corporate cohorts.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECT FOOTER -->
+  <section class="cs-footer">
+    <div class="cs-footer-grid">
+      <div>
+        <div class="cs-footer-credit">A project by</div>
+        <div class="cs-footer-studio">IRO <span>Creative Studio</span></div>
+        <p class="cs-footer-desc">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
+      </div>
+      <div class="cs-footer-nav">
+        <a href="./koji-cafe.html" class="cs-footer-next">Next Project: Kōji Café →</a>
+        <a href="../index.html" class="cs-footer-back">← Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

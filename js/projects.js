@@ -4,13 +4,40 @@
 
 const PROJECTS = [
 
-  /* ── 01  KŌJI CAFÉ ───────────────────────────────────────── */
+  /* ── 01  SABLE PRADHAN ────────────────────────────────────── */
+  {
+    name:        'Sable Pradhan',
+    description: 'Personal brand identity for a corporate wellness consultant & mental health practitioner — Kolkata.',
+    tags:        ['Branding', 'Identity', 'Business Card'],
+    link:        'projects/sable-pradhan.html',
+    size:        'full',
+    thumb: `
+      <div class="proj-sable">
+        <div class="proj-sable-grain"></div>
+        <div class="proj-sable-ghost">SP</div>
+        <div class="proj-sable-inner">
+          <div class="proj-sable-label">Personal Brand · 2026</div>
+          <div class="proj-sable-logo">Sable <em>Pradhan</em></div>
+          <div class="proj-sable-sub">Mental Health Practitioner</div>
+          <div class="proj-sable-rule"></div>
+          <div class="proj-sable-tagline">Quiet depth — the language of both the boardroom and the therapy room.</div>
+          <div class="proj-sable-swatches">
+            <div class="proj-sable-sw" style="background:#de9726"></div>
+            <div class="proj-sable-sw" style="background:#5495ab"></div>
+            <div class="proj-sable-sw" style="background:#6b9daf"></div>
+            <div class="proj-sable-sw" style="background:#7a9e8e"></div>
+          </div>
+        </div>
+      </div>`
+  },
+
+  /* ── 02  KŌJI CAFÉ ───────────────────────────────────────── */
   {
     name:        'Kōji Café',
     description: 'Complete brand identity system for a specialty Japanese-inspired café in Bangalore.',
     tags:        ['Branding', 'Packaging', 'Identity System'],
     link:        'projects/koji-cafe.html',
-    size:        'full',
+    size:        'half',
     thumb: `
       <div class="proj-koji">
         <div class="proj-koji-kanji">麹</div>
