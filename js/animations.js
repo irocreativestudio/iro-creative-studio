@@ -179,7 +179,8 @@
     });
 
     if (kanjiBg) {
-      tl.to(kanjiBg, { opacity: 1, scale: 1, duration: 1.8, ease: 'expo.out' }, 0);
+      gsap.set(kanjiBg, { yPercent: -50 });
+      tl.to(kanjiBg, { opacity: 1, scale: 1, yPercent: -50, duration: 1.8, ease: 'expo.out' }, 0);
     }
     if (location) {
       tl.to(location, { opacity: 1, y: 0, duration: 0.7 }, 0);
