@@ -76,24 +76,25 @@
     }
     /* Animated node network background */
     .cs-hero-nodes {
-      position: absolute; inset: 0; overflow: hidden; opacity: 0.35;
+      position: absolute; inset: 0; overflow: hidden; opacity: 0.85;
     }
     .cs-hero-nodes svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .cs-hero-nodes svg line { stroke-width: 1.5px; }
     .node-pulse { animation: nodePulse 4s ease-in-out infinite; }
     .node-pulse-d1 { animation-delay: 0.6s; }
     .node-pulse-d2 { animation-delay: 1.2s; }
     .node-pulse-d3 { animation-delay: 1.8s; }
     .node-pulse-d4 { animation-delay: 2.4s; }
     @keyframes nodePulse {
-      0%, 100% { opacity: 0.3; r: 2; }
-      50% { opacity: 0.8; r: 3.5; }
+      0%, 100% { opacity: 0.6; r: 3; }
+      50% { opacity: 1; r: 5.5; }
     }
     .edge-flow { animation: edgeFlow 6s ease-in-out infinite; }
     .edge-flow-d1 { animation-delay: 1s; }
     .edge-flow-d2 { animation-delay: 2s; }
     @keyframes edgeFlow {
-      0%, 100% { opacity: 0.08; }
-      50% { opacity: 0.2; }
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.85; }
     }
 
     .cs-hero-number {
@@ -1149,7 +1150,7 @@
         <p class="cs-footer-desc">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
       </div>
       <div class="cs-footer-nav">
-        <a href="./porto-pimenta.html" class="cs-footer-next">Next Project: Porto & Pimenta →</a>
+        <a href="./piccios-pizzas.html" class="cs-footer-next">Next Project: Piccio's Pizzas →</a>
         <a href="../index.html" class="cs-footer-back">← Back to portfolio</a>
       </div>
     </div>

@@ -64,43 +64,6 @@
   }
 
 
-  /* ════════════════════════════════════════════════════════════
-     2. CUSTOM CURSOR — single cream dot, grows on hover
-     ════════════════════════════════════════════════════════════ */
-  if (!isTouch && !reducedMotion) {
-    const cursor = document.createElement('div');
-    cursor.className = 'iro-cursor';
-    document.body.appendChild(cursor);
-    document.body.classList.add('has-iro-cursor');
-
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let cx = mx;
-    let cy = my;
-
-    document.addEventListener('mousemove', (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-      if (!cursor.classList.contains('ready')) cursor.classList.add('ready');
-    });
-
-    function tick() {
-      cx += (mx - cx) * 0.18;
-      cy += (my - cy) * 0.18;
-      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
-      requestAnimationFrame(tick);
-    }
-    tick();
-
-    const hoverSelector = 'a, button, .work-item, .service-card, input, textarea, [data-cursor-hover]';
-    document.querySelectorAll(hoverSelector).forEach((el) => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-
-    document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
-    document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
-  }
 
 
   /* ════════════════════════════════════════════════════════════

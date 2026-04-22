@@ -59,8 +59,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const form   = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   if (form && status) {
+    const submitBtn = form.querySelector('.form-submit');
+    const requiredFields = form.querySelectorAll('[required]');
+    const emailField = form.querySelector('input[type="email"]');
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function triggerShake() {
+      submitBtn.classList.remove('shake');
+      void submitBtn.offsetWidth;
+      submitBtn.classList.add('shake');
+      submitBtn.addEventListener('animationend', () => submitBtn.classList.remove('shake'), { once: true });
+    }
+
+    // When user starts typing in an errored field, restore it
+    requiredFields.forEach(field => {
+      field.addEventListener('input', () => {
+        const isEmail = field === emailField;
+        const valid = isEmail ? emailRe.test(field.value.trim()) : field.value.trim();
+        if (valid) field.classList.remove('field-error');
+        const anyError = [...requiredFields].some(f => f.classList.contains('field-error'));
+        if (!anyError) submitBtn.textContent = 'Send message';
+      });
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Validate required fields
+      const invalid = [...requiredFields].filter(f => !f.value.trim());
+      // Also flag email if format is wrong
+      if (emailField && emailField.value.trim() && !emailRe.test(emailField.value.trim())) {
+        if (!invalid.includes(emailField)) invalid.push(emailField);
+      }
+      if (invalid.length) {
+        invalid.forEach(f => f.classList.add('field-error'));
+        submitBtn.textContent = 'Fill required fields';
+        triggerShake();
+        return;
+      }
+
       status.textContent = 'Sending…';
       status.style.color = 'var(--cyan)';
       status.style.opacity = '1';
@@ -73,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         status.textContent = "Message sent — we'll be in touch!";
         status.style.color = 'var(--cyan)';
+        submitBtn.textContent = 'Send message';
         form.reset();
         setTimeout(() => { status.style.opacity = '0'; }, 5000);
       } catch (err) {

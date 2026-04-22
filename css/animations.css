@@ -13,40 +13,6 @@
    ░░░ STEP 1 ░░░
    ════════════════════════════════════════════════════════════════ */
 
-/* ── 1.1 CUSTOM CURSOR — single cream dot, grows on hover ── */
-.iro-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #F5F0EB;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate3d(-50%, -50%, 0);
-  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.3s ease;
-  mix-blend-mode: difference;
-  will-change: transform;
-  opacity: 0;
-}
-.iro-cursor.ready { opacity: 1; }
-.iro-cursor.hover { width: 44px; height: 44px; }
-
-@media (hover: hover) and (pointer: fine) {
-  body.has-iro-cursor,
-  body.has-iro-cursor a,
-  body.has-iro-cursor button,
-  body.has-iro-cursor input,
-  body.has-iro-cursor textarea {
-    cursor: none !important;
-  }
-}
-@media (hover: none), (pointer: coarse) {
-  .iro-cursor { display: none !important; }
-}
 
 /* ── 1.2 HERO ENTRANCE PRE-STATES ── */
 .js-loaded .hero-location,
@@ -192,7 +158,6 @@ html.lenis body { height: auto; }
     transform: none !important;
   }
   .split-word-inner { transform: none !important; }
-  .iro-cursor { display: none !important; }
   .js-loaded #nav { transform: none !important; opacity: 1 !important; }
   .iro-marquee-track { transform: none !important; }
 }

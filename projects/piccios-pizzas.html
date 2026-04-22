@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Piccio's Pizzas — Brand Identity System | IRO Creative Studio</title>
+  <meta name="description" content="Piccio's Pizzas brand identity project. A vibrant Italian-American pizzeria identity system featuring logo design, signage, and brand collateral by IRO Creative Studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Piccio's brand palette */
+      --pc-red:     #C5282F;
+      --pc-gold:    #F5A623;
+      --pc-cream:   #FDF6ED;
+      --pc-dark:    #2B1810;
+      --pc-ivory:   #FAF3E8;
+      --pc-muted:   #8A7060;
+      /* Font pairing */
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Space Grotesk', sans-serif;
+      --font-ui:      'Sora', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--pc-dark);
+      color: var(--pc-cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    .cs-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(253,246,237,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(197,40,47,0.08);
+    }
+    .cs-nav-back {
+      font-family: var(--font-body); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(43,24,16,0.5);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .cs-nav-back:hover { color: var(--pc-dark); }
+    .cs-nav-label {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(43,24,16,0.35);
+    }
+    .cs-nav-label span { color: var(--pc-red); }
+
+    /* ===== HERO — BRIGHT WARM ===== */
+    .cs-hero {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 40%, rgba(245,166,35,0.08) 0%, transparent 70%),
+        linear-gradient(180deg, #FDF6ED 0%, #FAF0E0 40%, #F5EBDA 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    /* Subtle texture overlay */
+    .cs-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    /* Decorative cheese slice watermark */
+    .cs-hero-deco {
+      position: absolute;
+      top: 50%; right: 5%;
+      transform: translateY(-50%) rotate(15deg);
+      width: 280px; height: auto;
+      opacity: 0.06;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-hero-logo {
+      position: relative; z-index: 1;
+      width: clamp(180px, 28vw, 300px);
+      height: auto;
+      margin-bottom: 32px;
+    }
+    .cs-hero-eyebrow {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 4px;
+      color: var(--pc-red); margin-bottom: 20px;
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .cs-hero-eyebrow::before,
+    .cs-hero-eyebrow::after {
+      content: ''; display: block;
+      width: 28px; height: 1px; background: var(--pc-red); opacity: 0.4;
+    }
+    .cs-hero-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(56px, 10vw, 120px);
+      color: var(--pc-dark); line-height: 0.9;
+      letter-spacing: -2px; margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+    .cs-hero-title .accent {
+      font-weight: 700;
+    }
+    .cs-hero-subtitle {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 14px; color: var(--pc-muted);
+      letter-spacing: 6px; text-transform: uppercase;
+      margin-bottom: 28px;
+      position: relative; z-index: 1;
+    }
+    .cs-hero-tagline {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 18px; color: rgba(43,24,16,0.5);
+      font-style: italic; letter-spacing: 0.5px;
+      position: relative; z-index: 1;
+    }
+    .cs-hero-chips {
+      display: flex; gap: 8px; margin-top: 36px; flex-wrap: wrap;
+      justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .cs-chip {
+      font-family: var(--font-body);
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+      padding: 6px 14px; border-radius: 3px; border: 1px solid;
+    }
+    .cs-chip-brand { color: var(--pc-red); border-color: rgba(197,40,47,0.3); }
+    .cs-chip-light { color: rgba(43,24,16,0.4); border-color: rgba(43,24,16,0.12); }
+    .cs-hero-scroll {
+      position: absolute; bottom: 48px; right: 48px;
+      font-family: var(--font-body);
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+      color: rgba(43,24,16,0.2);
+      writing-mode: vertical-rl;
+    }
+
+    /* ===== OVERVIEW ===== */
+    .cs-overview {
+      background: #fff;
+      padding: 100px 48px;
+    }
+    .cs-overview-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .cs-section-label {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--pc-red); margin-bottom: 20px;
+    }
+    .cs-brief-heading {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(28px, 3.5vw, 40px);
+      color: var(--pc-dark); letter-spacing: -0.5px;
+      line-height: 1.15; margin-bottom: 24px;
+    }
+    .cs-brief-text {
+      font-family: var(--font-body); font-weight: 300; font-size: 15px;
+      color: #5A4A3A; line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .cs-meta-block { border-top: 1px solid #E8DDD0; padding-top: 28px; }
+    .cs-meta-item { margin-bottom: 20px; }
+    .cs-meta-item-label {
+      font-family: var(--font-body);
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2.5px;
+      color: #A89880; margin-bottom: 5px;
+    }
+    .cs-meta-item-value {
+      font-family: var(--font-body);
+      font-weight: 500; font-size: 14px; color: var(--pc-dark);
+      line-height: 1.5;
+    }
+    .cs-deliverables {
+      display: flex; flex-direction: column; gap: 6px; margin-top: 6px;
+    }
+    .cs-deliverable {
+      font-family: var(--font-body);
+      font-size: 13px; font-weight: 300; color: #6A5548;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cs-deliverable::before {
+      content: ''; display: block;
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--pc-red); flex-shrink: 0;
+    }
+
+    /* ===== LOGO SYSTEM ===== */
+    .cs-logos {
+      background: var(--pc-cream);
+      padding: 100px 48px;
+    }
+    .cs-logos-heading {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--pc-dark); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+    }
+    .cs-logo-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cs-logo-cell {
+      border-radius: 10px; padding: 48px 40px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 300px; position: relative;
+    }
+    .cs-logo-cell img {
+      max-width: 220px;
+      height: auto;
+    }
+    .cs-logo-cell-label {
+      position: absolute; bottom: 16px; left: 20px;
+      font-family: var(--font-body);
+      font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+    }
+    .lc-cream { background: var(--pc-ivory); }
+    .lc-cream .cs-logo-cell-label { color: rgba(43,24,16,0.35); }
+    .lc-red { background: var(--pc-red); }
+    .lc-red .cs-logo-cell-label { color: rgba(255,255,255,0.5); }
+    .lc-dark { background: var(--pc-dark); }
+    .lc-dark .cs-logo-cell-label { color: rgba(253,246,237,0.35); }
+    .lc-gold { background: var(--pc-gold); }
+    .lc-gold .cs-logo-cell-label { color: rgba(43,24,16,0.45); }
+
+    /* ===== COLOR PALETTE ===== */
+    .cs-colors {
+      background: #fff;
+      padding: 100px 48px;
+    }
+    .cs-colors-heading {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--pc-dark); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 56px;
+    }
+    .cs-color-strip {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; align-items: stretch;
+    }
+    .cs-color-item {
+      padding: 0 16px 24px;
+      position: relative;
+    }
+    .cs-color-swatch {
+      margin-bottom: 20px;
+      position: relative;
+      border-radius: 0;
+    }
+    .cs-color-item:nth-child(1) .cs-color-swatch { height: 200px; border-radius: 40% 35% 2px 2px / 20% 25% 0 0; }
+    .cs-color-item:nth-child(2) .cs-color-swatch { height: 170px; border-radius: 30% 45% 2px 2px / 18% 22% 0 0; }
+    .cs-color-item:nth-child(3) .cs-color-swatch { height: 150px; border-radius: 35% 40% 2px 2px / 22% 18% 0 0; }
+    .cs-color-item:nth-child(4) .cs-color-swatch { height: 130px; border-radius: 45% 30% 2px 2px / 16% 20% 0 0; }
+    .cs-color-item:nth-child(5) .cs-color-swatch { height: 110px; border-radius: 38% 42% 2px 2px / 24% 16% 0 0; }
+    .cs-color-name {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 16px; color: var(--pc-dark);
+      margin-bottom: 3px;
+    }
+    .cs-color-hex {
+      font-family: var(--font-body); font-size: 12px;
+      color: #A89880; letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    .cs-color-use {
+      font-family: var(--font-body);
+      font-size: 11px; color: #8A7060; line-height: 1.5;
+    }
+
+    /* ===== MOCKUPS CAROUSEL ===== */
+    .cs-mockups {
+      background: var(--pc-cream);
+      padding: 100px 0;
+      border-top: 1px solid rgba(197,40,47,0.06);
+      overflow: hidden;
+    }
+    .cs-mockups-heading {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(30px, 4.5vw, 48px);
+      color: var(--pc-dark); letter-spacing: -1px;
+      margin-top: 10px; margin-bottom: 60px;
+      padding: 0 48px;
+    }
+    .cs-mockups .cs-section-label {
+      padding: 0 48px;
+    }
+    .cs-ribbon-container {
+      width: 100%;
+      overflow: hidden;
+    }
+    .cs-ribbon {
+      display: flex;
+      width: max-content;
+      animation: ribbon-scroll 40s linear infinite;
+    }
+    .cs-ribbon:hover {
+      animation-play-state: paused;
+    }
+    .cs-ribbon-track {
+      display: flex;
+      gap: 32px;
+      padding-right: 32px;
+    }
+    .cs-ribbon-item {
+      height: 340px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(43,24,16,0.08);
+      flex-shrink: 0;
+    }
+    .cs-ribbon-item img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+    @keyframes ribbon-scroll {
+      to { transform: translateX(-50%); }
+    }
+
+    /* ===== PROJECT FOOTER ===== */
+    .cs-footer {
+      background: var(--pc-dark);
+      padding: 80px 48px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .cs-footer-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .cs-footer-credit {
+      font-family: var(--font-body); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 2.5px;
+      color: rgba(253,246,237,0.25); margin-bottom: 16px;
+    }
+    .cs-footer-studio {
+      font-family: var(--font-ui); font-weight: 800;
+      font-size: 32px; color: var(--pc-red);
+      letter-spacing: -1.5px; margin-bottom: 8px;
+    }
+    .cs-footer-studio span { color: rgba(253,246,237,0.4); }
+    .cs-footer-desc {
+      font-family: var(--font-body);
+      font-size: 13px; color: rgba(253,246,237,0.3);
+      line-height: 1.7; max-width: 320px;
+    }
+    .cs-footer-nav {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
+    }
+    .cs-footer-next {
+      font-family: var(--font-ui); font-weight: 800;
+      font-size: 13px;
+      color: var(--pc-cream); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: gap 0.3s ease;
+    }
+    .cs-footer-next:hover { gap: 16px; }
+    .cs-footer-back {
+      font-family: var(--font-body);
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(253,246,237,0.3); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .cs-footer-back:hover { color: var(--pc-cream); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .cs-nav { padding: 16px 24px; }
+      .cs-hero { padding: 100px 24px 60px; }
+      .cs-hero-deco { display: none; }
+      .cs-overview { padding: 60px 24px; }
+      .cs-overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cs-colors { padding: 60px 24px; }
+      .cs-color-strip { grid-template-columns: repeat(3, 1fr); }
+      .cs-color-item:nth-child(n) .cs-color-swatch { height: 100px; border-radius: 30% 30% 2px 2px / 15% 15% 0 0; }
+      .cs-mockups { padding: 60px 0; }
+      .cs-mockups-heading, .cs-mockups .cs-section-label { padding: 0 24px; }
+      .cs-ribbon-item { height: 240px; }
+      .cs-footer { padding: 60px 24px; }
+      .cs-footer-grid { grid-template-columns: 1fr; }
+      .cs-footer-nav { align-items: flex-start; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Piccio's Pizzas Brand Identity",
+    "creator": {
+      "@type": "LocalBusiness",
+      "name": "IRO Creative Studio",
+      "url": "https://www.irocreativestudio.com"
+    },
+    "description": "Complete brand identity system for Piccio's Pizzas, a heritage Italian-American pizzeria established in 1915 in NYC. Includes logo design, signage mockups, and brand collateral.",
+    "url": "https://www.irocreativestudio.com/projects/piccios-pizzas.html",
+    "dateCreated": "2025-04-22",
+    "keywords": "branding, pizza, restaurant identity, logo design, F&B branding",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "IRO Creative Studio Portfolio"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="cs-nav">
+    <a href="../index.html" class="cs-nav-back">← IRO Creative Studio</a>
+    <span class="cs-nav-label"><span>Piccio's Pizzas</span> / Brand Identity</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <img src="../assets/images/piccio/cheese-icon.png" alt="" class="cs-hero-deco">
+    <img src="../assets/images/piccio/stamp-logo.png" alt="Piccio's Pizzas stamp logo" class="cs-hero-logo">
+    <p class="cs-hero-eyebrow">Brand Identity & Signage</p>
+    <h1 class="cs-hero-title">Piccio's<br><span class="accent">Pizzas</span></h1>
+    <p class="cs-hero-subtitle">Esd 1915 · NYC</p>
+    <p class="cs-hero-tagline">"A slice of legacy, redefined."</p>
+    <div class="cs-hero-chips">
+      <span class="cs-chip cs-chip-brand">Branding</span>
+      <span class="cs-chip cs-chip-light">Logo System</span>
+      <span class="cs-chip cs-chip-light">Signage</span>
+      <span class="cs-chip cs-chip-light">Social Media</span>
+    </div>
+    <div class="cs-hero-scroll">Scroll to explore</div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="cs-overview">
+    <div class="cs-overview-grid">
+      <div>
+        <p class="cs-section-label">The Brief</p>
+        <h2 class="cs-brief-heading">Bringing a century-old slice shop into the modern era — without losing the soul.</h2>
+        <p class="cs-brief-text">Piccio's Pizzas is a heritage NYC pizzeria with roots stretching back to 1915. Over four generations, the brand had earned neighbourhood loyalty through sheer consistency — but its visual identity hadn't evolved past a faded awning and a hand-painted sign. They needed a brand that could travel beyond the block.</p>
+        <p class="cs-brief-text">The challenge was to honour over a century of Italian-American tradition while creating something that felt current, memorable, and ready for digital platforms. We built a dual-logo system — a classic primary wordmark anchored by a cheese-slice icon, and a bold stamp badge for packaging and signage — both designed to feel like they've always been there.</p>
+      </div>
+      <div>
+        <div class="cs-meta-block">
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Services</div>
+            <div class="cs-meta-item-value">Brand Identity & Strategy</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Industry</div>
+            <div class="cs-meta-item-value">Food & Beverage</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Location</div>
+            <div class="cs-meta-item-value">New York City, USA</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Year</div>
+            <div class="cs-meta-item-value">2025</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-item-label">Deliverables</div>
+            <div class="cs-deliverables">
+              <span class="cs-deliverable">Primary logo & wordmark</span>
+              <span class="cs-deliverable">Secondary stamp logo</span>
+              <span class="cs-deliverable">Cheese-slice brand icon</span>
+              <span class="cs-deliverable">Signage & storefront mockups</span>
+              <span class="cs-deliverable">Social media brand assets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- COLOUR PALETTE -->
+  <section class="cs-colors" id="colours">
+    <p class="cs-section-label">Colour System</p>
+    <h2 class="cs-colors-heading">A palette as bold<br>as the crust.</h2>
+    <div class="cs-color-strip">
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#C5282F"></div>
+        <div class="cs-color-name">Piccio Red</div>
+        <div class="cs-color-hex">#C5282F</div>
+        <div class="cs-color-use">Primary brand colour. Signage, badges, and CTAs.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#F5A623"></div>
+        <div class="cs-color-name">Cheese Gold</div>
+        <div class="cs-color-hex">#F5A623</div>
+        <div class="cs-color-use">Accent colour. Icon, highlights, and warmth.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#FDF6ED"></div>
+        <div class="cs-color-name">Dough Cream</div>
+        <div class="cs-color-hex">#FDF6ED</div>
+        <div class="cs-color-use">Light backgrounds and breathing space.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#2B1810"></div>
+        <div class="cs-color-name">Oven Dark</div>
+        <div class="cs-color-hex">#2B1810</div>
+        <div class="cs-color-use">Typography and dark-mode backgrounds.</div>
+      </div>
+      <div class="cs-color-item">
+        <div class="cs-color-swatch" style="background:#FFFFFF; border: 1px solid #E8DDD0;"></div>
+        <div class="cs-color-name">Paper White</div>
+        <div class="cs-color-hex">#FFFFFF</div>
+        <div class="cs-color-use">Clean sections and card surfaces.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCKUPS -->
+  <section class="cs-mockups" id="mockups">
+    <p class="cs-section-label">In Context</p>
+    <h2 class="cs-mockups-heading">From screen to street.</h2>
+    <div class="cs-ribbon-container">
+      <div class="cs-ribbon">
+        <div class="cs-ribbon-track">
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-01.jpg" alt="Piccio's Pizzas primary logo mockup" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-02.jpg" alt="Piccio's Pizzas hand holding pizza slice" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-03.jpg" alt="Piccio's Pizzas storefront signage" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-04.jpg" alt="Piccio's Pizzas tomato sauce stamp logo mockup" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-05.jpg" alt="Piccio's Pizzas logo evolution — old and new" loading="lazy"></div>
+        </div>
+        <div class="cs-ribbon-track">
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-01.jpg" alt="Piccio's Pizzas primary logo mockup" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-02.jpg" alt="Piccio's Pizzas hand holding pizza slice" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-03.jpg" alt="Piccio's Pizzas storefront signage" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-04.jpg" alt="Piccio's Pizzas tomato sauce stamp logo mockup" loading="lazy"></div>
+          <div class="cs-ribbon-item"><img src="../assets/images/piccio/carousel-05.jpg" alt="Piccio's Pizzas logo evolution — old and new" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT FOOTER -->
+  <section class="cs-footer">
+    <div class="cs-footer-grid">
+      <div>
+        <div class="cs-footer-credit">A project by</div>
+        <div class="cs-footer-studio">IRO <span>Creative Studio</span></div>
+        <p class="cs-footer-desc">We design identities, build websites, and create motion content for brands that refuse to be forgettable.</p>
+      </div>
+      <div class="cs-footer-nav">
+        <a href="./koji-cafe.html" class="cs-footer-next">Next Project: Kōji Café →</a>
+        <a href="../index.html"    class="cs-footer-back">← Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+</html>

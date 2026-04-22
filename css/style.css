@@ -6,6 +6,7 @@
 
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+a, button, [role="button"] { -webkit-tap-highlight-color: transparent; }
 
 :root {
   --charcoal:    #141414;
@@ -296,22 +297,24 @@ nav.scrolled {
   letter-spacing: -1.5px; margin-top: 10px; margin-bottom: 40px;
 }
 
-.work-grid { display: grid; gap: 20px; }
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
 
 .work-item {
-  border-radius: 10px; overflow: hidden;
+  border-radius: 20px; overflow: hidden;
   position: relative; background: var(--dark);
   transition: transform 0.4s ease;
 }
 .work-item:hover { transform: scale(1.015); }
-.work-item-full  { height: 320px; }
-.work-item-half  { height: 260px; }
-
-.work-half-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.work-item-full {
+  grid-row: span 2;
+  min-height: 580px;
 }
+.work-item-half { min-height: 280px; }
 
 .work-item-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
@@ -330,6 +333,55 @@ nav.scrolled {
   color: var(--cyan); background: rgba(44,181,191,0.1);
   padding: 4px 10px; border-radius: 3px;
   margin-top: 8px; margin-right: 6px;
+}
+
+/* ═══════════ CLIENTS RIBBON ═══════════ */
+.clients-ribbon {
+  padding: 100px 0 80px 0;
+  background: var(--cream);
+  overflow: hidden;
+}
+.clients-ribbon .label {
+  color: var(--charcoal);
+  opacity: 0.5;
+}
+.ribbon-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.ribbon-container::before, .ribbon-container::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 120px;
+  z-index: 2; pointer-events: none;
+}
+.ribbon-container::before {
+  left: 0; background: linear-gradient(to right, var(--cream), transparent);
+}
+.ribbon-container::after {
+  right: 0; background: linear-gradient(to left, var(--cream), transparent);
+}
+.ribbon-track {
+  display: flex;
+  width: max-content;
+  animation: logo-scroll 45s linear infinite;
+  gap: 100px;
+  padding: 0 50px;
+}
+.ribbon-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.85;
+  white-space: nowrap;
+  transition: opacity 0.4s ease;
+  user-select: none;
+}
+.ribbon-item:hover {
+  opacity: 1;
+}
+@keyframes logo-scroll {
+  to { transform: translateX(calc(-50% - 50px)); }
 }
 
 /* ===== ABOUT ===== */
@@ -405,8 +457,29 @@ nav.scrolled {
   outline: none;
 }
 .contact-form textarea { resize: vertical; min-height: 100px; }
-.form-submit { width: 100%; margin-top: 4px; }
+.form-submit { display: block; margin: 4px auto 0; padding-left: 40px; padding-right: 40px; }
 .form-status { text-align: center; margin-top: 12px; font-size: 13px; color: var(--cyan); min-height: 20px; }
+
+/* Form validation error states */
+.contact-form input.field-error,
+.contact-form textarea.field-error {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+.contact-form input.field-error::placeholder,
+.contact-form textarea.field-error::placeholder {
+  color: rgba(232,102,60,0.6);
+}
+
+@keyframes form-shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-6px); }
+  30%       { transform: translateX(5px); }
+  45%       { transform: translateX(-4px); }
+  60%       { transform: translateX(3px); }
+  75%       { transform: translateX(-2px); }
+}
+.form-submit.shake { animation: form-shake 0.45s ease; }
 
 /* Email with copy button */
 .contact-email { margin-top: 24px; position: relative; z-index: 1; }
@@ -759,6 +832,72 @@ footer {
   .proj-sable-tagline { font-size: 12px; max-width: 220px; }
 }
 
+/* --- Piccio's Pizzas --- */
+.proj-piccios {
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, #FDF6ED 30%, #F5EBDA 70%, #E8DDD0 100%);
+  overflow: hidden;
+}
+.proj-piccios-deco {
+  position: absolute; right: -20px; bottom: -20px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197,40,47,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.proj-piccios-cheese {
+  position: absolute; right: 28px; top: 20px;
+  width: 36px; height: auto;
+  opacity: 0.25;
+  transform: rotate(15deg);
+  pointer-events: none; user-select: none;
+}
+.proj-piccios-inner {
+  position: absolute; left: 32px; top: 50%;
+  transform: translateY(-50%);
+}
+.proj-piccios-label {
+  font-family: var(--font-body); font-size: 9px;
+  text-transform: uppercase; letter-spacing: 3px;
+  color: #C5282F; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.proj-piccios-label::before {
+  content: ''; display: block;
+  width: 22px; height: 1px; background: #C5282F; opacity: 0.5;
+}
+.proj-piccios-logo {
+  font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
+  font-size: 36px; color: #2B1810; letter-spacing: -0.5px; line-height: 1;
+}
+.proj-piccios-logo em {
+  font-style: italic; color: #C5282F;
+  font-weight: 700;
+}
+.proj-piccios-sub {
+  font-family: var(--font-body); font-size: 10px;
+  letter-spacing: 5px; color: rgba(197,40,47,0.6);
+  text-transform: uppercase; margin-top: 6px;
+}
+.proj-piccios-tagline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-weight: 400;
+  font-size: 13px; color: rgba(43,24,16,0.45);
+  max-width: 240px; line-height: 1.5; margin-top: 14px;
+}
+.proj-piccios-swatches {
+  display: flex; gap: 7px; margin-top: 14px;
+}
+.proj-piccios-sw {
+  width: 15px; height: 15px; border-radius: 50%;
+  border: 1px solid rgba(43,24,16,0.08);
+}
+@media (max-width: 900px) {
+  .proj-piccios-inner { left: 24px; }
+  .proj-piccios-logo { font-size: 28px; }
+  .proj-piccios-tagline { font-size: 11px; max-width: 200px; }
+}
+
 /* =====================================================
    ADD NEW PROJECT THUMBNAIL ABOVE THIS LINE
    ===================================================== */
@@ -783,9 +922,9 @@ footer {
   .services-kanji { font-size: 44px; }
 
   .work { padding: 60px 24px; }
-  .work-item-full { height: 220px; }
-  .work-half-grid { grid-template-columns: 1fr; gap: 16px; }
-  .work-item-half { height: 200px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .work-item-full { grid-row: span 1; min-height: 260px; }
+  .work-item-half { min-height: 220px; }
 
   .about { padding: 60px 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }

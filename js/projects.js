@@ -4,28 +4,27 @@
 
 const PROJECTS = [
 
-  /* ── 01  SABLE PRADHAN ────────────────────────────────────── */
+  /* ── 01  PICCIO'S PIZZAS ──────────────────────────────────── */
   {
-    name:        'Sable Pradhan',
-    description: 'Personal brand identity for a corporate wellness consultant & mental health practitioner — Kolkata.',
-    tags:        ['Branding', 'Identity', 'Business Card'],
-    link:        'projects/sable-pradhan.html',
+    name:        'Piccio\'s Pizzas',
+    description: 'Heritage brand identity for a century-old Italian-American pizzeria in New York City.',
+    tags:        ['Branding', 'Logo System', 'Signage'],
+    link:        'projects/piccios-pizzas.html',
     size:        'full',
     thumb: `
-      <div class="proj-sable">
-        <div class="proj-sable-grain"></div>
-        <div class="proj-sable-ghost">SP</div>
-        <div class="proj-sable-inner">
-          <div class="proj-sable-label">Personal Brand · 2026</div>
-          <div class="proj-sable-logo">Sable <em>Pradhan</em></div>
-          <div class="proj-sable-sub">Mental Health Practitioner</div>
-          <div class="proj-sable-rule"></div>
-          <div class="proj-sable-tagline">Quiet depth — the language of both the boardroom and the therapy room.</div>
-          <div class="proj-sable-swatches">
-            <div class="proj-sable-sw" style="background:#de9726"></div>
-            <div class="proj-sable-sw" style="background:#5495ab"></div>
-            <div class="proj-sable-sw" style="background:#6b9daf"></div>
-            <div class="proj-sable-sw" style="background:#7a9e8e"></div>
+      <div class="proj-piccios">
+        <div class="proj-piccios-deco"></div>
+        <img class="proj-piccios-cheese" src="assets/images/piccio/cheese-icon.png" alt="">
+        <div class="proj-piccios-inner">
+          <div class="proj-piccios-label">Brand Identity · 2025</div>
+          <div class="proj-piccios-logo">Piccio's <em>Pizzas</em></div>
+          <div class="proj-piccios-sub">Esd 1915 · NYC</div>
+          <div class="proj-piccios-tagline">A slice of legacy, redefined.</div>
+          <div class="proj-piccios-swatches">
+            <div class="proj-piccios-sw" style="background:#C5282F"></div>
+            <div class="proj-piccios-sw" style="background:#F5A623"></div>
+            <div class="proj-piccios-sw" style="background:#FDF6ED"></div>
+            <div class="proj-piccios-sw" style="background:#2B1810"></div>
           </div>
         </div>
       </div>`
@@ -53,34 +52,6 @@ const PROJECTS = [
             <div class="proj-koji-swatch" style="background:#F5ECD7"></div>
           </div>
         </div>
-      </div>`
-  },
-
-  /* ── 02  VERDANT LABS ────────────────────────────────────── */
-  {
-    name:        'Verdant Labs',
-    description: 'Brand identity for a Bangalore-based clean-tech startup.',
-    tags:        ['Branding', 'Identity'],
-    link:        'projects/verdant-labs.html',
-    size:        'half',
-    thumb: `
-      <div class="proj-verdant">
-        <div class="proj-verdant-grid"></div>
-        <div class="proj-verdant-inner">
-          <div class="proj-verdant-mark-wrap">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <polygon points="20,3 37,35 3,35" stroke="#7AB38A" stroke-width="1.5" fill="none"/>
-              <polygon points="20,11 31,33 9,33" stroke="#7AB38A" stroke-width="0.75" fill="none" opacity="0.4"/>
-              <circle cx="20" cy="26" r="2.5" fill="#7AB38A" opacity="0.7"/>
-              <circle cx="5"  cy="34" r="1.5" fill="#7AB38A" opacity="0.35"/>
-              <circle cx="35" cy="34" r="1.5" fill="#7AB38A" opacity="0.35"/>
-            </svg>
-          </div>
-          <div class="proj-verdant-logo">VERDANT</div>
-          <div class="proj-verdant-sub">LABS</div>
-          <div class="proj-verdant-tagline">Clean energy.<br>Honest design.</div>
-        </div>
-        <div class="proj-verdant-circle-deco"></div>
       </div>`
   },
 
@@ -122,62 +93,7 @@ const PROJECTS = [
           <div class="proj-axion-tagline">Decisions at the<br>speed of data.</div>
         </div>
       </div>`
-  },
-
-  /* ── 04  PORTO & PIMENTA ─────────────────────────────────── */
-  {
-    name:        'Porto & Pimenta',
-    description: 'Full brand package for a Portuguese-inspired brasserie in Mumbai.',
-    tags:        ['Branding', 'Web Design', 'Social Media'],
-    link:        'projects/porto-pimenta.html',
-    size:        'half',
-    thumb: `
-      <div class="proj-porto">
-        <div class="proj-porto-tile"></div>
-        <div class="proj-porto-inner">
-          <div class="proj-porto-label">Brand · Web · Social · 2025</div>
-          <div class="proj-porto-logo">Porto & Pimenta</div>
-          <div class="proj-porto-sub">Brasserie</div>
-          <div class="proj-porto-tagline">Seasonal plates.<br>Portuguese soul.</div>
-          <div class="proj-porto-swatches">
-            <div class="proj-porto-sw" style="background:#5C6B3A"></div>
-            <div class="proj-porto-sw" style="background:#C8734A"></div>
-            <div class="proj-porto-sw" style="background:#C6A858"></div>
-            <div class="proj-porto-sw" style="background:#F0E6D6"></div>
-          </div>
-        </div>
-        <div class="proj-porto-deco">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-            <!-- Azulejo diamond tile — distinct from Koji's petal mark -->
-            <rect x="14" y="14" width="52" height="52" rx="4" stroke="#C6A858" stroke-width="0.75" transform="rotate(45 40 40)"/>
-            <rect x="22" y="22" width="36" height="36" rx="2" stroke="#C6A858" stroke-width="0.5" opacity="0.5" transform="rotate(45 40 40)"/>
-            <line x1="40" y1="4" x2="40" y2="76" stroke="#C6A858" stroke-width="0.5" opacity="0.3"/>
-            <line x1="4" y1="40" x2="76" y2="40" stroke="#C6A858" stroke-width="0.5" opacity="0.3"/>
-            <circle cx="40" cy="40" r="4" fill="#C6A858" opacity="0.6"/>
-            <circle cx="40" cy="18" r="2" fill="#C6A858" opacity="0.35"/>
-            <circle cx="40" cy="62" r="2" fill="#C6A858" opacity="0.35"/>
-            <circle cx="18" cy="40" r="2" fill="#C6A858" opacity="0.35"/>
-            <circle cx="62" cy="40" r="2" fill="#C6A858" opacity="0.35"/>
-          </svg>
-        </div>
-      </div>`
-  },
-
-  /* ── COMING SOON TEASER ──────────────────────────────────── */
-  {
-    name:        'More Coming Soon',
-    description: 'New projects currently in development.',
-    tags:        ['Stay Tuned'],
-    link:        null,
-    size:        'half',
-    thumb: `
-      <div class="proj-coming">
-        <div class="proj-coming-inner">
-          <div class="proj-coming-dot"></div>
-          <div class="proj-coming-text">Next project dropping soon</div>
-        </div>
-      </div>`
-  },
+  }
 
 ];
 
@@ -205,25 +121,10 @@ function renderWorkGrid() {
   const grid = document.getElementById('workGrid');
   if (!grid) return;
 
-  let html = '';
-  let i    = 0;
-
-  while (i < PROJECTS.length) {
-    const p = PROJECTS[i];
-
-    if (p.size === 'full') {
-      html += _buildCard(p, 'work-item-full');
-      i++;
-    } else {
-      const row = [];
-      while (i < PROJECTS.length && PROJECTS[i].size === 'half' && row.length < 2) {
-        row.push(PROJECTS[i]);
-        i++;
-      }
-      const cards = row.map(p => _buildCard(p, 'work-item-half')).join('');
-      html += `<div class="work-half-grid">${cards}</div>`;
-    }
-  }
+  const html = PROJECTS.map((p, idx) => {
+    const sizeClass = idx === 0 ? 'work-item-full' : 'work-item-half';
+    return _buildCard(p, sizeClass);
+  }).join('');
 
   grid.innerHTML = html;
 }
