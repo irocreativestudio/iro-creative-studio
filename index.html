@@ -169,7 +169,7 @@
   </section>
 
   <!-- ═══════════ CLIENTS RIBBON ═══════════ -->
-  <section class="clients-ribbon reveal reveal-d1">
+  <section class="clients-ribbon">
     <p class="label" style="text-align:center; margin-bottom: 40px;">Brands we've shaped</p>
     <div class="ribbon-container">
       <div class="ribbon-track">
@@ -283,10 +283,32 @@
           <input type="email" id="contactEmail" name="email" placeholder="Email address" required aria-required="true">
         </div>
       </div>
+      <!-- Project Type: Tag Selector -->
       <div class="form-group">
-        <label for="contactSubject">Project type</label>
-        <input type="text" id="contactSubject" name="subject" placeholder="e.g. Branding, Website, Social Media">
+        <label>Project type</label>
+        <div class="tag-selector" id="tagSelector">
+          <button type="button" class="tag-option" data-value="Branding" onclick="toggleTag(this)">Branding</button>
+          <button type="button" class="tag-option" data-value="Website" onclick="toggleTag(this)">Website</button>
+          <button type="button" class="tag-option" data-value="Social Media Design" onclick="toggleTag(this)">Social Media Design</button>
+        </div>
+        <input type="hidden" id="contactSubject" name="subject">
       </div>
+
+
+      <!-- Budget Picker -->
+      <div class="form-group">
+        <label>Budget</label>
+        <div class="budget-picker">
+          <div class="currency-toggle">
+            <button type="button" class="currency-btn active" data-currency="INR" onclick="setCurrency(this)">INR</button>
+            <button type="button" class="currency-btn" data-currency="USD" onclick="setCurrency(this)">USD</button>
+          </div>
+          <input type="number" class="budget-amount-input" id="budgetAmount" placeholder="25000" min="0" oninput="resetSetBtn()">
+          <button type="button" class="budget-set-btn" id="budgetSetBtn" onclick="setBudget()">SET</button>
+        </div>
+        <input type="hidden" id="budgetHidden" name="budget">
+      </div>
+
       <div class="form-group">
         <label for="contactMessage">Tell us about your project *</label>
         <textarea id="contactMessage" name="message" placeholder="Describe your project goals, timeline, and budget…" required aria-required="true"></textarea>
@@ -340,5 +362,43 @@
   <!-- Heavyweight Animations (Loads last) -->
   <script src="js/animations.js"></script>
 
+  <!-- Tag selector + Budget slider logic -->
+  <script>
+    // ── Tag selector ──
+    const selectedTags = new Set();
+    function toggleTag(btn) {
+      const val = btn.dataset.value;
+      if (selectedTags.has(val)) {
+        selectedTags.delete(val);
+        btn.classList.remove('selected');
+      } else {
+        selectedTags.add(val);
+        btn.classList.add('selected');
+      }
+      document.getElementById('contactSubject').value = [...selectedTags].join(', ');
+    }
+
+    // ── Budget Picker ──
+    let selectedCurrency = 'INR';
+    function setCurrency(btn) {
+      document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedCurrency = btn.dataset.currency;
+      resetSetBtn();
+    }
+    function setBudget() {
+      const amount = document.getElementById('budgetAmount').value;
+      if (!amount || parseInt(amount) <= 0) return;
+      const formatted = parseInt(amount).toLocaleString('en-IN');
+      document.getElementById('budgetHidden').value = `${selectedCurrency} ${formatted}`;
+      const btn = document.getElementById('budgetSetBtn');
+      btn.classList.add('confirmed');
+    }
+    function resetSetBtn() {
+      const btn = document.getElementById('budgetSetBtn');
+      if (btn) btn.classList.remove('confirmed');
+      document.getElementById('budgetHidden').value = '';
+    }
+  </script>
 </body>
 </html>

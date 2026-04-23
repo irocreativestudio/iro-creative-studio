@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Validate required fields
       const invalid = [...requiredFields].filter(f => !f.value.trim());
-      // Also flag email if format is wrong
       if (emailField && emailField.value.trim() && !emailRe.test(emailField.value.trim())) {
         if (!invalid.includes(emailField)) invalid.push(emailField);
       }
@@ -130,7 +129,22 @@ document.addEventListener('DOMContentLoaded', () => {
       status.style.color = 'var(--cyan)';
       status.style.opacity = '1';
 
-      const data = Object.fromEntries(new FormData(form));
+      // Build data manually so dynamic fields (tags, budget) are always captured
+      const data = {
+        name:    document.getElementById('contactName')?.value.trim()    || '',
+        email:   document.getElementById('contactEmail')?.value.trim()   || '',
+        subject: document.getElementById('contactSubject')?.value.trim() || '',
+        budget:  (() => {
+          const hidden = document.getElementById('budgetHidden')?.value;
+          if (hidden) return hidden;
+          const amt = document.getElementById('budgetAmount')?.value;
+          if (!amt) return '';
+          const cur = document.querySelector('.currency-btn.active')?.dataset.currency || 'INR';
+          return `${cur} ${parseInt(amt).toLocaleString('en-IN')}`;
+        })(),
+        message: document.getElementById('contactMessage')?.value.trim() || ''
+      };
+
       try {
         await fetch(
           'https://script.google.com/macros/s/AKfycbxVhswNj9rGzObeUggFK0UaguUBMZ9Vlubsu0ItT3MxVEyDc47_BlEuCAhLGo098P4yhw/exec',
@@ -138,8 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         status.textContent = "Message sent — we'll be in touch!";
         status.style.color = 'var(--cyan)';
-        submitBtn.textContent = 'Send message';
+        submitBtn.textContent = 'Book a Discovery Call';
         form.reset();
+        // Also reset tag buttons
+        document.querySelectorAll('.tag-option').forEach(b => b.classList.remove('selected'));
+        if (typeof selectedTags !== 'undefined') selectedTags.clear();
         setTimeout(() => { status.style.opacity = '0'; }, 5000);
       } catch (err) {
         status.textContent = 'Something went wrong. Try emailing us directly.';
