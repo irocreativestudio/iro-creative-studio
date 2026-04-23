@@ -5,6 +5,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ── 0. FORCE HERO VIDEO PLAY (Safari iOS fallback) ── */
+  const heroVid = document.querySelector('.hero-video');
+  if (heroVid) { heroVid.play().catch(() => {}); }
+
   /* ── 1. RENDER WORK GRID (from projects.js data) ── */
   renderWorkGrid();
 
