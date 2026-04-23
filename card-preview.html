@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRO — Service Card Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --coral:  #E8663C;
+      --cyan:   #2FE8F6;
+      --cream:  #F5F0EB;
+      --charcoal: #141414;
+      --font-display: 'Sora', sans-serif;
+      --font-body:    'Space Grotesk', sans-serif;
+      --font-jp:      'Noto Serif JP', serif;
+    }
+
+    html, body {
+      font-family: var(--font-body);
+      background: #000000;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Outer page wrapper ── */
+    .page {
+      min-height: 100vh;
+      padding: 80px 60px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Section header ── */
+    .section-head {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 56px;
+    }
+    .section-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: var(--coral);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    .section-kanji {
+      font-family: var(--font-jp);
+      font-size: 64px;
+      color: rgba(255,255,255,0.15);
+      line-height: 1;
+    }
+
+    /* ── Grid ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1100px;
+      align-items: start;
+    }
+
+    /* ── Card shell — almost square, few px taller ── */
+    .svc-card {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1 / 1.08;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;   /* group centred vertically */
+      box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.45s cubic-bezier(0.22,1,0.36,1);
+    }
+    .svc-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+
+    /* No stagger — all cards aligned at same top */
+
+    /* ── Full-bleed gradient background image ── */
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    /* Kanji watermark removed */
+
+    /* ── Text overlay — centred, equal top/bottom padding ── */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      padding: 32px 24px;
+      text-align: left;
+      background: none;          /* no scrim — gradient images handle contrast */
+    }
+
+    /* Heading: Sora Light */
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 400;          /* Sora Regular */
+      color: #ffffff;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* Body: Space Grotesk Light */
+    .card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;          /* Space Grotesk Light */
+      color: #ffffff;
+      line-height: 1.65;
+      max-width: 92%;
+    }
+
+    /* ── Preview note ── */
+    .preview-note {
+      margin-top: 64px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.4px;
+      text-align: center;
+    }
+    .preview-note strong { color: var(--coral); font-weight: 600; }
+
+    @media (max-width: 860px) {
+      .cards-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .card-2, .card-3 { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Section Header -->
+  <div class="section-head">
+    <div>
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">Three ways we<br>bring color.</h2>
+    </div>
+    <span class="section-kanji">色</span>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-grid">
+
+    <!-- ═══ CARD 1 — Branding & Identity ═══ -->
+    <div class="svc-card card-1">
+      <!-- Gradient 1 (teal/cyan dominant with brown stroke) -->
+      <div class="card-bg" style="background-image: url('Gradient 1.png');"></div>
+      <!-- Text content with scrim -->
+      <div class="card-content">
+        <h3 class="card-title">Branding &amp;<br>Identity</h3>
+        <p class="card-desc">Logos, brand systems, and visual guidelines that make you unmistakable. From strategy to final assets — a complete identity built to last</p>
+      </div>
+    </div>
+
+    <!-- ═══ CARD 2 — Web Design ═══ -->
+    <div class="svc-card card-2">
+      <!-- Gradient 2 (coral/salmon with teal accent stroke) -->
+      <div class="card-bg" style="background-image: url('Gradient 2.png');"></div>
+      <div class="card-content">
+        <h3 class="card-title">Web Design &amp;<br>Development</h3>
+        <p class="card-desc">Responsive sites and landing pages that look sharp and convert visitors into clients. Clean code, fast loads, built for real results</p>
+      </div>
+    </div>
+
+    <!-- ═══ CARD 3 — Social Media & Motion ═══ -->
+    <div class="svc-card card-3">
+      <!-- Gradient 3 (coral/peach with deep teal corner) -->
+      <div class="card-bg" style="background-image: url('Gradient 3.png');"></div>
+      <div class="card-content">
+        <h3 class="card-title">Social Media &amp;<br>Motion</h3>
+        <p class="card-desc">Reels, carousels, and animated graphics that stop the scroll. Content designed to perform — not just look good in a portfolio</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="preview-note">
+    ✦ Preview only — <strong>confirm to apply</strong> to the live website.
+  </p>
+
+</div>
+</body>
+</html>

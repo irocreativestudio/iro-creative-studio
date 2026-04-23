@@ -44,6 +44,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── 4b. HERO PARALLAX (scroll from hero → services) ── */
+  if (!isTouch) {
+    const heroVideo   = document.querySelector('.hero-video');
+    const heroContent = document.querySelector('.hero-content');
+    const heroKanjiEl = document.querySelector('.hero-kanji-bg');
+    let parallaxTicking = false;
+
+    const applyParallax = () => {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      // only animate while hero is in view range
+      if (y < vh * 1.2) {
+        if (heroVideo)   heroVideo.style.transform   = `translate3d(0, ${y * 0.45}px, 0) scale(${1 + y * 0.00015})`;
+        if (heroContent) heroContent.style.transform = `translate3d(0, ${y * 0.22}px, 0)`;
+        if (heroContent) heroContent.style.opacity   = Math.max(0, 1 - y / (vh * 0.9));
+        if (heroKanjiEl) heroKanjiEl.style.transform = `translate3d(0, calc(-50% + ${y * 0.3}px), 0)`;
+      }
+      parallaxTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!parallaxTicking) {
+        requestAnimationFrame(applyParallax);
+        parallaxTicking = true;
+      }
+    }, { passive: true });
+  }
+
   /* ── 5. IRO ↔ 色 MORPH ANIMATION ── */
 
   const morph = document.getElementById('heroMorph');
