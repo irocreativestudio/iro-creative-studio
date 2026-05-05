@@ -107,29 +107,14 @@ nav.scrolled {
 }
 .nav-links a:hover { color: var(--cyan); }
 
-/* Nav CTA — glassmorphic pill with orange accent text */
-.nav-cta-glass {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--coral);
-  background: rgba(20,20,20,0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(232,102,60,0.25);
-  border-radius: 40px;
-  padding: 12px 28px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
-  white-space: nowrap;
+.nav-links a.nav-cta-text {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
-.nav-cta-glass:hover {
-  border-color: rgba(232,102,60,0.5);
-  color: #F07A55;
-  background: rgba(232,102,60,0.08);
+.nav-links a.nav-cta-text:hover {
+  color: var(--coral);
 }
 
 .nav-hamburger {
@@ -1110,7 +1095,6 @@ footer {
   nav { padding: 16px 24px; }
   nav.scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
-  .nav-cta-glass { display: none; }
   .nav-hamburger { display: flex; }
 
   /* Fix: prevent any section from overflowing horizontally */

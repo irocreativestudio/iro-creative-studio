@@ -64,6 +64,9 @@ nav {
   color: var(--orange);
 }
 .nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 36px;
@@ -97,6 +100,7 @@ nav {
   text-align: center;
   padding: 100px 56px 88px;
   border-bottom: 1px solid var(--border);
+  background: url('../assets/images/engine-bg.png') top center/cover no-repeat;
 }
 .hero-eyebrow {
   display: inline-block;
@@ -727,78 +731,121 @@ nav {
 .f-logo .k { color: var(--orange); font-size: 12px; }
 .f-note { font-size: 12px; color: var(--text-faint); }
 
-/* ─── STICKY BAR ─── */
-.sticky-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  background: rgba(10,10,10,0.96);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid var(--border-md);
-  padding: 16px 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+/* ─── HOVER ANIMATIONS ─── */
+
+/* Card lift + glow on hover */
+.engine-card {
+  transform: translateY(0);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
-.sticky-bar.visible {
+.engine-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange-bd);
+  box-shadow: 0 0 0 1px var(--orange-lo), 0 16px 48px rgba(232,102,60,0.12);
+}
+.engine-card.featured:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+  box-shadow: 0 0 0 1px rgba(232,102,60,0.3), 0 16px 56px rgba(232,102,60,0.18);
+}
+
+/* Mode card hover glow */
+.mode-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.mode-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+/* Feature list items slide on hover */
+.card-features li {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.engine-card:hover .card-features li {
+  transform: translateX(4px);
+}
+
+/* Button micro-animation */
+.card-btn {
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.card-btn:active {
+  transform: scale(0.96);
+}
+
+/* Hero stat hover pulse */
+.hero-stat {
+  transition: background 0.3s ease;
+}
+.hero-stat:hover {
+  background: rgba(255,255,255,0.03);
+}
+.hero-stat-n {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.hero-stat:hover .hero-stat-n {
+  color: var(--orange);
+  transform: scale(1.08);
+}
+
+/* Nav links underline animation */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--white);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* See-more button hover */
+.see-more-btn {
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.see-more-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Footer CTA buttons */
+.btn-orange {
+  transition: opacity 0.2s, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-orange:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,102,60,0.25);
+}
+
+/* ─── REVEAL ON SCROLL ─── */
+.reveal-el {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-el.in-view {
+  opacity: 1;
   transform: translateY(0);
 }
-.sticky-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  min-width: 0;
-}
-.sticky-count {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.45);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.sticky-chips {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.sticky-chip {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--white);
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--border-md);
-  border-radius: 20px;
-  padding: 4px 12px;
-  white-space: nowrap;
-}
-.sticky-chip.feat {
-  color: var(--orange);
-  background: var(--orange-lo);
-  border-color: var(--orange-bd);
-}
-.sticky-cta {
-  font-family: var(--font-b);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--white);
-  background: var(--orange);
-  border: none;
-  border-radius: 9px;
-  padding: 12px 24px;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-  flex-shrink: 0;
-}
-.sticky-cta:hover { opacity: 0.88; }
+
+/* Stagger cards */
+.engine-card.reveal-el:nth-child(1) { transition-delay: 0s; }
+.engine-card.reveal-el:nth-child(2) { transition-delay: 0.08s; }
+.engine-card.reveal-el:nth-child(3) { transition-delay: 0.16s; }
+.engine-card.reveal-el:nth-child(4) { transition-delay: 0.24s; }
+
+/* Stagger mode cards */
+.mode-card.reveal-el:nth-child(1) { transition-delay: 0s; }
+.mode-card.reveal-el:nth-child(2) { transition-delay: 0.1s; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1080px) {
@@ -810,13 +857,21 @@ nav {
   .hero, .engines-section, .table-section, .modes-section, .waitlist-section, .footer-cta { padding-left: 24px; padding-right: 24px; }
   .cards-grid { grid-template-columns: 1fr; }
   .modes-grid { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; }
-  .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
-  .hero-stat:last-child { border-bottom: none; }
+  .hero-stats { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+  }
+  .hero-stat { 
+    border-right: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border); 
+    padding: 20px 16px;
+  }
+  .hero-stat:nth-child(2n) { border-right: none; }
+  .hero-stat:nth-child(n+3) { border-bottom: none; }
   .table-intro { flex-direction: column; gap: 24px; }
+  #tableVisible tr:nth-child(n+6) { display: none; }
+  #tableWrap.open #tableVisible tr:nth-child(n+6) { display: table-row; }
   .footer-cta { flex-direction: column; align-items: flex-start; }
   .site-footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
   .form-row { grid-template-columns: 1fr; }
-  .sticky-bar { padding: 14px 20px; }
-  .sticky-count { display: none; }
 }

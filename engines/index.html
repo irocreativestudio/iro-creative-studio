@@ -29,25 +29,27 @@
 
   <!-- HERO -->
   <section class="hero">
-    <span class="hero-eyebrow">IRO · AI Catalog · Preview</span>
-    <h1>We run the engines.<br>You run the business.</h1>
-    <p class="hero-desc">Four AI engines built for F&B, E-commerce, and Fashion founders. Research your market, build your strategy, track the trends, and ship 30 creatives a month — without touching a single spreadsheet.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-n">4</span>
-        <span class="hero-stat-l">AI Engines</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-n accent">70+</span>
-        <span class="hero-stat-l">Research Variables</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-n">3</span>
-        <span class="hero-stat-l">Verticals</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-n">30</span>
-        <span class="hero-stat-l">Creatives / Month</span>
+    <div>
+      <span class="hero-eyebrow">IRO · AI Catalog · Preview</span>
+      <h1>We run the engines.<br>You run the business.</h1>
+      <p class="hero-desc">Four AI engines built for F&B, E-commerce, and Fashion founders. Research your market, build your strategy, track the trends, and ship 30 creatives a month — without touching a single spreadsheet.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-n">4</span>
+          <span class="hero-stat-l">AI Engines</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-n accent">70+</span>
+          <span class="hero-stat-l">Research Variables</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-n">3</span>
+          <span class="hero-stat-l">Verticals</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-n">30</span>
+          <span class="hero-stat-l">Creatives / Month</span>
+        </div>
       </div>
     </div>
   </section>
@@ -87,7 +89,7 @@
             Structured intelligence report
           </li>
         </ul>
-        <button class="card-btn" onclick="toggleEngine(1, 'Research Engine', false)">Add to Cart</button>
+        <button class="card-btn" onclick="toggleEngine(this)">Interested</button>
       </div>
 
       <!-- 02 -->
@@ -118,7 +120,7 @@
             Launch & campaign architecture
           </li>
         </ul>
-        <button class="card-btn" onclick="toggleEngine(2, 'Strategy Engine', false)">Add to Cart</button>
+        <button class="card-btn" onclick="toggleEngine(this)">Interested</button>
       </div>
 
       <!-- 03 -->
@@ -149,7 +151,7 @@
             Global-to-India pipeline
           </li>
         </ul>
-        <button class="card-btn" onclick="toggleEngine(3, 'Trend Engine', false)">Add to Cart</button>
+        <button class="card-btn" onclick="toggleEngine(this)">Interested</button>
       </div>
 
       <!-- 04 — FEATURED -->
@@ -183,7 +185,7 @@
             F&B · E-comm · Fashion ready
           </li>
         </ul>
-        <button class="card-btn" onclick="toggleEngine(4, 'Creative Engine', true)">Add to Cart</button>
+        <button class="card-btn" onclick="toggleEngine(this)">Interested</button>
       </div>
 
     </div>
@@ -393,7 +395,7 @@
         <div class="form-row">
           <div class="form-field">
             <label for="wl-name">Your Name</label>
-            <input type="text" id="wl-name" placeholder="Rohan Sharma" required>
+            <input type="text" id="wl-name" placeholder="John Doe" required>
           </div>
           <div class="form-field">
             <label for="wl-industry">Industry</label>
@@ -448,14 +450,7 @@
     <span class="f-note">AI Catalog · Preview · 2026</span>
   </div>
 
-  <!-- STICKY BAR -->
-  <div class="sticky-bar" id="stickyBar">
-    <div class="sticky-left">
-      <span class="sticky-count" id="stickyCount">0 engines selected</span>
-      <div class="sticky-chips" id="stickyChips"></div>
-    </div>
-    <a href="#waitlist" class="sticky-cta" onclick="scrollToWaitlist(event)">Join the Waitlist →</a>
-  </div>
+
 
 
   <script src="../js/engines.js"></script>
