@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRO × [Brand TBD] — Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FDF6F0;
+    --bg-warm: #F9EDE3;
+    --accent: #FF8C69;
+    --accent-light: #FFB49A;
+    --rose: #E8C4B8;
+    --rose-deep: #C9957F;
+    --text: #2C2C2C;
+    --text-muted: #6B5D55;
+    --text-light: #9A8880;
+    --white: #FFFFFF;
+    --border: rgba(232, 196, 184, 0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 60px;
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,180,154,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,196,184,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .cover-meta {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .cover-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .cover-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 0px;
+  }
+
+  .cover-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .cover-brand-tbd {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    margin-bottom: 16px;
+    padding-left: 4px;
+  }
+
+  .cover-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.2vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 4px;
+    margin-bottom: 48px;
+  }
+
+  .cover-tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.8;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-prepared {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+  }
+
+  .cover-prepared strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  .cover-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: rgba(232, 196, 184, 0.3);
+    line-height: 1;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 100px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0 60px;
+    max-width: calc(100% - 120px);
+  }
+
+  /* ── OPENER ── */
+  .opener {
+    padding: 80px 60px;
+    background: var(--text);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .opener::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,140,105,0.15) 0%, transparent 70%);
+  }
+
+  .opener-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .opener p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--bg);
+    max-width: 700px;
+  }
+
+  .opener p em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+
+  .opener-small {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 15px !important;
+    color: rgba(253,246,240,0.75) !important;
+    margin-top: 32px !important;
+    font-weight: 300;
+    max-width: 600px;
+  }
+
+  /* ── LABEL ── */
+  .label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+
+  /* ── RESEARCH SECTION ── */
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 48px;
+  }
+
+  .research-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .research-text h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .research-text p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .research-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .brand-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .brand-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .brand-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201,149,127,0.15);
+  }
+
+  .brand-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    border-radius: 3px 0 0 3px;
+  }
+
+  .brand-card-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── GAP CALLOUT ── */
+  .gap-callout {
+    background: var(--bg-warm);
+    border: 1px solid var(--rose);
+    border-radius: 24px;
+    padding: 48px;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gap-callout::after {
+    content: '→';
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 80px;
+    color: rgba(232,196,184,0.4);
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .gap-callout h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 300;
+    line-height: 1.3;
+    max-width: 600px;
+    margin-bottom: 16px;
+  }
+
+  .gap-callout h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .gap-callout p {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 500px;
+    line-height: 1.8;
+  }
+
+  /* ── VISION ── */
+  .vision {
+    padding: 100px 60px;
+    background: var(--bg-warm);
+  }
+
+  .vision-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .vision-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 300;
+    line-height: 1.4;
+    max-width: 780px;
+  }
+
+  .vision-text em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ── PHASES ── */
+  .phase {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 56px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase::before {
+    content: attr(data-num);
+    position: absolute;
+    right: 40px;
+    top: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: rgba(232,196,184,0.2);
+    line-height: 1;
+  }
+
+  .phase-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .phase h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .phase-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 36px;
+  }
+
+  .deliverables {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .deliverable {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .deliverable::before {
+    content: '—';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .phase-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .phase-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .phase-price span {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .phase-timeline {
+    text-align: right;
+  }
+
+  .phase-timeline strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .phase-timeline small {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  /* ── TOTAL ── */
+  .total-block {
+    background: var(--text);
+    border-radius: 28px;
+    padding: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .total-block::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,140,105,0.15) 0%, transparent 70%);
+  }
+
+  .total-left p {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(253,246,240,0.55);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .total-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 80px);
+    font-weight: 300;
+    color: var(--bg);
+    line-height: 1;
+  }
+
+  .total-right {
+    text-align: right;
+  }
+
+  .total-note {
+    font-size: 13px;
+    color: rgba(253,246,240,0.65);
+    line-height: 2;
+  }
+
+  /* ── PROCESS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .step {
+    display: flex;
+    gap: 32px;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+    padding-top: 10px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── TIMELINE TABLE ── */
+  .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 48px;
+  }
+
+  .timeline-table th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-table td {
+    padding: 20px;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .timeline-table tr:last-child td {
+    border-bottom: none;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .timeline-table td:first-child {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    padding: 100px 60px;
+    background: var(--text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,140,105,0.12) 0%, transparent 70%);
+  }
+
+  .closing-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .closing h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 300;
+    color: var(--bg);
+    line-height: 1.2;
+    max-width: 700px;
+    margin-bottom: 32px;
+  }
+
+  .closing h2 em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+
+  .closing p {
+    font-size: 15px;
+    color: rgba(253,246,240,0.75);
+    max-width: 540px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .closing-sig {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(232,196,184,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .sig-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--bg);
+    margin-bottom: 4px;
+  }
+
+  .sig-title {
+    font-size: 12px;
+    color: rgba(253,246,240,0.55);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .sig-contact {
+    text-align: right;
+    font-size: 13px;
+    color: rgba(253,246,240,0.6);
+    line-height: 2;
+  }
+
+  .sig-contact a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+
+  .ready-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(255,140,105,0.3);
+    border-radius: 100px;
+    padding: 8px 20px;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cover-eyebrow { animation: fadeUp 0.8s ease 0.1s both; }
+  .cover-headline { animation: fadeUp 0.8s ease 0.25s both; }
+  .cover-sub { animation: fadeUp 0.8s ease 0.4s both; }
+  .cover-tagline { animation: fadeUp 0.8s ease 0.55s both; }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover { min-height: auto; padding: 40px; }
+    .section { padding: 60px 40px; }
+    .opener, .vision, .closing { padding: 60px 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .cover, .section, .opener, .vision, .closing { padding: 48px 28px; }
+    .research-grid { grid-template-columns: 1fr; }
+    .deliverables { grid-template-columns: 1fr; }
+    .total-block { flex-direction: column; gap: 32px; text-align: center; }
+    .total-right { text-align: center; }
+    .closing-sig { flex-direction: column; gap: 32px; }
+    .sig-contact { text-align: left; }
+    .cover-bottom { flex-direction: column; gap: 20px; }
+    .cover-number { font-size: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-top">
+    <div class="cover-logo">IRO Creative Studio</div>
+    <div class="cover-meta">
+      Prepared for Aman<br>
+      May 2026 · Confidential
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-eyebrow">A Proposal</div>
+    <h1 class="cover-headline">IRO <em>×</em></h1>
+    <p class="cover-brand-tbd">[Brand Name TBD]</p>
+    <p class="cover-sub">From a name to a feeling.</p>
+    <p class="cover-tagline">
+      Before your product hits a shelf or a screen, someone has to decide what it feels like. That's where we come in.
+    </p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-prepared">
+      Prepared by
+      <strong>Rohan · IRO Creative Studio</strong>
+    </div>
+    <div class="cover-number">01</div>
+  </div>
+</section>
+
+<!-- OPENER -->
+<section class="opener">
+  <div class="opener-inner">
+    <p>
+      You're not launching a skincare brand.<br>
+      <em>You're launching a lifestyle.</em>
+    </p>
+    <p class="opener-small">
+      And before you even have a name, you already know what it feels like. We heard you. And honestly — we're already thinking about it.
+    </p>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section">
+  <div class="label">What We Found</div>
+
+  <div class="research-grid">
+    <div class="research-text">
+      <h2>You mentioned Rhode.<br>You mentioned <em>Glow Recipe.</em><br>Good taste.</h2>
+      <p>
+        But here's what we found when we went deeper — the brand you're building lives in a space that globally looks like <strong>Glow Recipe meets Sol de Janeiro.</strong> Fruit-forward. Colourful but cohesive. Premium but never stiff.
+      </p>
+      <p>
+        Brands like <strong>Bubble Skincare</strong> and <strong>Tower 28</strong> proved this formula works — playful packaging, Gen Z community, real product credibility. They built cult followings before they built distribution.
+      </p>
+      <p>
+        These aren't brands you mentioned. These are brands we brought to you — because that's the level of thinking you're going to get from us.
+      </p>
+    </div>
+
+    <div class="brand-cards">
+      <div class="brand-card">
+        <div class="brand-card-name">Sol de Janeiro</div>
+        <div class="brand-card-desc">Playful, colourful, premium. Jewel-toned packaging, Gen Z cult following. Sells a feeling, not a product. You haven't mentioned it — but you're describing it.</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-name">Bubble Skincare</div>
+        <div class="brand-card-desc">Bold, saturated colours, Gen Z-native. Face mask + lip mask is their category. You're building an Indian version — at a higher price point.</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-name">Tower 28</div>
+        <div class="brand-card-desc">Clean but fun. LA energy. Premium and accessible at once. Shows that cool and credible aren't opposites.</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-name">Glow Recipe</div>
+        <div class="brand-card-desc">Fruit-forward, watermelon pink + strawberry red. Vibrant but structured. This is your north star — not Rhode.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-callout">
+    <h3>That space doesn't exist<br><em>in India. Yet.</em></h3>
+    <p>
+      Dot & Key comes closest — but their branding is inconsistent. Foxtale is too clinical. Plum is mass market. Laneige is foreign and expensive. Nobody is doing fruity, playful, premium and Gen Z-native in India right now. That gap is yours — if you move fast and brand right.
+    </p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- VISION -->
+<section class="vision">
+  <div class="vision-inner">
+    <div class="label">What We're Building</div>
+    <p class="vision-text">
+      Right now you have a lip mask and a face mask. But we're not designing for two products — we're designing for <em>everything that comes after them too.</em> Because we already know there's more coming. And when it does, your brand needs to be ready to hold it all without skipping a beat.
+    </p>
+    <br><br>
+    <p class="vision-text" style="font-size: clamp(18px, 2.2vw, 28px); color: var(--text-muted);">
+      This isn't a logo project. This is the foundation your brand lives on — today, tomorrow, and every product launch after that.
+    </p>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section class="section">
+  <div class="label">The Scope</div>
+
+  <!-- Phase 01 -->
+  <div class="phase" data-num="01">
+    <div class="phase-label">Phase 01</div>
+    <h2>Brand Identity System</h2>
+    <p class="phase-desc">Build the brand from the ground up. Starting with the name.</p>
+
+    <div class="deliverables">
+      <div class="deliverable">Brand Naming — 3 to 5 directions, each with a full rationale. Not just names. The story behind each one.</div>
+      <div class="deliverable">Logo Design — 2 concepts, 2 rounds of revisions</div>
+      <div class="deliverable">Colour Palette + Typography System</div>
+      <div class="deliverable">Full Brand Guidelines Document — every designer, every platform, always on-brand</div>
+      <div class="deliverable">Instagram + LinkedIn Profile Assets</div>
+      <div class="deliverable">Email Signature Design</div>
+    </div>
+
+    <div class="phase-footer">
+      <div class="phase-price">
+        <span>Investment</span>
+        ₹55,000
+      </div>
+      <div class="phase-timeline">
+        <strong>6 – 8 Weeks</strong>
+        <small>From kickoff date</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 02 -->
+  <div class="phase" data-num="02">
+    <div class="phase-label">Phase 02</div>
+    <h2>Website Design + Development</h2>
+    <p class="phase-desc">Where your brand meets your customer for the first time.</p>
+
+    <div class="deliverables">
+      <div class="deliverable">Custom Website Design — up to 5 pages. Not a template. Not drag-and-drop.</div>
+      <div class="deliverable">Mobile-First and Fully Responsive</div>
+      <div class="deliverable">Optimised for speed, SEO basics, and conversions</div>
+      <div class="deliverable">Built to grow with you — not just look good on launch day</div>
+    </div>
+
+    <div class="phase-footer">
+      <div class="phase-price">
+        <span>Investment</span>
+        ₹45,000
+      </div>
+      <div class="phase-timeline">
+        <strong>4 – 6 Weeks</strong>
+        <small>Kicks off after Phase 01</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total -->
+  <div class="total-block">
+    <div class="total-left">
+      <p>Total Investment</p>
+      <div class="total-amount">₹1,00,000</div>
+    </div>
+    <div class="total-right">
+      <div class="total-note">
+        50% advance to begin<br>
+        Balance on final delivery<br>
+        Source files transferred on completion
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="label">How It Works</div>
+  <p style="font-size: 15px; color: var(--text-muted); max-width: 500px; line-height: 1.8;">No surprises. No back and forth. Here's the exact flow —</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>You say yes</strong>
+        <p>We send the agreement and invoice. Clean, simple, no confusion.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>50% advance clears</strong>
+        <p>We start immediately. No waiting, no delays.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Week 1–2 — Naming</strong>
+        <p>Research done. Naming directions presented with full rationale.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Name approved — Identity begins</strong>
+        <p>Logo, colour, typography — everything flows from the name you choose.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Brand system presented</strong>
+        <p>2 concepts, your feedback, 2 revisions. Phase 01 locked and delivered.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <strong>Phase 02 begins</strong>
+        <p>Website design and development. Built on the identity we just created.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <strong>Final delivery</strong>
+        <p>All files. All assets. All yours. Source files included.</p>
+      </div>
+    </div>
+  </div>
+
+  <table class="timeline-table" style="margin-top: 64px;">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Duration</th>
+        <th>When</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Brand Identity System</td>
+        <td>6–8 weeks</td>
+        <td>Starts on kickoff</td>
+      </tr>
+      <tr>
+        <td>Website Design + Development</td>
+        <td>4–6 weeks</td>
+        <td>After Phase 01 delivery</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>~4 months</td>
+        <td>Flexible to your formulation timeline</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="ready-tag">One more thing</div>
+
+    <h2>You said no agency<br>has <em>felt right</em> yet.</h2>
+
+    <p>
+      We get it. Most agencies show you a portfolio and ask you to trust them. We'd rather show you we've already started thinking — because we have.
+    </p>
+    <p>
+      We're a Gen Z team. We consume the same content, follow the same brands, and understand the market you're entering better than most. We don't just design for your customer — we <em style="color: var(--accent-light); font-style: italic;">are</em> your customer.
+    </p>
+    <p>
+      That's not a pitch. That's just the truth.
+    </p>
+
+    <div class="closing-sig">
+      <div>
+        <div class="sig-name">Rohan</div>
+        <div class="sig-title">IRO Creative Studio · Bangalore</div>
+      </div>
+      <div class="sig-contact">
+        rohankhati@irocreativestudio.com<br>
+        <a href="https://irocreativestudio.com">irocreativestudio.com</a><br><br>
+        <em style="color: rgba(253,246,240,0.3); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 18px;">Ready when you are.</em>
+      </div>
+    </div>
+
+    <!-- ACCEPT BUTTON -->
+    <div style="margin-top: 64px; text-align: center;">
+      <a href="mailto:rohankhati@irocreativestudio.com?subject=Proposal%20Accepted%20%E2%80%94%20Brand%20Identity%20%2B%20Website&body=Hi%20Rohan%2C%0A%0AI%27ve%20reviewed%20the%20proposal%20and%20I%27m%20ready%20to%20move%20forward.%0A%0ALet%27s%20get%20started.%0A%0A%E2%80%94%20Aman"
+        style="
+          display: inline-block;
+          background: #FF8C69;
+          color: #FDF6F0;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          text-decoration: none;
+          padding: 22px 56px;
+          border-radius: 100px;
+        "
+        onmouseover="this.style.background='#e87a58'"
+        onmouseout="this.style.background='#FF8C69'"
+      >
+        Accept This Proposal
+      </a>
+      <p style="margin-top: 16px; font-size: 12px; color: rgba(253,246,240,0.4); font-family: 'DM Sans', sans-serif; letter-spacing: 0.05em;">
+        Clicking will open your email with a pre-filled acceptance note.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="
+  background: #1C1010;
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+">
+  <div style="font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,246,240,0.25);">
+    IRO Creative Studio · Bangalore · 2026
+  </div>
+  <div style="font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #FF8C69; font-weight: 500;">
+    ⏳ &nbsp;Valid for 24 hours from time of receipt
+  </div>
+  <div style="font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(253,246,240,0.25);">
+    Confidential · Prepared exclusively for Aman
+  </div>
+</footer>
+
+</body>
+</html>
