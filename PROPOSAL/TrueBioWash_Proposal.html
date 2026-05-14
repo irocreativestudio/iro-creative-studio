@@ -598,6 +598,95 @@
     border-top: 1px solid var(--border);
   }
 
+  .phase-price {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phase-price span {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .phase-price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--coral);
+    line-height: 1;
+  }
+
+  .total-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--charcoal);
+    border-radius: 12px;
+    padding: 40px 48px;
+    margin-top: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .total-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--cyan));
+  }
+
+  .total-left p {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.4);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .total-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: #F0EDE6;
+    line-height: 1;
+  }
+
+  .payment-terms {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+
+  .payment-terms span {
+    flex: 1;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+    padding: 14px 0;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .payment-terms span:last-child {
+    border-right: none;
+  }
+
+  .total-note {
+    font-size: 13px;
+    color: rgba(240,237,230,0.45);
+    font-weight: 300;
+    line-height: 2.2;
+    text-align: right;
+  }
+
   .phase-timeline {
     text-align: right;
   }
@@ -1015,12 +1104,22 @@
       <div class="deliverable">Instagram + Social Profile Assets</div>
     </div>
     <div class="phase-footer">
+      <div class="phase-price">
+        <span>Investment</span>
+        <div class="phase-price-amount">₹40,000</div>
+      </div>
       <div class="phase-timeline">
         <strong>8 Weeks</strong>
         <small>From kickoff to final delivery</small>
       </div>
     </div>
+    <div class="payment-terms">
+      <span>50% advance to begin</span>
+      <span>Balance on final delivery</span>
+      <span>Source files transferred on completion</span>
+    </div>
   </div>
+
 </section>
 
 <!-- TIMELINE -->
